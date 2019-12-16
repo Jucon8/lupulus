@@ -9,6 +9,7 @@
     <title>Lupulus</title>
   </head>
 <body>
+<!--Inicio header-->
   <header id="inicio">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000;">
      <a class="navbar-brand" href="index.php" style="text-transform: uppercase; font-size:2rem; width:300px;"><img src="img/logo1.png" style="max-width: 100%;" alt="LUPULUS"></a>
@@ -43,10 +44,10 @@
            </div>
          </li> -->
          <li class="nav-item">
-           <a class="nav-link text-white" style="text-transform: capitalize" href="#about1">sobre nosotros</a>
+           <a class="nav-link text-white" style="text-transform: capitalize" href="index.php#about1">sobre nosotros</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link text-white" style="text-transform: capitalize" href="#faqs">FAQs</a>
+           <a class="nav-link text-white" style="text-transform: capitalize" href="index.php#faqs">FAQs</a>
          </li>
          <li class="nav-item">
            <a class="nav-link text-white" style="text-transform: capitalize" href="contacto.php">contacto</a>
