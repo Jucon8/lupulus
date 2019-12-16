@@ -1,0 +1,18 @@
+.site {
+  background-image: url("../img/canillabirra.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.fm-nav a{
+  color: #fff;
+  padding: 10px;
+}
+
+.fm-nav a:hover{
+  background: rgba(255, 255, 255, .1);
+}
+
+.gradiente {
+ background-color: #000!important;
+}
