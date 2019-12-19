@@ -68,7 +68,7 @@
 									<div class="text-center">
 										<h2 class="p-3">registrarse</h2>
 									</div>
-									<form class="container col-md-9 col-lg-12" id="register-form" action="#REGISTRARSE" method="post" role="form">
+									<form class="container col-md-9 col-lg-12" id="register-form" action="registro.php" method="post" role="form">
 										<div class="form-group">
  											 <input type="text" name="username" id="username-registro" tabindex="1" class="form-control" placeholder="Usuario" value="">
  									 </div>
