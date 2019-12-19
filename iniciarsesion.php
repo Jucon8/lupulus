@@ -68,7 +68,7 @@
 									<div class="text-center">
 										<h2 class="p-3">iniciar sesión</h2>
 									</div>
-									<form class="container col-md-9 col-lg-12" method="POST"  action="#LOGIN" id="login-form">
+									<form class="container col-md-9 col-lg-12" method="POST"  action="login.php" id="login-form">
 								   <div class="form-group">
 								     <input type="text" name="username" id="username-inicio" tabindex="1" class="form-control" placeholder="Usuario" value="">
 								   </div>
