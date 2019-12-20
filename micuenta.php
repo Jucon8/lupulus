@@ -71,7 +71,44 @@
                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
                 <p>Selecciona una imagen de perfil</p>
                 <div class="container col-12">
-                  <input type="file" class="form-control-file" id="upload">
+                  <!-- FUNCION GUARDAR AVATAR -->
+               <?php
+               //Declaro la funcion guardar avatar
+                    function guardarAvatar(){
+                      //Si se subió un archivo-->
+                    if ($_FILES)
+                    {  //datos del arhivo
+                    $nombre = $_FILES['avatar']['name'];
+                    $tipo = $_FILES['avatar']['type'];
+                    $tamano = $_FILES['avatar']['size'];
+                    $archivo = $_FILES['avatar']['tmp_name'];
+                    //compruebo si las características del archivo son las que deseo
+                    if (!((strpos($tipo, "jpg") || strpos($tipo, "jpeg") || strpos($tipo, "gif")) && ($tamano < 1000000))) {
+                      //si no se cumplen que imprima el siguiente mensaje:
+                        echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .gif o .jpg<br><li>se permiten archivos de 1 MB máximo.</td></tr></table>";
+                    }else{
+                      //si no, que guarde el avatar en carpeta img/avatars
+                        if (move_uploaded_file($archivo, 'img/avatars/'.$nombre)){
+                        echo "<br>";
+                        echo "CARGA EXITOSA <br>  $tamano KB <br> ";
+                        }else{
+                          //si no pudo subir el avatar, por algun otro motivo:
+                              echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
+                        }
+                      }
+                    }
+                  }
+                ?>
+
+                      <form action="micuenta.php" method="post" enctype="multipart/form-data">
+                          <input type="file" name="avatar" id="">
+                          <br>
+                          <br>
+                          <br>
+                          <div>
+                          <button class="btn btn-primary" type="submit" action=<?php guardarAvatar()?>> Subir Archivo </button>
+                          </div>
+                      </form>
                 </div>
               </div>
             </div>
