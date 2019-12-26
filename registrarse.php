@@ -32,10 +32,7 @@ if ($_POST) {
   <?php require_once 'header.php' ?>
 
   <!--Inicio de REGISTRARSE -->
-
-
-
-  <div class="container-fluid loginimg pt-5">
+  <div class="container-fluid loginimg " id="formularioGeneral">
     <div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
       <div class="text-center">
         <h2 class="p-3">registrarse</h2>
@@ -89,11 +86,11 @@ if ($_POST) {
       </form>
     </div>
   </div>
-  <!-- Desarrolado por -->
+
   <footer>
-    <?php require_once 'desarrolladoPor.php' ?>
+    <?php require_once 'footer.php' ?>
   </footer>
-  <!-- Fin del Footer -->
+
   <!-- Optional JavaScript -->
   <?php require_once 'scripts.php' ?>
 

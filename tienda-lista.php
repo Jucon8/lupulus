@@ -1,6 +1,6 @@
 <head>
   <?php
-  include("head.php");
+  require_once 'head.php';
   ?>
   <title>Shop</title>
 </head>
@@ -10,8 +10,6 @@
 
   <!--Inicio header-->
   <?php require_once 'header.php' ?>
-
-  </header>
 
   <div class="d-lg-none" style="margin-top:118px">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
