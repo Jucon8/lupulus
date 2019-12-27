@@ -9,10 +9,3 @@
         </div>
 
     </div>
-
-</section>
-
-<!-- Desarrolado por -->
-<footer>
-    <?php require_once 'desarrolladoPor.php' ?>
-</footer>
