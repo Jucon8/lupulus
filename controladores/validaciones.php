@@ -1,54 +1,52 @@
 <?php
-
-function validarFormulario()
-{
-    $error = [];
-    /*VALIDACION DEL NOMBRE*/
-    if (isset($_POST['nombre'])) {
-        if (empty($_POST['nombre'])) {
-            $error['nombre'][] = "El campo esta vacio";
-        }
-        if (strlen($_POST['nombre']) < 2) {
-            $error['nombre'][] = "El nombre  tiene que ser mayor que dos digitos";
-        }
+function ValidarTodo(){
+  $errores = [];
+  // Validacion de Nombre //
+  if (isset($_POST["nombre"])) {
+    if (empty($_POST["nombre"])) {
+      $errores["nombre"][] = "El campo nombre está vacio";
     }
-    /*VALIDACION DEL EMAIL*/
-    if (isset($_POST['email'])) {
-        if (empty($_POST['email'])) {
-            $error['email'][] = "El campo esta vacio";
-        }
-        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $error['email'][] = "Tiene que ser un email valido";
-        }
+    if (strlen($_POST["nombre"])<6) {
+      $errores["nombre"][] = "El nombre debe contener al menos 6 caracteres";
     }
-    /*VALIDACION DEL PASSWORD*/
-    if (isset($_POST['password'])) {
-        if (empty($_POST['password'])) {
-            $error['password'][] = "El campo esta vacio";
-        }
-        if (strlen($_POST['password']) < 6) {
-            $error['password'][] = "Tu contrseña tiene que tener mas de 6 digitos";
-        }
+  }
+  //Validación de Email //
+  if (isset($_POST["email"])) {
+    if (empty($_POST["email"])) {
+      $errores["email"][] = "El campo email está vacio";
     }
-    /*VALIDACION DEL RE_PASSWORD*/
-    if (isset($_POST['confirm-password'])) {
-        if (empty($_POST['confirm-password'])) {
-            $error['confirm-password'][] = "El campo esta vacio";
-        }
-        if ($_POST['password'] != $_POST['confirm-password']) {
-            $error['confirm-password'][] = "La contraseña no son iguales";
-        }
+    if (!filter_var($_POST["email"],  FILTER_VALIDATE_EMAIL)) {
+      $errores["email"][] = "La dirección de email no tiene un formato válido";
     }
-
-    return $error;
+  }
+  // Validación de Contraseña //
+  if (isset($_POST["password"])) {
+    if (empty($_POST["password"])) {
+      $errores["password"][] = "El campo contraseña está vacio";
+    }
+    if (strlen($_POST["password"])<4) {
+      $errores["password"][] = "La contraseña debe tener al menos 4 caracteres";
+    }
+  }
+  // Validación de Confirmar Contraseña //
+  if (isset($_POST["confirmar"])) {
+    if (empty($_POST["confirmar"])) {
+      $errores["confirmar"][] = "El campo confirmar contraseña está vacio";
+    }
+    if ($_POST["confirmar"] != $_POST["password"]) {
+      $errores["confirmar"][] = "Las contraseñas no coinciden";
+    }
+  }
+  return $errores;
 }
-function persistirDatos($datos, $errores)
-{
-    if (isset($errores[$datos])) {
-        return "";
-    } else {
-        if(isset($_POST[$datos])){
-            return $_POST[$datos];
-        }
+// Persistencia de Datos //
+function PersistirDatos($dato, $arrayDeErrores){
+  if (isset($arrayDeErrores[$dato])) {
+    echo "";
+  } else {
+    if (isset($_POST[$dato])) {
+      return $_POST[$dato];
     }
+  }
 }
+ ?>

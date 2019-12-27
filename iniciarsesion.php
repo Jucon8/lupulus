@@ -1,13 +1,10 @@
 <?php
-
 require_once 'controladores/validaciones.php';
 $erroresLogin = [];
 if ($_POST) {
-  $erroresLogin = validarFormulario();
+  $erroresLogin = ValidarTodo();
   if (count($erroresLogin) == 0) {
-    $usuarioGuardado = [
-      //
-
+    $usuarioGuardado = [      
     ];
     $usuarioRegistrado = json_decode("UsuarioRegistro.json");
     header('Location: bienvenido.php');
@@ -15,7 +12,6 @@ if ($_POST) {
   }
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -41,8 +37,8 @@ if ($_POST) {
       </div>
       <form class="container col-md-9 col-lg-12" method="POST" action="" id="login-form">
         <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" name="nombre" id="nombre-registro" class="form-control" placeholder="Usuario" value="<?= persistirDatos('nombre', $erroresLogin) ?>">
+          <label for="nombre"></label>
+          <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Usuario" value="<?= persistirDatos('nombre', $erroresLogin) ?>">
           <?php
           if (isset($erroresLogin['nombre'])) {
             foreach ($erroresLogin['nombre'] as  $value) {
@@ -51,8 +47,8 @@ if ($_POST) {
           } ?>
         </div>
         <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" name="password" id="password-registro" class="form-control" placeholder="Contraseña">
+          <label for="password"></label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
           <?php
           if (isset($erroresLogin['password'])) {
             foreach ($erroresLogin['password'] as  $value) {
