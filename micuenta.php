@@ -20,10 +20,28 @@
               <h4>{{Nombre de Usuario}}</h4>
             </div>
             <div class="text-center">
-              <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
+                 
+              <img <?php   //MOSTRAR AVATAR
+        //function mostrarAvatar() {
+           if ($_FILES) {  
+              //datos del arhivo
+              $nombre = $_FILES['avatar']['name'];
+              echo 'src=img/avatars/' . $nombre;
+              }
+              else{
+              echo 'src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"';
+              }
+                ?> class="avatar rounded-circle img-thumbnail" alt="avatar">
               <p>Selecciona una imagen de perfil</p>
               <div class="container col-12">
-                <!-- FUNCION GUARDAR AVATAR -->
+
+                <form action="micuenta.php" method="post" enctype="multipart/form-data">
+                  <input type="file" name="avatar" id="">
+                  <br>
+                  <br>
+                  <br>
+                  <div>
+                     <!-- FUNCION GUARDAR AVATAR -->
                 <?php
                 //Declaro la funcion guardar avatar
                 function guardarAvatar()
@@ -43,6 +61,7 @@
                       if (move_uploaded_file($archivo, 'img/avatars/' . $nombre)) {
                         echo "<br>";
                         echo "CARGA EXITOSA <br>  $tamano KB <br> ";
+
                       } else {
                         //si no pudo subir el avatar, por algun otro motivo:
                         echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
@@ -51,13 +70,6 @@
                   }
                 }
                 ?>
-
-                <form action="micuenta.php" method="post" enctype="multipart/form-data">
-                  <input type="file" name="avatar" id="">
-                  <br>
-                  <br>
-                  <br>
-                  <div>
                     <button class="btn btn-primary" type="submit" action=<?php guardarAvatar() ?>> Subir Archivo </button>
                   </div>
                 </form>
@@ -130,15 +142,21 @@
       <!--Div micuenta-->
     </div>
     <!--fondo-->
+    <br>
+    <br>
+    <br>
+    
   </div>
   <!-- Desarrolado por -->
-  <footer>
-    <?php require_once 'desarrolladoPor.php' ?>
+  <footer class="pb-0 mb-0">
+    <?php require 'desarrolladoPor.php' ?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->
   <?php require_once 'scripts.php' ?>
 
 </body>
-
 </html>
+<?php
+              mostrarAvatar()
+?>
