@@ -112,7 +112,7 @@
   <!--div carrito-->
   <!-- Desarrolado por -->
   <footer>
-    <?php require_once 'desarrolladoPor.php' ?>
+    <?php require_once 'desarrolladoPor.php'?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->
