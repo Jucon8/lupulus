@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$titulo="Carrito";
+?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 
@@ -112,7 +117,6 @@
   <!--div carrito-->
   <!-- Desarrolado por -->
   <footer>
-    <?php require_once 'desarrolladoPor.php'?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->

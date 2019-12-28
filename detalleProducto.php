@@ -1,8 +1,14 @@
-< <head>
+<?php
+session_start();
+
+$titulo="Detalle del Producto";
+?>
+
+<!DOCTYPE html>
+<head>
   <?php include("head.php") ?>
   <title>Detalle del Producto</title>
   </head>
-
   <body id="detalleProducto">
     <!--Inicio header-->
     <?php require_once 'header.php' ?>
