@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$titulo = "Lupulus";
+?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 
