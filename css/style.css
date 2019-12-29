@@ -18,10 +18,10 @@
 /*MI CUENTA HEADER*/
 #navbarDropdown{
 text-transform: capitalize;
-padding-top: 20px;
+padding-top: 10px;
 }
 #carritoHeader{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 /* .nav-item (header, detalle producto, tienda-lista, y todos los lugares donde esta .nav-item */
 .nav-item {
