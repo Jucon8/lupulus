@@ -99,7 +99,7 @@ $titulo = "Lupulus";
                         </div>
 
                         <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body-faq">
                                 <span class="span" id="sp_resp_1">Para comprar en LÚPULUS, debe crearse una cuenta en <a href="registrarse.php">Registrarse</a> o si ya tiene cuenta <a href="iniciarsesion.php">Iniciar sesion</a>. <br> para finalizar la compra debe ir hacia <a href="carrito.php">Finalizar compra</a>.
                                 </span>
                             </div>
@@ -115,7 +115,7 @@ $titulo = "Lupulus";
                             </h2>
                         </div>
                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body-faq">
                                 <span class="span" id="sp_resp_2">Todos los productos que la página permite comprar significa que tiene stock. Caso contrario verá una leyenda que indica que el producto está Fuera de Stock.
                             </div>
                         </div>
@@ -130,7 +130,7 @@ $titulo = "Lupulus";
                             </h2>
                         </div>
                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body-faq">
                                 <span class="span" id="sp_resp_3">Una vez recibido el pago y confirmado, armaremos su pedido y
                                     lo enviaremos dentro de las 48 horas hábiles. Luego, el tiempo dependerá del transportista seleccionado.
                                 </span>
@@ -147,7 +147,7 @@ $titulo = "Lupulus";
                             </h2>
                         </div>
                         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body-faq">
                                 <span class="span" id="sp_resp_4">Los envíos son de Martes a Viernes.
                                     Los pedidos se toman hasta las 13 horas del día anterior, o según disponibilidad del transporte, lo que suceda primero.
                                     Éstos detalles se le informarán a su debido momento.
@@ -165,7 +165,7 @@ $titulo = "Lupulus";
                             </h2>
                         </div>
                         <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
-                            <div class="card-body">
+                            <div class="card-body-faq">
                                 <span class="span" id="sp_resp_5" >Una vez recibido el pago, Lupulus arma el paquete con su pedido, y lo envía de manera gratuita al transportista que llegará a la terminal de ómbinus de su ciudad o la ciudad más cercana, según corresponda.
                                     Mientras tanto se le enviará a su correo electrónico el número de guía y el nombre del transporte, para su mayor seguridad. Una vez que el pedido esté en la terminal, usted deberá abonar
                                     el costo del envío para poder retirarlo. Este valor dependerá del transportista, la distancia y el peso del o los bultos.
@@ -189,7 +189,7 @@ $titulo = "Lupulus";
         <div class="col-lg-5 mb-4">
 
             <div class="card">
-                <div class="card-body" id="transparente">
+                <div class="card-body-faq" id="transparente">
                     <form method="" action="">
                         <div class="md-form-group">
                             <i class="fas fa-user prefix grey-text"></i>
