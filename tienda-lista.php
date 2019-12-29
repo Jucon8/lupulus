@@ -1,8 +1,8 @@
-<html>
-<head>
+
   <?php
   session_start();
-  require_once 'head.php';
+  $titulo = "Shop";  
+
 
   $productos = [
       0 => [
@@ -28,7 +28,11 @@
   ];
 
   ?>
-  <title>Shop</title>
+
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <?php require_once 'head.php' ?>
 </head>
 
 <body>

@@ -8,8 +8,6 @@ $titulo="Carrito";
 
 <head>
   <?php require_once 'head.php' ?>
-  <title>Carrito</title>
-
 </head>
 
 <body>
