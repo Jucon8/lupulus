@@ -1,3 +1,13 @@
+
+
+/* header */
+#logoHeader{
+  max-width: 85%;
+    margin-top: -20px;
+    margin-left: -15px;
+    margin-bottom: -15px;
+}
+/* .nav-item (header, detalle producto, tienda-lista, y todos los lugares donde esta .nav-item */
 .nav-item {
   padding-left: 15px;
 }
@@ -11,7 +21,7 @@
 
 /* NOSOTROS */
 .jumbotron-fluid {
-  background-color: #f0b500;
+  background-color: #ffc107;
 }
 #nosotros {
   padding: 1%;
@@ -40,7 +50,7 @@ padding: 0%;
 }
 
 .card-body-faq {
-  background-color: #f0b400bb;
+  background-color: #ffc107;
 }
 
 .span {
@@ -48,7 +58,7 @@ padding: 0%;
 }
 /*CONTACTO*/
 #contacto {
-  background-color: #f0b500;
+  background-color: #ffc107;
 }
 section #transparente {
   background-color: #ffe38f;
