@@ -39,6 +39,10 @@ padding: 0%;
   background-color: #343a40;
 }
 
+.card-body-faq {
+  background-color: #f0b400bb;
+}
+
 .span {
   color: white;
 }
