@@ -9,7 +9,7 @@ $erroresLogin = [];
 
 if ($_POST) {
 	$erroresLogin = ValidarTodo();
-	if (count($erroresLogin)==0) {
+	if (count($erroresLogin) == 0) {
 		// Logue de Usuario //
 		$usuariosRegistrados = file_get_contents("usuarios.json");
 		$usuariosRegistrados = explode(PHP_EOL,$usuariosRegistrados);
@@ -35,6 +35,7 @@ if ($_POST) {
 		}
 	}
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,6 @@ if ($_POST) {
 
   <!--Inicio de LOGIN -->
   <div class="container-fluid loginimg" id="formularioGeneral">
-
     <div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
       <div class="text-center">
         <h2 class="p-3">Conectarse</h2>
@@ -60,6 +60,7 @@ if ($_POST) {
       <form class="container col-md-9 col-lg-12" method="POST" action="" id="login-form">
         <div class="form-group">
           <label for="username"></label>
+
           <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" value="<?= persistirDatos('email', $erroresLogin) ?>">
           <?php
           if (isset($erroresLogin['email'])) {
