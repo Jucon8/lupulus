@@ -15,3 +15,5 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Mitr:400&display=swap" rel="stylesheet">
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+    <title> <?=$titulo?> </title>
