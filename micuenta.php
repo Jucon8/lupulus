@@ -129,19 +129,19 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Teléfono</label>
-                      <input type="text" class="form-control" id="telefono1" placeholder="Ej: (0351) 157-832514">
+                      <input type="text" class="form-control" id="telefono1" placeholder="EJ: (0351) 157-832514">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputEmail4">E-mail</label>
-                      <input type="email" class="form-control" id="email" placeholder="EJ: juansitoperez@gmail.com">
+                      <input type="email" class="form-control" id="email" placeholder="EJ: usuario@gmail.com">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputCity">Ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" placeholder="Ej: Córdoba">
+                      <input type="text" class="form-control" id="ciudad" placeholder="EJ: Córdoba">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
-                      <input type="text" class="form-control" id="domicilio" placeholder="Ej: La Rioja 532">
+                      <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputPassword4">Nueva contraseña</label>
