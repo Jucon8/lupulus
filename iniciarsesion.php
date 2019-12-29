@@ -9,7 +9,7 @@ $erroresLogin = [];
 
 if ($_POST) {
 	$erroresLogin = ValidarTodo();
-	if (count($erroresLogin)==0) {
+	if (count($erroresLogin) == 0) {
 		// Logue de Usuario //
 		$usuariosRegistrados = file_get_contents("usuarios.json");
 		$usuariosRegistrados = explode(PHP_EOL,$usuariosRegistrados);
@@ -35,6 +35,7 @@ if ($_POST) {
 		}
 	}
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,7 @@ if ($_POST) {
       <form class="container col-md-9 col-lg-12" method="POST" action="" id="login-form">
         <div class="form-group">
           <label for="username"></label>
-          <input type="email" name="email" id="email" class="form-control" placeholder="e-mail" value="<?= persistirDatos('email', $erroresLogin) ?>">
+          <input type="email" name="email" id="email" class="form-control" placeholder="e-mail" value="<?= persistirDatos('email', $erroresLogin)?>">
           <?php
           if (isset($erroresLogin['email'])) {
             foreach ($erroresLogin['email'] as  $value) {

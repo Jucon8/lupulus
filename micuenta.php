@@ -35,14 +35,6 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
           if (move_uploaded_file($archivo, "img/avatars/".$nombreAvatar2)) {
             echo "<br>";
             echo "CARGA EXITOSA <br>  $tamano KB <br> ";
-
-            $usuariosRegistrados = file_get_contents("usuarios.json");
-            $usuariosRegistrados = explode(PHP_EOL,$usuariosRegistrados);
-            array_pop($usuariosRegistrados);
-            foreach ($usuariosRegistrados as $usuario) {
-              $usuarioDecode = json_decode($usuario, true);
-              if ($_POST["avatar"] == $usuarioDecode["avatar"]){
-                file_put_contents("usuarios.json", $nombreAvatar2, FILE_APPEND);
           } else {
             //si no pudo subir el avatar, por algun otro motivo:
             echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
@@ -50,8 +42,7 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
         }
       }
     }
-  }
-}
+  
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -76,16 +67,16 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
             <div class="text-center">
             <?php   //MOSTRAR AVATAR
               //function mostrarAvatar() {
-             // if ($_FILES) {  
+             // if ($_FILES) {
              // $nombre = $_FILES['avatar']['name'];
             //  echo 'src=img/avatars/' . $nombre;
             //  }else{
             //  echo 'src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"';
             //  }
              ?>
-              <?php if (isset($_SESSION["avatar"])):?>
+              <?php if (!empty($_SESSION["avatar"])):?>
               <!--mostrarAvatar()-->
-              <img src="img/avatars/pp1.jpg" class="avatar rounded-circle img-thumbnail" alt="avatar">
+              <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail border border-dark" alt="avatar">
               <?php else: ?>
               <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
               <?php endif; ?>
@@ -121,27 +112,27 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
                   <div class="form-row">
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="Ej: juan">
+                      <input type="text" class="form-control" id="nombre" placeholder="Ej: horacio" value="<?= $_SESSION["username"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">apellido</label>
-                      <input type="text" class="form-control" id="apellido" placeholder="Ej: perez">
+                      <input type="text" class="form-control" id="apellido" placeholder="Ej: perez" value="<?= $_SESSION["apellido"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">teléfono</label>
-                      <input type="text" class="form-control" id="telefono1" placeholder="Ej: (0351) 157-832514">
+                      <input type="text" class="form-control" id="telefono1" placeholder="Ej: (0351) 157-832514" value="<?= $_SESSION["telefono"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputEmail4">E-mail</label>
-                      <input type="email" class="form-control" id="email" placeholder="Ej: juancito@gmail.com">
+                      <input type="email" class="form-control" id="email" placeholder="Ej: juancito@gmail.com" value="<?= $_SESSION["email"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputCity">ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" placeholder="Ej: Córdoba">
+                      <input type="text" class="form-control" id="ciudad" placeholder="Ej: Córdoba" value="<?= $_SESSION["ciudad"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">direccion</label>
-                      <input type="text" class="form-control" id="domicilio" placeholder="Ej: La Rioja 532">
+                      <input type="text" class="form-control" id="domicilio" placeholder="Ej: La Rioja 532" value="<?= $_SESSION["direccion"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputPassword4">contraseña nueva</label>
@@ -172,7 +163,7 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
     <br>
     <br>
     <br>
-    
+
   </div>
   <!-- Desarrolado por -->
   <footer class="pb-0 mb-0">

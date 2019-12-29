@@ -239,7 +239,7 @@ $titulo = "Lupulus";
 
             <!--Google map-->
             <div id="map-container-google-11" class="z-depth-1-half map-container-6" style="height: 400px">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13620.701466414766!2d-64.1893472!3d-31.4092941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6693430c4ee3410f!2sEspacio%20Project!5e0!3m2!1ses-419!2sar!4v1576412754995!5m2!1ses-419!2sar" width="100%" height="50%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13620.701466414766!2d-64.1893472!3d-31.4092941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6693430c4ee3410f!2sEspacio%20Project!5e0!3m2!1ses-419!2sar!4v1576412754995!5m2!1ses-419!2sar" width="100%" height="50%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
             </div>
 
             <br>
