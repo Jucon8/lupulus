@@ -105,6 +105,7 @@ $titulo = "Mi Cuenta";
                     <div class="form-group col-lg-6">
 
                       <label for="inputAddress">Nombre</label>
+
                       <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan" value="<?=$_SESSION["username"]?>">
                     </div>
                     <div class="form-group col-lg-6">
@@ -126,6 +127,7 @@ $titulo = "Mi Cuenta";
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
                       <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
+
 
                     </div>
                     <div class="form-group col-lg-6">
