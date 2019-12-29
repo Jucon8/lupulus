@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-$titulo = "Lupulus";
+$titulo = "LUPULUS - Insumos Cerveceros";
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 
 <head>
-    <?php require_once 'head.php' ?>
-    <title>LUPULUS - Insumos Cerveceros</title>
+   <?php require_once 'head.php' ?>
 </head>
 
 <body>
