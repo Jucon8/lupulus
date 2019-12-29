@@ -73,6 +73,10 @@ padding: 0%;
 .span {
   color: white;
 }
+#sp_resp_1, #sp_resp_2, #sp_resp_3, #sp_resp_4, #sp_resp_5{
+  color: black;
+ } 
+
 /*CONTACTO*/
 #contacto {
   background-color: #ffc107;
