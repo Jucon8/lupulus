@@ -53,15 +53,15 @@ if ($_POST) {
 
   <!--Inicio de LOGIN -->
   <div class="container-fluid loginimg" id="formularioGeneral">
-
     <div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
       <div class="text-center">
-        <h2 class="p-3">iniciar sesión</h2>
+        <h2 class="p-3">Conectarse</h2>
       </div>
       <form class="container col-md-9 col-lg-12" method="POST" action="" id="login-form">
         <div class="form-group">
           <label for="username"></label>
-          <input type="email" name="email" id="email" class="form-control" placeholder="e-mail" value="<?= persistirDatos('email', $erroresLogin)?>">
+
+          <input type="email" name="email" id="email" class="form-control" placeholder="E-mail" value="<?= persistirDatos('email', $erroresLogin) ?>">
           <?php
           if (isset($erroresLogin['email'])) {
             foreach ($erroresLogin['email'] as  $value) {
@@ -84,7 +84,7 @@ if ($_POST) {
           <label class="form-check-label" for="remember">Recordarme</label>
         </div>
         <div class="text-center pb-3">
-          <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="col-lg-6 form-control btn btn-login btn-warning" value="Iniciar sesión">
+          <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="col-lg-6 form-control btn btn-login btn-warning" value="Login">
         </div>
         <div class="text-center">
           <a href="#RECUPERARCONTRASEÑA" tabindex="5" class="forgot-password">¿Has olvidado tu contraseña?</a>

@@ -100,10 +100,10 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">tus datos</a>
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tus datos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pedidos" role="tab" aria-controls="profile" aria-selected="false">pedidos y envios</a>
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pedidos" role="tab" aria-controls="profile" aria-selected="false">Envíos y pedidos</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -111,35 +111,37 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
                 <form>
                   <div class="form-row">
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="Ej: horacio" value="<?= $_SESSION["username"]?>">
+
+                      <label for="inputAddress">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">apellido</label>
-                      <input type="text" class="form-control" id="apellido" placeholder="Ej: perez" value="<?= $_SESSION["apellido"]?>">
+                      <label for="inputAddress">Apellido</label>
+                      <input type="text" class="form-control" id="apellido" placeholder="EJ: Pérez">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">teléfono</label>
-                      <input type="text" class="form-control" id="telefono1" placeholder="Ej: (0351) 157-832514" value="<?= $_SESSION["telefono"]?>">
+                      <label for="inputAddress">Teléfono</label>
+                      <input type="text" class="form-control" id="telefono1" placeholder="EJ: (0351) 157-832514">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputEmail4">E-mail</label>
-                      <input type="email" class="form-control" id="email" placeholder="Ej: juancito@gmail.com" value="<?= $_SESSION["email"]?>">
+                      <input type="email" class="form-control" id="email" placeholder="EJ: usuario@gmail.com">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputCity">ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" placeholder="Ej: Córdoba" value="<?= $_SESSION["ciudad"]?>">
+                      <label for="inputCity">Ciudad</label>
+                      <input type="text" class="form-control" id="ciudad" placeholder="EJ: Córdoba">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">direccion</label>
-                      <input type="text" class="form-control" id="domicilio" placeholder="Ej: La Rioja 532" value="<?= $_SESSION["direccion"]?>">
+                      <label for="inputAddress">Dirección</label>
+                      <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532">
+
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputPassword4">contraseña nueva</label>
+                      <label for="inputPassword4">Nueva contraseña</label>
                       <input type="password" class="form-control" id="password" placeholder="**********">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputPassword4">verificar contraseña nueva</label>
+                      <label for="inputPassword4">Verificar nueva contraseña</label>
                       <input type="password" class="form-control" id="password2" placeholder="**********">
                     </div>
                     <div class="col-xs-12 col-md-6 pb-3">
