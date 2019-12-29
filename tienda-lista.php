@@ -37,7 +37,7 @@
   <!--Inicio header-->
   <?php require_once 'header.php' ?>
 
-  <div class="d-lg-none" style="margin-top:118px">
+  <div class="d-lg-none" id="categoriasTienda">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
       <a class="navbar-brand bg-white rounded" href="index.php">Lupulus</a>
       <button class="navbar-toggler bg-white text-dark" type="button" data-toggle="collapse" data-target="#nav-prod" aria-controls="nav-prod" aria-expanded="false" aria-label="Toggle navigation">

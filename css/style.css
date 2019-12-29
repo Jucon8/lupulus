@@ -2,15 +2,20 @@
 
 /* header */
 #logoHeader{
-  max-width: 85%;
+  max-width: 100%;
     margin-top: -20px;
     margin-left: -15px;
     margin-bottom: -15px;
+    padding: 1px;
+}
+#menuHeader{
+  padding: 10;
 }
 #avatarHeader{
   padding: 0;
   width: 50px;
 }
+/*MI CUENTA HEADER*/
 #navbarDropdown{
 text-transform: capitalize;
 padding-top: 20px;
@@ -143,7 +148,9 @@ section #transparente {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+#categoriasTienda{
+  padding-top: 0px;
+}
 .fm-nav a{
   color: #fff;
   padding: 10px;
