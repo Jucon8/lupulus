@@ -98,7 +98,7 @@ $titulo = "Lupulus";
                             </h2>
                         </div>
 
-                        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
                             <div class="card-body-faq">
                                 <span class="span" id="sp_resp_1">Para comprar en LÚPULUS, debe crearse una cuenta en <a href="registrarse.php">Registrarse</a> o si ya tiene cuenta <a href="iniciarsesion.php">Iniciar sesion</a>. <br> para finalizar la compra debe ir hacia <a href="carrito.php">Finalizar compra</a>.
                                 </span>
