@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<html>
 <head>
   <?php
   session_start();
@@ -200,3 +198,4 @@ session_start();
   <?php require_once 'scripts.php' ?>
 
 </body>
+</html>
