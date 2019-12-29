@@ -5,14 +5,6 @@ require_once 'controladores/validaciones.php';
 
 $titulo = "Mi Cuenta";
 
-$nombre = isset($_SESSION["username"])? $_SESSION["username"] : "";
-$apellido = isset($_SESSION["apellido"])? $_SESSION["apellido"] : "";
-$direccion = isset($_SESSION["direccion"])? $_SESSION["direccion"] : "";
-$email = isset($_SESSION["email"])? $_SESSION["email"] : "";
-$telefono = isset($_SESSION["telefono"])? $_SESSION["telefono"] : "";
-$ciudad = isset($_SESSION["ciudad"])? $_SESSION["ciudad"] : "";
-$avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
-
 /* FUNCION GUARDAR AVATAR */
 
 //Declaro la funcion guardar avatar
@@ -62,7 +54,7 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
           <!-- columna izquierda -->
           <div class="col-md-3 pb-3">
             <div class="col-md-12 text-center">
-              <h3><?=$nombre?></h3>
+              <h3><?=$_SESSION["username"]?></h3>
             </div>
             <div class="text-center">
             <?php   //MOSTRAR AVATAR
@@ -113,27 +105,27 @@ $avatar = isset($_SESSION["avatar"])? $_SESSION["avatar"] : "";
                     <div class="form-group col-lg-6">
 
                       <label for="inputAddress">Nombre</label>
-                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan">
+                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan" value="<?=$_SESSION["username"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Apellido</label>
-                      <input type="text" class="form-control" id="apellido" placeholder="EJ: Pérez">
+                      <input type="text" class="form-control" id="apellido" placeholder="EJ: Pérez" value="<?=$_SESSION["apellido"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Teléfono</label>
-                      <input type="text" class="form-control" id="telefono1" placeholder="EJ: (0351) 157-832514">
+                      <input type="text" class="form-control" id="telefono1" placeholder="EJ: (0351) 157-832514" value="<?=$_SESSION["telefono"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputEmail4">E-mail</label>
-                      <input type="email" class="form-control" id="email" placeholder="EJ: usuario@gmail.com">
+                      <input type="email" class="form-control" id="email" placeholder="EJ: usuario@gmail.com" value="<?=$_SESSION["email"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputCity">Ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" placeholder="EJ: Córdoba">
+                      <input type="text" class="form-control" id="ciudad" placeholder="EJ: Córdoba" value="<?=$_SESSION["ciudad"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
-                      <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532">
+                      <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
 
                     </div>
                     <div class="form-group col-lg-6">
