@@ -28,7 +28,7 @@
       <li class="nav-item dropdown">
         <?php if(isset($_SESSION["email"])):?>
        <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?=$_SESSION["username"]?>  <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail" width="30px" height="30px" alt="avatar">
+        <?=$_SESSION["username"]?>  <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail" id="avatarHeader" alt="avatar">
        </a>
        <div class="dropdown-menu dropdown-open" aria-labelledby="navbarDropdown">
          <a class="dropdown-item" style="text-transform: capitalize" href="micuenta.php">mi cuenta</a>
@@ -45,7 +45,7 @@
        </div>
        <?php endif;?>
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="carrito.php">
+                <a class="nav-link text-white" style="text-transform: capitalize" href="carrito.php" id="carritoHeader">
                     <i class="icon ion-md-cart"></i> carrito</a>
             </li>
 

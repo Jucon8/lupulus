@@ -7,6 +7,13 @@
     margin-left: -15px;
     margin-bottom: -15px;
 }
+#avatarHeader{
+  padding: 0;
+  width: 50px;
+}
+#carritoHeader{
+  padding: 20px;
+}
 /* .nav-item (header, detalle producto, tienda-lista, y todos los lugares donde esta .nav-item */
 .nav-item {
   padding-left: 15px;
