@@ -1,6 +1,31 @@
 <head>
   <?php
+  session_start();
   require_once 'head.php';
+
+  $productos = [
+      0 => [
+      "Nombre" => "Barril Fortificado",
+      "Precio" => "US $1000",
+      "Imágen" => "img/barriles1.jpg"
+    ],
+      1 => [
+      "Nombre" => "Barril de Acero",
+      "Precio" => "US $999",
+      "Imágen" => "img/barriles2.jpg"
+    ],
+      2 => [
+      "Nombre" => "Barril de Plata",
+      "Precio" => "US $850",
+      "Imágen" => "img/barriles3.jpg"
+    ],
+      3 => [
+      "Nombre" => "Barril de Titanio",
+      "Precio" => "US $1500",
+      "Imágen" => "img/barriles4.jpg"
+    ],
+  ];
+
   ?>
   <title>Shop</title>
 </head>
@@ -115,36 +140,20 @@
         </div>
         <div class="col">
           <div class="row">
-            <div class="col-12">
+
+              <?php foreach ($productos as $producto) : ?>
+              <div class="col-12">
               <br>
               <div class="card mb-3 bg-warning">
+
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img src="img/barriles1.jpg" class="img-fluid" alt="...">
+                    <img src="<?=$producto["Imágen"]?>" class="card-img" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">Barril Fortificado</h5>
-                      <p class="card-text">US $1000</p>
-                      <a href="detalleProducto.php" class="btn btn-success">Detalle del producto</a>
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="col-12">
-              <div class="card mb-3 bg-warning">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                    <img src="img/barriles2.jpg" class="card-img" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Barril de Acero</h5>
-                      <p class="card-text">US $999</p>
+                      <h5 class="card-title"><?=$producto["Nombre"]?></h5>
+                      <p class="card-text"><?=$producto["Precio"]?></p>
                       <div class="float-left pb-3">
                         <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
                       </div>
@@ -154,45 +163,8 @@
                 </div>
               </div>
             </div>
+            <?php endforeach; ?>
 
-            <div class="col-12">
-              <div class="card mb-3 bg-warning">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                    <img src="img/barriles3.jpg" class="card-img" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Barril de Plata</h5>
-                      <p class="card-text">US $850</p>
-                      <div class="float-left pb-3">
-                        <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="card mb-3 bg-warning">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                    <img src="img/barriles4.jpg" class="card-img" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">Barril de Titanio</h5>
-                      <p class="card-text">US $1500</p>
-                      <div class="float-left pb-3">
-                        <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
