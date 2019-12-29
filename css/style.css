@@ -8,20 +8,21 @@
     margin-bottom: -15px;
     padding: 1px;
 }
+
 #menuHeader{
   padding: 10;
+  float: right;
 }
 #avatarHeader{
   padding: 0;
   width: 50px;
 }
 /*MI CUENTA HEADER*/
-#navbarDropdown{
-text-transform: capitalize;
-padding-top: 10px;
+#miCuentaHeader{
+  padding-top: 10%;
 }
 #carritoHeader{
-  padding-top: 10px;
+  padding-top: 10%;
 }
 /* .nav-item (header, detalle producto, tienda-lista, y todos los lugares donde esta .nav-item */
 .nav-item {
@@ -186,4 +187,13 @@ section #transparente {
   background: #fcc169;
   color: #ff7315;
   margin-left: 5px;
+}
+
+/*Carrito*/
+.input-res
+{
+     width: 100%;
+     min-width: 10px;
+     max-width: 50px;
+     box-sizing: border-box;
 }
