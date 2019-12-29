@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
   <?php
   require_once 'head.php';

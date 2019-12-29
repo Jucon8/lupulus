@@ -1,6 +1,7 @@
 <?php
+
 function ValidarTodo(){
-  $errores=[];
+
   // Validacion de Nombre //
   if (isset($_POST["username"])) {
     if (empty($_POST["username"])) {
@@ -80,13 +81,31 @@ function ValidarTodo(){
 			$errores["confirm-password"][] = "* Las contraseñas no coinciden";
 		}
   }
+
+  if (isset($_FILES["avatar"])) {
+    $estosBytes = 1000000;
+    if ($tamano = $_FILES["avatar"]["size"] > $estosBytes) {
+      $errores["avatar"][]= "* Se permiten archivos de 1 MB máximo.";
+  }
+  $nombreAvatar = $_FILES["avatar"]["name"];
+  $extension = pathinfo($nombreAvatar, PATHINFO_EXTENSION);
+  $extension = strtolower($extension);
+  //compruebo si las características del archivo son las que deseo
+    if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
+      //si no se cumplen que imprima el siguiente mensaje:
+      $errores["avatar"][]= "* Se permiten archivos .png, .jpeg o .jpg <br>";
+    }
+  } 
+
   return $errores;
 }
+
+
 
 // Persistencia de Datos //
 function persistirDatos($dato, $arrayDeErrores){
   if (isset($arrayDeErrores[$dato])) {
-    echo "";
+    return "";
   } else {
     if (isset($_POST[$dato])) {
       return $_POST[$dato];
