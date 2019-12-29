@@ -6,8 +6,7 @@ $titulo="Detalle del Producto";
 
 <!DOCTYPE html>
 <head>
-  <?php include("head.php") ?>
-  <title>Detalle del Producto</title>
+  <?php include("head.php") ?>  
   </head>
   <body id="detalleProducto">
     <!--Inicio header-->
