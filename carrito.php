@@ -1,6 +1,6 @@
 <?php
-//session_start() COMENTADO PARA QUE NO APAREZCA EN MI CUENTA EL WARNING
-//session_start();
+
+session_start();
 $titulo="Carrito";
 ?>
 <!DOCTYPE html>
