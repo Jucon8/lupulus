@@ -30,7 +30,7 @@ if ($_POST) {
 						setcookie("usuarioEmail", $usuarioDecode["email"], time() +60+60+24+7);
 						setcookie("usuarioPassword", $usuarioDecode["password"], time() +60+60+24+7);
 					}
-					header("Location: tienda-lista.php");
+					header("Location: shop.php");
 				}
 			}
 		}

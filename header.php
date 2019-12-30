@@ -18,7 +18,7 @@
                 <a class="nav-link text-white" style="text-transform: capitalize" href="index.php#preguntas">FAQs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="tienda-lista.php">Shop</a>
+                <a class="nav-link text-white" style="text-transform: capitalize" href="shop.php">Shop</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" style="text-transform: capitalize" href="index.php#contacto">Contacto</a>

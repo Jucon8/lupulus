@@ -29,7 +29,7 @@ if ($_POST) {
             setcookie("usuarioEmail", $usuarioDecode["email"], time() + 60 + 60 + 24 + 7);
             setcookie("usuarioPassword", $usuarioDecode["password"], time() + 60 + 60 + 24 + 7);
           }
-          header("Location: tienda-lista.php");
+          header("Location: shop.php");
         }
       }
     }
@@ -53,7 +53,7 @@ if ($_POST) {
 
   <!--Inicio de LOGIN -->
   <div class="container-fluid loginimg" id="formularioGeneral">
-    <div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
+    <div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3" id="formulario">
       <div class="text-center">
         <h2 class="p-3">Conectarse</h2>
       </div>
@@ -87,17 +87,16 @@ if ($_POST) {
           <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="col-lg-6 form-control btn btn-login btn-warning" value="Login">
         </div>
         <div class="text-center">
-        <a href="recuperarcontraseña.php" class="btn btn-warning" > Olvide mi contraseña </a>
+        <a href="recuperar.php" class="btn btn-warning" > Olvide mi contraseña </a>
         </div>
+        <br>
       </form>
     </div>
   </div>
 
 
   <footer>
-    <?php require_once 'footer.php';
-
-    ?>
+    <?php require_once 'footer.php';?>
   </footer>
 
   <!-- Optional JavaScript -->

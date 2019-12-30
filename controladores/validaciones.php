@@ -82,7 +82,11 @@ function ValidarTodo(){
 		}
   }
 
-  if (isset($_FILES["avatar"])) {
+  return $errores;
+}
+
+function validarAvatar(){  
+if (isset($_FILES["avatar"])) {
     $estosBytes = 1000000;
     if ($tamano = $_FILES["avatar"]["size"] > $estosBytes) {
       $errores["avatar"][]= "* Se permiten archivos de 1 MB máximo.";
@@ -96,10 +100,8 @@ function ValidarTodo(){
       $errores["avatar"][]= "* Se permiten archivos .png, .jpeg o .jpg <br>";
     }
   } 
-
   return $errores;
 }
-
 
 
 // Persistencia de Datos //

@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 $usuariosRegistrados = file_get_contents("usuarios.json");
 $usuariosRegistrados = explode(PHP_EOL, $usuariosRegistrados);
 array_pop($usuariosRegistrados);
@@ -44,12 +40,4 @@ var_dump($usuariosDecode);
         }
 
     }*/
-
-
-    
-
-
-
-
-
 ?>

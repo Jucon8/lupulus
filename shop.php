@@ -195,7 +195,7 @@
   </section>
   <!-- Desarrolado por -->
   <footer>
-    <?php require_once 'desarrolladoPor.php' ?>
+    <?php require_once 'footer.php' ?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->

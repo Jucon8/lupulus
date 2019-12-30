@@ -12,7 +12,10 @@ if ($_POST) {
 	if (count($erroresEnRegistro) == 0) {
 
 		// obtengo extension del archivo //
-
+		if (isset($_FILES["avatar"]["name"]))
+		{
+			$erroresEnAvatar=validarAvatar();
+			if(count($erroresEnAvatar== 0)){
 		$extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
 		$extension = strtolower($extension);
 		//obtengo ruta de archivo //
@@ -20,7 +23,11 @@ if ($_POST) {
 		//direccion de guardado de avatar //
 		$nombreAvatar2 = $_POST["username"] . "_" . uniqid() . "." . $extension;
 		move_uploaded_file($archivoTemporal, "img/avatars/" . $nombreAvatar2);
-
+			}
+		}
+		else{
+			$nombreAvatar2="avatar_2x.png";
+		}
 
 		$usuarioNuevo = [
 			"username" => trim($_POST["username"]),
@@ -38,7 +45,6 @@ if ($_POST) {
 		header("Location: iniciarsesion.php");
 	}
 }
-/*}*/
 
 
 
@@ -63,13 +69,13 @@ $titulo = "Registrarse";
 	<main>
 		<div class="container-fluid loginimg pt-5" id="formularioGeneral">
 
-			<div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
+			<div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3" id="formulario">
 				<div class="text-center">
 					<h2 class="p-3">Registrarse</h2>
 				</div>
 				<form class="container col-md-9 col-lg-12" id="register-form" action="" method="POST" role="form" enctype="multipart/form-data">
 					<div class="form-group">
-						<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="nombre" value="<?= persistirDatos("username", $erroresEnRegistro); ?>">
+						<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nombre" value="<?= persistirDatos("username", $erroresEnRegistro); ?>">
 						<!--Validamos el input username  -->
 						<?php
 						if (isset($erroresEnRegistro["username"])) {
@@ -95,7 +101,7 @@ $titulo = "Registrarse";
 						?>
 					</div>
 					<div class="form-group">
-						<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electronico" value="<?= persistirDatos("email", $erroresEnRegistro); ?>">
+						<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electrónico" value="<?= persistirDatos("email", $erroresEnRegistro); ?>">
 						<!--Validamos el input email  -->
 						<?php
 						if (isset($erroresEnRegistro["email"])) {
@@ -110,7 +116,7 @@ $titulo = "Registrarse";
 
 					<div class="form-group">
 						<label for="avatar">Subí tu avatar</label>
-						<input type="file" class="form-control-file" name="avatar" id="avatar">
+						<input type="file" class="form-control-file" name="avatar" id="avatar" enctype="multipart/form-data" accept= "image/*">
 						<?php
 						if (isset($erroresEnRegistro["avatar"])) {
 							foreach ($erroresEnRegistro["avatar"] as $error) {
@@ -123,7 +129,7 @@ $titulo = "Registrarse";
 					</div>
 
 					<div class="form-group">
-						<input type="text" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Telefono" value="<?= persistirDatos("telefono", $erroresEnRegistro); ?>">
+						<input type="text" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Teléfono" value="<?= persistirDatos("telefono", $erroresEnRegistro); ?>">
 						<!--Validamos el input Telefono  -->
 						<?php
 						if (isset($erroresEnRegistro["telefono"])) {
@@ -149,7 +155,7 @@ $titulo = "Registrarse";
 						?>
 					</div>
 					<div class="form-group">
-						<input type="text" name="direccion" id="direccion" tabindex="1" class="form-control" placeholder="Domicilio" value="<?= persistirDatos("direccion", $erroresEnRegistro); ?>">
+						<input type="text" name="direccion" id="direccion" tabindex="1" class="form-control" placeholder="Dirección" value="<?= persistirDatos("direccion", $erroresEnRegistro); ?>">
 						<!--Validamos el input Direccion  -->
 						<?php
 						if (isset($erroresEnRegistro["direccion"])) {
@@ -197,10 +203,7 @@ $titulo = "Registrarse";
 		</div>
 	</main>
 
-	<footer>
-		<?php require_once 'footer.php';
-
-		?> </footer>
+	<?php require_once 'footer.php';?>
 
 	<!-- Optional JavaScript -->
 	<?php require_once 'scripts.php' ?>

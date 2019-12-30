@@ -275,7 +275,6 @@ $titulo = "LUPULUS - Insumos Cerveceros";
     <!-- FOOTER -->
     <footer>
         <?php require_once 'footer.php' ?>
-
     </footer>
     <!-- Fin del Footer -->
     <!-- Optional JavaScript -->
