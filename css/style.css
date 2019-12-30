@@ -78,7 +78,9 @@ padding: 0%;
   background-color: #ffc107;
 }
 section #transparente {
-  background-color: #ffe38f;
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
 }
 .map-container-6 {
   overflow: hidden;
@@ -182,4 +184,17 @@ section #transparente {
   background: #fcc169;
   color: #ff7315;
   margin-left: 5px;
+}
+/* MI CUENTA */
+
+#fondo {
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
+}
+#contenido1 {
+  margin-bottom: 40px;
+}
+#avatar {
+  border-radius: 4px;
+  font-size: 12px;
 }

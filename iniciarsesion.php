@@ -95,9 +95,7 @@ if ($_POST) {
 
 
   <footer>
-    <?php require_once 'footer.php';
-    require_once 'desarrolladoPor.php'
-    ?>
+    <?php require_once 'footer.php' ?>
   </footer>
 
   <!-- Optional JavaScript -->
