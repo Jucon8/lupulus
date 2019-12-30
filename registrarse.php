@@ -4,7 +4,7 @@ session_start();
 require_once("./controladores/validaciones.php");
 
 $erroresEnRegistro = [];
-
+//MODIFICACIÓN
 if ($_POST) {
 	$erroresEnRegistro = ValidarTodo();
 
