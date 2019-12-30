@@ -100,7 +100,48 @@ $titulo = "Mi Cuenta";
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <form>
+              <form>
+                  <div class="form-row">
+                    <div class="form-group col-lg-6">
+
+                      <label for="inputAddress">Nombre</label>
+
+                      <h5  id="username"> <?=$_SESSION["username"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="inputAddress">Apellido</label>                      
+                      <h5  id="apellido"> <?=$_SESSION["apellido"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="inputAddress">Teléfono</label>
+                      <h5  id="telefono"> <?=$_SESSION["telefono"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="inputEmail4">E-mail</label>
+                      <h5  id="username"> <?=$_SESSION["email"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="inputCity">Ciudad</label>
+                      <h5  id="ciudad"> <?=$_SESSION["ciudad"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="inputAddress">Dirección</label>
+                      <h5  id="direccion"> <?=$_SESSION["direccion"]?></h5>
+                      <br>
+                      <br>
+                    </div>
+                    <div class="col-lg-6"></div>
+                    <div class="form-group col-lg-6">                    
+                    <a href="recuperarcontraseña.php" class="btn btn-danger" > Modificar contraseña </a>
+                    
+                    </div>
+                    
+                    
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="profile-tab">
+              <form>
                   <div class="form-row">
                     <div class="form-group col-lg-6">
 
@@ -127,26 +168,19 @@ $titulo = "Mi Cuenta";
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
                       <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
-
-
                     </div>
-                    <div class="form-group col-lg-6">
-                      <label for="inputPassword4">Nueva contraseña</label>
-                      <input type="password" class="form-control" id="password" placeholder="**********">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <label for="inputPassword4">Verificar nueva contraseña</label>
-                      <input type="password" class="form-control" id="password2" placeholder="**********">
-                    </div>
+                    
                     <div class="col-xs-12 col-md-6 pb-3">
                       <button class="btn btn-md btn-success" type="submit"><i class="icon ion-md-checkbox"></i> Guardar </button>
                       <button class="btn btn-md" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
                     </div>
+                    
                   </div>
                 </form>
-              </div>
-              <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="profile-tab">
-                <?php include("carrito.php") ?>
+              </div>            
+                    
+                  </div>
+                </form>
               </div>
             </div>
           </div><!-- fin columna derecha -->
