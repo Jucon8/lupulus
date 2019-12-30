@@ -8,32 +8,32 @@ require_once 'controladores/validaciones.php';
 $erroresLogin = [];
 
 if ($_POST) {
-	$erroresLogin = ValidarTodo();
-	if (count($erroresLogin) == 0) {
-		// Logue de Usuario //
-		$usuariosRegistrados = file_get_contents("usuarios.json");
-		$usuariosRegistrados = explode(PHP_EOL,$usuariosRegistrados);
-		array_pop($usuariosRegistrados);
-		foreach ($usuariosRegistrados as $usuario) {
-			$usuarioDecode = json_decode($usuario, true);
-			if ($_POST["email"] == $usuarioDecode["email"]) {
-				if (password_verify($_POST["password"], $usuarioDecode["password"])) {
-					$_SESSION["email"] = $usuarioDecode["email"];
-					$_SESSION["username"] = $usuarioDecode["username"];
-					$_SESSION["apellido"] = $usuarioDecode["apellido"];
-					$_SESSION["direccion"] = $usuarioDecode["direccion"];
-					$_SESSION["telefono"] = $usuarioDecode["telefono"];
-					$_SESSION["ciudad"] = $usuarioDecode["ciudad"];
-					$_SESSION["avatar"] = $usuarioDecode["avatar"];
-					if (isset($_POST["recordarme"]) && $_POST["recordarme"] == "on") {
-						setcookie("usuarioEmail", $usuarioDecode["email"], time() +60+60+24+7);
-						setcookie("usuarioPassword", $usuarioDecode["password"], time() +60+60+24+7);
-					}
-					header("Location: tienda-lista.php");
-				}
-			}
-		}
-	}
+  $erroresLogin = ValidarTodo();
+  if (count($erroresLogin) == 0) {
+    // Logue de Usuario //
+    $usuariosRegistrados = file_get_contents("usuarios.json");
+    $usuariosRegistrados = explode(PHP_EOL, $usuariosRegistrados);
+    array_pop($usuariosRegistrados);
+    foreach ($usuariosRegistrados as $usuario) {
+      $usuarioDecode = json_decode($usuario, true);
+      if ($_POST["email"] == $usuarioDecode["email"]) {
+        if (password_verify($_POST["password"], $usuarioDecode["password"])) {
+          $_SESSION["email"] = $usuarioDecode["email"];
+          $_SESSION["username"] = $usuarioDecode["username"];
+          $_SESSION["apellido"] = $usuarioDecode["apellido"];
+          $_SESSION["direccion"] = $usuarioDecode["direccion"];
+          $_SESSION["telefono"] = $usuarioDecode["telefono"];
+          $_SESSION["ciudad"] = $usuarioDecode["ciudad"];
+          $_SESSION["avatar"] = $usuarioDecode["avatar"];
+          if (isset($_POST["recordarme"]) && $_POST["recordarme"] == "on") {
+            setcookie("usuarioEmail", $usuarioDecode["email"], time() + 60 + 60 + 24 + 7);
+            setcookie("usuarioPassword", $usuarioDecode["password"], time() + 60 + 60 + 24 + 7);
+          }
+          header("Location: tienda-lista.php");
+        }
+      }
+    }
+  }
 }
 
 ?>
@@ -95,12 +95,10 @@ if ($_POST) {
 
 
   <footer>
-    <?php require_once 'footer.php';
-    require_once 'desarrolladoPor.php'
-    ?>
+    <?php require_once 'footer.php' ?>
   </footer>
 
   <!-- Optional JavaScript -->
-  <?php require_once 'scripts.php'?>
+  <?php require_once 'scripts.php' ?>
 
 </body>

@@ -1,26 +1,24 @@
-
-
 /* header */
-#logoHeader{
+#logoHeader {
   max-width: 100%;
-    margin-top: -20px;
-    margin-left: -15px;
-    margin-bottom: -15px;
-    padding: 1px;
+  margin-top: -20px;
+  margin-left: -15px;
+  margin-bottom: -15px;
+  padding: 1px;
 }
-#menuHeader{
+#menuHeader {
   padding: 10;
 }
-#avatarHeader{
+#avatarHeader {
   padding: 0;
   width: 50px;
 }
 /*MI CUENTA HEADER*/
-#navbarDropdown{
-text-transform: capitalize;
-padding-top: 10px;
+#navbarDropdown {
+  text-transform: capitalize;
+  padding-top: 10px;
 }
-#carritoHeader{
+#carritoHeader {
   padding-top: 10px;
 }
 /* .nav-item (header, detalle producto, tienda-lista, y todos los lugares donde esta .nav-item */
@@ -45,11 +43,11 @@ padding-top: 10px;
 #texto_medio {
   margin: auto;
 }
-.img-fluid{
-padding: 0%;
+.img-fluid {
+  padding: 0%;
 }
 /*PREGUNTAS*/
-.preguntas{
+.preguntas {
   background-color: black;
 }
 #preguntasTexto {
@@ -61,7 +59,7 @@ padding: 0%;
 #card {
   background-color: #343a40;
 }
-.card-header{
+.card-header {
   background-color: #343a40;
 }
 
@@ -78,7 +76,9 @@ padding: 0%;
   background-color: #ffc107;
 }
 section #transparente {
-  background-color: #ffe38f;
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
 }
 .map-container-6 {
   overflow: hidden;
@@ -94,9 +94,9 @@ section #transparente {
   position: absolute;
 }
 .accent-1 {
-  background-color: #82b1ff;
+  background-color: black;
   border-radius: 50%;
-  padding: 5px;
+  padding: 3px;
   margin: 15px;
 }
 /* FOOTER */
@@ -128,9 +128,12 @@ section #transparente {
 
 .accent2 {
   color: #000;
+}
+i.icono {
   background-color: #f0b500;
-  border-radius: 50%;
-  padding: 5px;
+  border-radius: 100%;
+
+  padding: 4px 10px;
 }
 /* REGISTRARSE y  INICIAR SESION */
 #formularioGeneral {
@@ -149,22 +152,21 @@ section #transparente {
   background-size: cover;
   background-repeat: no-repeat;
 }
-#categoriasTienda{
+#categoriasTienda {
   padding-top: 0px;
 }
-.fm-nav a{
+.fm-nav a {
   color: #fff;
   padding: 10px;
 }
 
-.fm-nav a:hover{
-  background: rgba(255, 255, 255, .1);
+.fm-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .gradiente {
- background-color: #000!important;
+  background-color: #000 !important;
 }
-
 
 /* DETALLE PRODUCTO */
 .body {
@@ -175,11 +177,23 @@ section #transparente {
 
 #lista {
   background-color: #f0b4007e;
-
 }
 
 .botondecompras {
   background: #fcc169;
   color: #ff7315;
   margin-left: 5px;
+}
+/* MI CUENTA */
+
+#fondo {
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
+}
+#contenido1 {
+  margin-bottom: 40px;
+}
+#avatar {
+  border-radius: 4px;
+  font-size: 12px;
 }
