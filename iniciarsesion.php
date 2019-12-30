@@ -87,7 +87,7 @@ if ($_POST) {
           <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="col-lg-6 form-control btn btn-login btn-warning" value="Login">
         </div>
         <div class="text-center">
-          <a href="#RECUPERARCONTRASEÑA" tabindex="5" class="forgot-password">¿Has olvidado tu contraseña?</a>
+        <a href="recuperarcontraseña.php" class="btn btn-warning" > Olvide mi contraseña </a>
         </div>
       </form>
     </div>
