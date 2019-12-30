@@ -181,53 +181,19 @@ $titulo = "LUPULUS - Insumos Cerveceros";
     <section id="contacto">
         <br>
         <section class="container-fluid pb-10 pt-5">
-            <h2 class="text-center  pt-4 pb-3">Contacto</h2>
+    <h2 class="text-center  pt-4 pb-3">Contacto</h2>
 
-            <div class="row">
+    <div class="row">
 
-                <div class="col-lg-5 mb-4">
+        <div class="col-lg-5 mb-4">
 
-                    <div class="card">
-                        <div class="card-body-faq" id="transparente">
-                            <form method="" action="">
-                                <div class="md-form-group">
-                                    <label for="form-name">Nombre</label>
-                                    <input type="text" id="form-name" class="form-control">
-
-                                </div>
-
-                                <div class="md-form-group">
-                                    <label for="form-motivo">Motivo</label>
-                                    <select class="form-control" name="motivo" id="form-motivo">
-                                        <option>consulta general</option>
-                                        <option>realizar pedido</option>
-                                        <option>informar un problema</option>
-                                    </select>
-
-                                </div>
-
-                                <div class="md-form-group">
-                                    <label for="form-Empresa">Empresa</label>
-                                    <input type="text" id="form-Empresa" class="form-control">
-
-                                </div>
-                                <div class="md-form-group">
-                                    <label for="form-email">Email</label>
-                                    <input type="text" id="form-email" class="form-control">
-
-                                </div>
-
-                                <div class="md-form-group">
-                                    <label for="form-text">Mensaje</label>
-                                    <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
-
-                                </div>
-
-                                <div class="text-center mt-4">
-                                    <button class="btn btn-primary" type="submit"><i class="icon ion-md-checkbox"></i> Enviar </button>
-                                    <button class="btn btn-danger" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
-                                </div>
-                            </form>
+            <div class="card">
+                <div class="card-body-faq" id="transparente">
+                    <form method="" action="">
+                        <div class="md-form-group">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="form-name" class="form-control">
+                            <label for="form-name">Nombre</label>
                         </div>
 
                         <div class="md-form-group">
@@ -288,8 +254,6 @@ $titulo = "LUPULUS - Insumos Cerveceros";
                 <div class="col-md-4 pt-2">
                     <a class="btn-floating  accent-1"><i class="fas fa-phone"></i></a>
                     <p>3517832514</p>
-
-                    </div>
 
                 </div>
 

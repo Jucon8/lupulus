@@ -1,36 +1,36 @@
-<?php
-session_start();
-$titulo = "Shop";
+
+  <?php
+  session_start();
+  $titulo = "Shop";  
 
 
-$productos = [
-  0 => [
-    "Nombre" => "Barril Fortificado",
-    "Precio" => "US $1000",
-    "Imágen" => "img/barriles1.jpg"
-  ],
-  1 => [
-    "Nombre" => "Barril de Acero",
-    "Precio" => "US $999",
-    "Imágen" => "img/barriles2.jpg"
-  ],
-  2 => [
-    "Nombre" => "Barril de Plata",
-    "Precio" => "US $850",
-    "Imágen" => "img/barriles3.jpg"
-  ],
-  3 => [
-    "Nombre" => "Barril de Titanio",
-    "Precio" => "US $1500",
-    "Imágen" => "img/barriles4.jpg"
-  ],
-];
+  $productos = [
+      0 => [
+      "Nombre" => "Barril Fortificado",
+      "Precio" => "US $1000",
+      "Imágen" => "img/barriles1.jpg"
+    ],
+      1 => [
+      "Nombre" => "Barril de Acero",
+      "Precio" => "US $999",
+      "Imágen" => "img/barriles2.jpg"
+    ],
+      2 => [
+      "Nombre" => "Barril de Plata",
+      "Precio" => "US $850",
+      "Imágen" => "img/barriles3.jpg"
+    ],
+      3 => [
+      "Nombre" => "Barril de Titanio",
+      "Precio" => "US $1500",
+      "Imágen" => "img/barriles4.jpg"
+    ],
+  ];
 
-?>
+  ?>
 
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-
 <head>
   <?php require_once 'head.php' ?>
 </head>
@@ -146,28 +146,28 @@ $productos = [
         <div class="col">
           <div class="row">
 
-            <?php foreach ($productos as $producto) : ?>
+              <?php foreach ($productos as $producto) : ?>
               <div class="col-12">
-                <br>
-                <div class="card mb-3 bg-warning">
+              <br>
+              <div class="card mb-3 bg-warning">
 
-                  <div class="row no-gutters">
-                    <div class="col-md-4">
-                      <img src="<?= $producto["Imágen"] ?>" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title"><?= $producto["Nombre"] ?></h5>
-                        <p class="card-text"><?= $producto["Precio"] ?></p>
-                        <div class="float-left pb-3">
-                          <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
-                        </div>
-
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="<?=$producto["Imágen"]?>" class="card-img" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><?=$producto["Nombre"]?></h5>
+                      <p class="card-text"><?=$producto["Precio"]?></p>
+                      <div class="float-left pb-3">
+                        <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
             <?php endforeach; ?>
 
           </div>
@@ -191,17 +191,15 @@ $productos = [
         </div>
       </div>
     </div>
-
+    </div>
   </section>
   <!-- Desarrolado por -->
   <footer>
-
-    <?php require_once 'footer.php' ?>
+    <?php require_once 'desarrolladoPor.php' ?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->
   <?php require_once 'scripts.php' ?>
 
 </body>
-
 </html>

@@ -1,10 +1,1 @@
-{
-  "username": "Santiago",
-  "email": "santi@santi.com",
-  "password": "$2y$10$qS22WAKg9Ffcr/ymiZUiT.FIoHApk1hBzn0jaaPD2MyV0f5lbZdU.",
-  "apellido": "Bobadilla",
-  "direccion": "mi casa 123",
-  "ciudad": "cordoba",
-  "telefono": "03515213640",
-  "avatar": "Santiago_5e0816a3ccb05.jpg"
-}
+{"username":"Santiago","email":"santi@santi.com","password":"$2y$10$qS22WAKg9Ffcr\/ymiZUiT.FIoHApk1hBzn0jaaPD2MyV0f5lbZdU.","apellido":"Bobadilla","direccion":"mi casa 123","ciudad":"cordoba","telefono":"03515213640","avatar":"Santiago_5e0816a3ccb05.jpg"}

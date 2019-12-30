@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$titulo = "Carrito";
+$titulo="Carrito";
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -115,10 +115,6 @@ $titulo = "Carrito";
   <!--div carrito-->
   <!-- Desarrolado por -->
   <footer>
-    <div class="card-footer text-center bg-warning">
-      <h6> <strong> Desarrollado por 5Bits </strong> </h6>
-    </div>
-  </footer>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->
