@@ -22,7 +22,7 @@ $titulo="Carrito";
       <div class="pb-5">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+            <div class="col-lg-12 bg-white rounded shadow-sm mb-5">
 
               <!-- Inicio tabla carrito -->
 
@@ -103,7 +103,7 @@ $titulo="Carrito";
                   <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                     <h5 class="font-weight-bold">$12160</h5>
                   </li>
-                </ul><a href="#FINALIZAR-COMPRA" class="btn btn-dark rounded-pill py-2 btn-block">Finalizar Compra</a>
+                </ul><a href="#FINALIZAR-COMPRA" class="btn btn-warning rounded-pill py-2 btn-block">Finalizar Compra</a>
               </div>
             </div>
           </div>
