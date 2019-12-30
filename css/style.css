@@ -6,7 +6,10 @@
   margin-bottom: -15px;
   padding: 1px;
 }
+#textoHeader{
+  margin: 0 auto;
 
+}
 #menuHeader {
   padding: 10;
   float: right;
@@ -15,12 +18,15 @@
   padding: 0;
   width: 50px;
 }
+#flex{
+  flex-direction: row;
+  align-items: center;
+
+}
 /*MI CUENTA HEADER*/
 /* #miCuentaHeader {
   padding-top: 10%;
 }
-
-
 #carritoHeader{
   padding-top: 10%; 
 
@@ -216,7 +222,7 @@ i.icono {
   background-image: url(../img/canillabirra.jpg);
 }
 #micuenta{
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 #contenido1 {
   margin-bottom: 40px;

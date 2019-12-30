@@ -91,7 +91,7 @@ $titulo = "Mi Cuenta";
 
           <div class="col-md-9">
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs justify-content-center " id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tus datos</a>
               </li>
@@ -103,29 +103,27 @@ $titulo = "Mi Cuenta";
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <form>
                   <div class="form-row">
-                    <div class="form-group col-lg-6">
-
+                    <div class="form-group col-lg-6 p-2 pt-4 ">
                       <label for="inputAddress">Nombre</label>
-
                       <h5  id="username"> <?=$_SESSION["username"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6 p-2 pt-4 ">
                       <label for="inputAddress">Apellido</label>                      
                       <h5  id="apellido"> <?=$_SESSION["apellido"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6 p-2">
                       <label for="inputAddress">Teléfono</label>
                       <h5  id="telefono"> <?=$_SESSION["telefono"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6 p-2">
                       <label for="inputEmail4">E-mail</label>
                       <h5  id="username"> <?=$_SESSION["email"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6 p-2">
                       <label for="inputCity">Ciudad</label>
                       <h5  id="ciudad"> <?=$_SESSION["ciudad"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6 p-2">
                       <label for="inputAddress">Dirección</label>
                       <h5  id="direccion"> <?=$_SESSION["direccion"]?></h5>
                       <br>

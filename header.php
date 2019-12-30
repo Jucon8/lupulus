@@ -6,8 +6,8 @@
         MENU<span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto ">
+    <div class="collapse navbar-collapse mx-auto" id="textoHeader">
+        <ul class="navbar-nav mr-auto mx-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -24,7 +24,7 @@
                 <a class="nav-link text-white" style="text-transform: capitalize" href="index.php#contacto">Contacto</a>
             </li>
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" id="flex">
 
       <li class="nav-item dropdown">
         <?php if(isset($_SESSION["email"])):?>
@@ -38,16 +38,16 @@
        <?php endif;?>
        <?php if(!isset($_SESSION["email"])):?>
        <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         mi cuenta
+         Mi cuenta
        </a>
        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="miCuentaHeader">
          <a class="dropdown-item" style="text-transform: capitalize" href="iniciarsesion.php">Ingresar</a>
          <a class="dropdown-item" style="text-transform: capitalize" href="registrarse.php">Registrarse</a>
        </div>
        <?php endif;?>
-            <li class="nav-item">
+            <li class="nav-item" id="carritoHeader">
                 <a class="nav-link text-white" style="text-transform: capitalize" href="carrito.php" id="carritoHeader">
-                    <i class="icon ion-md-cart"></i> carrito</a>
+                    <i class="icon ion-md-cart"></i> Carrito</a>
             </li>
 
         </ul>
