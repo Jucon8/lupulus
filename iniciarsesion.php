@@ -29,7 +29,7 @@ if ($_POST) {
             setcookie("usuarioEmail", $usuarioDecode["email"], time() + 60 + 60 + 24 + 7);
             setcookie("usuarioPassword", $usuarioDecode["password"], time() + 60 + 60 + 24 + 7);
           }
-          header("Location: tienda-lista.php");
+          header("Location: shop.php");
         }
       }
     }
@@ -87,7 +87,7 @@ if ($_POST) {
           <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="col-lg-6 form-control btn btn-login btn-warning" value="Login">
         </div>
         <div class="text-center">
-        <a href="recuperarcontraseña.php" class="btn btn-warning" > Olvide mi contraseña </a>
+        <a href="recuperar.php" class="btn btn-warning" > Olvide mi contraseña </a>
         </div>
       </form>
     </div>
@@ -95,9 +95,7 @@ if ($_POST) {
 
 
   <footer>
-    <?php require_once 'footer.php';
-
-    ?>
+    <?php require_once 'footer.php';?>
   </footer>
 
   <!-- Optional JavaScript -->

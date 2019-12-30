@@ -115,6 +115,7 @@ $titulo="Carrito";
   <!--div carrito-->
   <!-- Desarrolado por -->
   <footer>
+      <?php require_once 'footer.php' ?>
   </footer>
   <!-- Fin del Footer -->
   <!-- Optional JavaScript -->

@@ -138,7 +138,7 @@ $titulo="Detalle del Producto";
     </div>
 
     <footer>
-      <?php require_once 'desarroladoPor.php' ?>
+        <?php require_once 'footer.php' ?>
     </footer>
     <?php require_once 'scripts.php' ?>
   </body>

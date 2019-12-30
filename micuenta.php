@@ -132,7 +132,7 @@ $titulo = "Mi Cuenta";
                     </div>
                     <div class="col-lg-6"></div>
                     <div class="form-group col-lg-6">                    
-                    <a href="recuperarcontraseña.php" class="btn btn-danger" > Modificar contraseña </a>
+                    <a href="recuperar.php" class="btn btn-danger" > Modificar contraseña </a>
                     
                     </div>
                     
