@@ -53,7 +53,7 @@ if ($_POST) {
 
   <!--Inicio de LOGIN -->
   <div class="container-fluid loginimg" id="formularioGeneral">
-    <div class="col-sm-9 col-md-6 col-lg-5 rounded bg-white pt-1 pb-3" id="formulario">
+    <div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3" id="formulario">
       <div class="text-center">
         <h2 class="p-3">Conectarse</h2>
       </div>
@@ -89,6 +89,7 @@ if ($_POST) {
         <div class="text-center">
         <a href="recuperar.php" class="btn btn-warning" > Olvide mi contraseña </a>
         </div>
+        <br>
       </form>
     </div>
   </div>

@@ -49,7 +49,7 @@ $titulo = "Mi Cuenta";
 
   <div class="container-fluid pb-5" id=fondoMiCuenta>
     <br>
-    <div class="container-fluid pt-5 pb-5" id=micuenta>
+    <div class="container-fluid pt-5 pb-5 rounded" id=micuenta>
       <div class="container-fluid">
         <div class="row">
           <!-- columna izquierda -->
