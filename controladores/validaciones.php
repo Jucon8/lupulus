@@ -1,7 +1,7 @@
 <?php
 
 function ValidarTodo(){
-
+  $errores =[];
   // Validacion de Nombre //
   if (isset($_POST["username"])) {
     if (empty($_POST["username"])) {
@@ -57,7 +57,7 @@ function ValidarTodo(){
     if (empty($_POST["email"])) {
       $errores["email"][] = "* Ingrese su email";
     }
-    if (!filter_var($_POST["email"],  FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
       $errores["email"][] = "* El e-mail ingresado no es valido";
     }
   }
@@ -85,10 +85,10 @@ function ValidarTodo(){
   return $errores;
 }
 
-function validarAvatar(){  
-if (isset($_FILES["avatar"])) {
+function validarAvatar(){
+if (!empty($_FILES["avatar"])) {
     $estosBytes = 1000000;
-    if ($tamano = $_FILES["avatar"]["size"] > $estosBytes) {
+    if (!($_FILES["avatar"]["size"] < $estosBytes)) {
       $errores["avatar"][]= "* Se permiten archivos de 1 MB máximo.";
   }
   $nombreAvatar = $_FILES["avatar"]["name"];
@@ -99,7 +99,7 @@ if (isset($_FILES["avatar"])) {
       //si no se cumplen que imprima el siguiente mensaje:
       $errores["avatar"][]= "* Se permiten archivos .png, .jpeg o .jpg <br>";
     }
-  } 
+  }
   return $errores;
 }
 

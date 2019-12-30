@@ -34,7 +34,7 @@ $titulo = "Mi Cuenta";
         }
       }
     }
-  
+
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -71,7 +71,7 @@ $titulo = "Mi Cuenta";
               <!--mostrarAvatar()-->
               <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail border border-dark" alt="avatar">
               <?php else: ?>
-              <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
+              <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
               <?php endif; ?>
               <p>Selecciona una imagen de perfil</p>
               <div class="container col-12">
@@ -91,7 +91,7 @@ $titulo = "Mi Cuenta";
 
           <div class="col-md-9">
 
-            <ul class="nav nav-tabs justify-content-center " id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tus datos</a>
               </li>
@@ -103,39 +103,41 @@ $titulo = "Mi Cuenta";
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
               <form>
                   <div class="form-row">
-                    <div class="form-group col-lg-6 p-2 pt-4 ">
+                    <div class="form-group col-lg-6">
+
                       <label for="inputAddress">Nombre</label>
+
                       <h5  id="username"> <?=$_SESSION["username"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6 p-2 pt-4 ">
-                      <label for="inputAddress">Apellido</label>                      
+                    <div class="form-group col-lg-6">
+                      <label for="inputAddress">Apellido</label>
                       <h5  id="apellido"> <?=$_SESSION["apellido"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6 p-2">
+                    <div class="form-group col-lg-6">
                       <label for="inputAddress">Teléfono</label>
                       <h5  id="telefono"> <?=$_SESSION["telefono"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6 p-2">
+                    <div class="form-group col-lg-6">
                       <label for="inputEmail4">E-mail</label>
                       <h5  id="username"> <?=$_SESSION["email"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6 p-2">
+                    <div class="form-group col-lg-6">
                       <label for="inputCity">Ciudad</label>
                       <h5  id="ciudad"> <?=$_SESSION["ciudad"]?></h5>
                     </div>
-                    <div class="form-group col-lg-6 p-2">
+                    <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
                       <h5  id="direccion"> <?=$_SESSION["direccion"]?></h5>
                       <br>
                       <br>
                     </div>
                     <div class="col-lg-6"></div>
-                    <div class="form-group col-lg-6">                    
+                    <div class="form-group col-lg-6">
                     <a href="recuperar.php" class="btn btn-danger" > Modificar contraseña </a>
-                    
+
                     </div>
-                    
-                    
+
+
                   </div>
                 </form>
               </div>
@@ -168,16 +170,16 @@ $titulo = "Mi Cuenta";
                       <label for="inputAddress">Dirección</label>
                       <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
                     </div>
-                    
+
                     <div class="col-xs-12 col-md-6 pb-3">
                       <button class="btn btn-md btn-success" type="submit"><i class="icon ion-md-checkbox"></i> Guardar </button>
                       <button class="btn btn-md" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
                     </div>
-                    
+
                   </div>
                 </form>
-              </div>            
-                    
+              </div>
+
                   </div>
                 </form>
               </div>

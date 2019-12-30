@@ -12,7 +12,7 @@ if ($_POST) {
 	if (count($erroresEnRegistro) == 0) {
 
 		// obtengo extension del archivo //
-		if (isset($_FILES["avatar"]["name"]))
+		if (!empty($_FILES["avatar"]["name"]))
 		{
 			$erroresEnAvatar=validarAvatar();
 			if(count($erroresEnAvatar== 0)){
@@ -24,9 +24,6 @@ if ($_POST) {
 		$nombreAvatar2 = $_POST["username"] . "_" . uniqid() . "." . $extension;
 		move_uploaded_file($archivoTemporal, "img/avatars/" . $nombreAvatar2);
 			}
-		}
-		else{
-			$nombreAvatar2="avatar_2x.png";
 		}
 
 		$usuarioNuevo = [
