@@ -32,17 +32,17 @@
         <?=$_SESSION["username"]?>  <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail" id="avatarHeader" alt="avatar">
        </a>
        <div class="dropdown-menu dropdown-open" aria-labelledby="navbarDropdown">
-         <a class="dropdown-item" style="text-transform: capitalize" href="micuenta.php">Mi cuenta</a>
-         <a class="dropdown-item text-danger" style="text-transform: capitalize" href="logout.php"> Cerrar sesión </a>
+         <a class="dropdown-item" style="text-transform: capitalize  padding-top: 20px" href="micuenta.php">mi cuenta</a>
+         <a class="dropdown-item text-danger" style="text-transform: capitalize" href="logout.php"> cerrar sesión </a>
        </div>
        <?php endif;?>
        <?php if(!isset($_SESSION["email"])):?>
-       <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize  padding-top: 20px" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          mi cuenta
        </a>
-       <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="miCuentaHeader">
-         <a class="dropdown-item" style="text-transform: capitalize" href="iniciarsesion.php">Ingresar</a>
-         <a class="dropdown-item" style="text-transform: capitalize" href="registrarse.php">Registrarse</a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="dropdown-item" style="text-transform: capitalize" href="iniciarsesion.php">ingresar</a>
+         <a class="dropdown-item" style="text-transform: capitalize" href="registrarse.php">registrarse</a>
        </div>
        <?php endif;?>
             <li class="nav-item">
