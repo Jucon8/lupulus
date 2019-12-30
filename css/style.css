@@ -204,9 +204,12 @@ i.icono {
 }
 /* MI CUENTA */
 
-#fondo {
-  background-color: rgb(255, 255, 255);
-  opacity: 0.8;
+#fondoMiCuenta {
+  background-attachment: fixed;
+  background-image: url(../img/canillabirra.jpg);
+}
+#micuenta{
+    background-color: rgba(255, 255, 255, 0.8);
 }
 #contenido1 {
   margin-bottom: 40px;

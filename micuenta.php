@@ -47,7 +47,8 @@ $titulo = "Mi Cuenta";
   <!--Inicio header-->
   <?php require_once 'header.php' ?>
 
-  <div class="container-fluid pb-5" id=fondo>
+  <div class="container-fluid pb-5" id=fondoMiCuenta>
+    <br>
     <div class="container-fluid pt-5 pb-5" id=micuenta>
       <div class="container-fluid">
         <div class="row">
@@ -77,7 +78,7 @@ $titulo = "Mi Cuenta";
 
 
                 <form action="micuenta.php" method="post" enctype="multipart/form-data">
-                  <input type="file" name="avatar" id="">
+                  <input type="file" class="form-control-file" id="cargaAvatar" name="avatar">
 
                   <div>
                     <button class="btn btn-primary mt-5" type="submit" action="<?php guardarAvatar()?>"> Subir Archivo </button>
@@ -190,9 +191,6 @@ $titulo = "Mi Cuenta";
       <!--Div micuenta-->
     </div>
     <!--fondo-->
-    <br>
-    <br>
-    <br>
 
   </div>
 
