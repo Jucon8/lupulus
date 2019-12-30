@@ -168,19 +168,19 @@ $titulo = "Mi Cuenta";
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Dirección</label>
                       <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
+
+
                     </div>
                     
                     <div class="col-xs-12 col-md-6 pb-3">
                       <button class="btn btn-md btn-success" type="submit"><i class="icon ion-md-checkbox"></i> Guardar </button>
                       <button class="btn btn-md" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
                     </div>
-                    
                   </div>
                 </form>
-              </div>            
-                    
-                  </div>
-                </form>
+              </div>
+              <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="profile-tab">
+                <?php include("carrito.php") ?>
               </div>
             </div>
           </div><!-- fin columna derecha -->
