@@ -49,8 +49,8 @@ $titulo="Panel de Control";
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integraciones
+                  <span data-feather="mail"></span>
+                  Mensajes
                 </a>
               </li>
             </ul>
