@@ -14,10 +14,10 @@ $titulo="Panel de Control";
   <?php require_once 'header.php' ?>
     <div class="container-fluid" id="bodyAdmin">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block  sidebar">
+        <nav class="col-md-2 d-none d-md-block  sidebar" id="sidebar">
           <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
+            <ul class="nav flex-column" id="menuAdmin">
+              <li class="nav-item text-white">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
                   Panel de control <span class="sr-only">(current)</span>
@@ -57,7 +57,7 @@ $titulo="Panel de Control";
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="graph">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Panel de Control</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
