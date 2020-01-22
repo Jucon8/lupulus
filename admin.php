@@ -18,27 +18,27 @@ $titulo="Panel de Control";
           <div class="sidebar-sticky">
             <ul class="nav flex-column" id="menuAdmin">
               <li class="nav-item text-white">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="admin.php">
                   <span data-feather="home"></span>
                   Panel de control <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#ventas">
                   <span data-feather="file"></span>
-                  Pedidos
+                  Ventas
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#productos">
                   <span data-feather="shopping-cart"></span>
                   Productos
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#usuarios">
                   <span data-feather="users"></span>
-                  Clientes
+                  Usuarios
                 </a>
               </li>
               <li class="nav-item">
@@ -76,8 +76,135 @@ $titulo="Panel de Control";
             <canvas class="my-4" id="myChart" width="2" height="1"></canvas>
             </div>
                 </div>
+    <hr id="ventas">
+    <br>
+    <br>
 
-          <h2>Productos publicados</h2>
+          <h2>Ventas</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Id_venta</th>
+                  <th>Id_usuario</th>
+                  <th>Id_producto</th>
+                  <th>Pago</th>
+                  <th>Estado</th>
+                  <th>Envio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User_id</td>
+                  <td>Product_id</td>
+                  <td>Tarjeta/efectivo</td>
+                  <td>en curso(1)/finalizada(0)</td>
+                  <td>retiro por sucursal/envio a domicilio</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr id="productos">
+          <br>
+          <br>
+          <h2>Productos</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -251,10 +378,213 @@ $titulo="Panel de Control";
                   <td>14</td>
                   <td>Activo</td>
                   <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
+                  <td>Categoria 2</td>
                 </tr>
               </tbody>
             </table>
+            <hr id="usuarios">
+            <br>
+            <br>
+          <h2>Usuarios</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Id_Usuario</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Rol</th>
+                  <th>Avatar</th>
+                  <th>Provincia</th>
+                  <th>Ciudad</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                    <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                   <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                 <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                    <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                     <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                 <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                   <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+                <tr>
+                  <td>User_id Autoincremental</td>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Email@Email.com</td>
+                  <td>*********</td>
+                  <td>Administrador/Editor de productos/encargado de pedidos/vendedor/cliente</td>
+                  <td>imagenUrl</td>
+                  <td>Provincias de argentina</td>
+                  <td>Ciudades de la provincia elegida</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+<hr>
+
           </div>
         </main>
       </div>
