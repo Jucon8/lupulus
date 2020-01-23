@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+include 'conexion/conexion.php';
+
 
 $titulo = "LUPULUS - Insumos Cerveceros";
 ?>
@@ -13,6 +15,7 @@ $titulo = "LUPULUS - Insumos Cerveceros";
 <body>
     <?php require_once 'header.php' ?>
     <!-- CAROUSEL -->
+    
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

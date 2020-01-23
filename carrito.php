@@ -1,11 +1,71 @@
-<?php
-
+ <?php
 session_start();
-$titulo="Carrito";
+include 'conexion/conexion.php';
+if(isset($_SESSION['carrito'])){
+//si existe
+    if(isset($_GET['id'])){
+      $arreglo =$_SESSION['carrito'];
+      $encontro = false;
+      $numero =0;
+      for($i=0;$i<count($arreglo);$i++){
+        if($arreglo[$i]['Id']== $_GET['id']){
+          $encontro =true;
+          $numero=$i;
+        }
+      }
+        if ($encontro==true) {
+          $arreglo[$numero]['Cantidad']=$arreglo[$numero]['Cantidad']+1;
+          $_SESSION['carrito']=$arreglo;
+        }else {
+          ///no esta el regisro
+              $nombre =""; 
+              $precio="";
+              $imagen="";
+              $consulta=$conexion ->prepare('SELECT * FROM productos where id='.$_GET['id'])or die($conexion->error) ;
+              $consulta ->execute();
+              $fila=$consulta->fetch(PDO::FETCH_ASSOC);
+              $nombre =$fila['nombre'];
+              $precio=$fila['precio'];
+              $imagen=$fila['imagen'];
+              $arregloNuevo=[
+                  'Id' => $_GET['id'],
+                  'Nombre' => $nombre,
+                  'Precio' => $precio,
+                  'Imagen' => $imagen,
+                  'Cantidad' => 1
+
+              ];
+              array_push($arreglo,$arregloNuevo);
+              $_SESSION['carrito']=$arreglo;
+            }
+          }
+}else { 
+  //creamos la variable de sesion
+  if(isset($_GET['id'])){
+      $nombre =""; 
+      $precio="";
+      $imagen="";
+      $consulta=$conexion ->prepare('SELECT * FROM productos where id='.$_GET['id']);
+      $consulta ->execute();
+     $fila=$consulta->fetch(PDO::FETCH_ASSOC);
+      $nombre =$fila['nombre'];
+      $precio=$fila['precio'];
+      $imagen=$fila['imagen'];
+      $arreglo[]=array(
+          'Id' => $_GET['id'],
+          'Nombre' => $nombre,
+          'Precio' => $precio,
+          'Imagen' => $imagen,
+          'Cantidad' => 1
+
+      );
+    $_SESSION['carrito']=$arreglo;
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-
+  
 <head>
   <?php require_once 'head.php' ?>
 </head>
@@ -13,97 +73,131 @@ $titulo="Carrito";
 <body>
 
   <!--Inicio header-->
-  <?php require_once 'header.php' ?>
+ 
+ <?php require_once 'header.php' ?>
+ <div class="bg-light py-5"id="contenido-primero">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span>
+           <strong class="text-black"></strong></div>
+        </div>
+      </div>
+  </div>
+ <div class="site-wrap">
+   
 
-  <!-- inicio carrito-->
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-imagen">Imagen</th>
+                    <th class="product-nombre">Producto</th>
+                    <th class="product-precio">Precio</th>
+                    <th class="product-cantidad">Cantidad</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-remover">Remover</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-  <div class="carrito" id="carrito">
-    <div class="px-4 px-lg-0">
-      <div class="pb-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 bg-white rounded shadow-sm mb-5">
+                <?php 
+                $total =0;
+                if(isset($_SESSION['carrito'])){
+                        $arregloCarrito =$_SESSION['carrito'];
+                        for($i=0;$i<count($arregloCarrito);$i++){ 
+                          $total = $total + ($arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']);   
+                ?>
+                  <tr class="tabla-principal">
+                    <td class="product-imagen">
+                      <img  alt="Imagen" class="img-fluid" src="img/<?= $arregloCarrito[$i]['Imagen']; ?>" >
+                    </td>
+                    <td class="product-nombre">
+                      <h2 class=" text-center"><?= $arregloCarrito[$i]['Nombre'];?></h2>
+                    </td>
+                    <td>$<?= $arregloCarrito[$i]['Precio'] ;?></td>
+                    <td>
+                      <div class="input-group mb-3" style="max-width: 120px;">
+                     
+                        <input type="text" class="form-control text-center txtCantidad "
+                         data-precio=<?= $arregloCarrito[$i]['Precio'] ;?>
+                         data-id=<?= $arregloCarrito[$i]['Id'] ;?>
+                         value="<?= $arregloCarrito[$i]['Cantidad'] ;?>"
+                          placeholder="" aria-label="Example text with button addon" 
+                          aria-describedby="button-addon1">
+                        
+                      </div>
 
-              <!-- Inicio tabla carrito -->
+                    </td>
+                    <td class="cant<?= $arregloCarrito[$i]['Id'] ;?>">$<?= $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'] ;?></td>
+                    <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?=  $arregloCarrito[$i]['Id'] ;?>">X</a></td>
+                  </tr>
+                    
+                    <?php } } ?>  
+                  
+                 
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
 
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="p-2 px-3 text-uppercase">Producto</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase text-center">Precio <br> unitario</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Cantidad</div>
-                      </th>
-                      <th scope="col" class="border-0 bg-light">
-                        <div class="py-2 text-uppercase">Eliminar</div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="border-0">
-                        <div class="p-2">
-                          <img src="img/olla.png" alt="" width="70" class="img-fluid rounded d-none d-sm-none d-md-block">
-                          <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Olla para concinar cerveza</a></h5><span class="text-muted font-weight-normal font-italic d-block">Categoría: Ollas</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td class="border-0 align-middle"><strong>$2340</strong></td>
-                      <td class="border-0 align-middle"><strong><input type="number" class="input-res" name="quantity" value="1" min="1" max="100"></strong></td>
-                      <td class="border-0 align-middle"><a href="#REMOVE" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div class="p-2">
-                          <img src="img/botella.jpg" alt="" width="70" class="img-fluid rounded d-none d-sm-none d-md-block">
-                          <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"><a href="#" class="text-dark d-inline-block">Botella</a></h5><span class="text-muted font-weight-normal font-italic">Categoría: Envasado</span>
-                          </div>
-                        </div>
-                      </th>
-                      <td class="align-middle"><strong>$79.00</strong></td>
-                      <td class="align-middle"><strong><input type="number" class="input-res" name="quantity" value="10" min="1" max="100"></strong></td>
-                      <td class="align-middle"><a href="#REMOVE" class="text-dark"><i class="fa fa-trash"></i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <div class="p-2">
-                          <img src="img/canilla8pulgada.jpg" alt="" width="70" class="img-fluid rounded d-none d-sm-none d-md-block">
-                          <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block">Canilla de 8 pulgadas con bomba</a></h5><span class="text-muted font-weight-normal font-italic">Categoría: Equipamiento</span>
-                          </div>
-                        </div>
-                      <td class="align-middle"><strong>$8450</strong></td>
-                      <td class="align-middle"><strong><input type="number" class="input-res" name="quantity" value="1" min="1" max="100"></strong></td>
-                      <td class="align-middle"><a href="#REMOVE" class="text-dark"><i class="fa fa-trash"></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+             <!--  <div class="col-md-6 mb-3 mb-md-0">
+                <button class="btn btn-primary btn-sm btn-block">Actualizar Carrito</button>
+              </div> -->
+              <div class="col-md-6">
+                <button class="btn btn-outline-primary btn-sm btn-block"><a href="shop.php">Continuar Comprando</a></button>
               </div>
-              <!-- finalizar compra -->
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <label class="text-black h4" for="coupon">Cupon</label>
+                <p>Ingrese su código de cupón si tiene uno.</p>
+              </div>
+              <div class="col-md-8 mb-3 mb-md-0">
+                <input type="text" class="form-control py-3" id="coupon" placeholder="Código promocional">
+              </div>
+              <div class="col-md-4">
+                <button class="btn btn-primary btn-sm">Aplicar cupón</button>
+              </div>
             </div>
           </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Totales de carrito</h3>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <span class="text-black">Subtotal</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black"><?= $total;?></strong>
+                  </div>
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black"><?= $total;?> </strong>
+                  </div>
+                </div>
 
-          <div class="row py-5 p-4 bg-white rounded shadow-sm">
-            <div class="col-lg-12">
-              <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Detalle de Compra</div>
-              <div class="p-4">
-                <p class="font-italic mb-4">Al finalizar la compra, uno de nuestros representantes se comunicará con usted para confirmar los detalles de envío.</p>
-                <ul class="list-unstyled mb-4">
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Sub-Total </strong><strong>$11580</strong></li>
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Mercado Envios</strong><strong>$580</strong></li>
-                  <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                    <h5 class="font-weight-bold">$12160</h5>
-                  </li>
-                </ul><a href="#FINALIZAR-COMPRA" class="btn btn-warning rounded-pill py-2 btn-block">Finalizar Compra</a>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -111,14 +205,12 @@ $titulo="Carrito";
       </div>
     </div>
 
-  </div>
-  <!--div carrito-->
-  <!-- Desarrolado por -->
-  <footer>
-      <?php require_once 'footer.php' ?>
+   <footer>
+    <?php require_once 'footer.php' ?>
   </footer>
-  <!-- Fin del Footer -->
-  <!-- Optional JavaScript -->
-  <?php require_once 'scripts.php' ?>
 
+  
+             
+  <?php require_once 'scripts.php' ?>
+  <script src="js/carrito.js"></script>
 </body>

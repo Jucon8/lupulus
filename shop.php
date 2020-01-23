@@ -3,29 +3,11 @@
   session_start();
   $titulo = "Shop";  
 
-
-  $productos = [
-      0 => [
-      "Nombre" => "Barril Fortificado",
-      "Precio" => "US $1000",
-      "Imágen" => "img/barriles1.jpg"
-    ],
-      1 => [
-      "Nombre" => "Barril de Acero",
-      "Precio" => "US $999",
-      "Imágen" => "img/barriles2.jpg"
-    ],
-      2 => [
-      "Nombre" => "Barril de Plata",
-      "Precio" => "US $850",
-      "Imágen" => "img/barriles3.jpg"
-    ],
-      3 => [
-      "Nombre" => "Barril de Titanio",
-      "Precio" => "US $1500",
-      "Imágen" => "img/barriles4.jpg"
-    ],
-  ];
+include 'conexion/conexion.php';
+$consulta=$conexion ->prepare("SELECT * FROM productos");
+$consulta ->execute();
+$listaProductos=$consulta->fetchAll(PDO::FETCH_ASSOC);
+  
 
   ?>
 
@@ -43,8 +25,9 @@
 
   <div class="d-lg-none" id="categoriasTienda">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
-      <a class="navbar-brand bg-white rounded" href="index.php">Lupulus</a>
-      <button class="navbar-toggler bg-white text-dark" type="button" data-toggle="collapse" data-target="#nav-prod" aria-controls="nav-prod" aria-expanded="false" aria-label="Toggle navigation">
+     
+      <button class="navbar-toggler bg-white text-dark" type="button" data-toggle="collapse" data-target="#nav-prod" 
+      aria-controls="nav-prod" aria-expanded="false" aria-label="Toggle navigation">
         Productos
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -146,21 +129,21 @@
         <div class="col">
           <div class="row">
 
-              <?php foreach ($productos as $producto) : ?>
+              <?php foreach ($listaProductos as $producto) : ?>
               <div class="col-12">
               <br>
               <div class="card mb-3 bg-warning">
 
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img src="<?=$producto["Imágen"]?>" class="card-img" alt="...">
+                    <img src="img/<?=$producto["imagen"]?>" class="card-img" alt="...">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title"><?=$producto["Nombre"]?></h5>
-                      <p class="card-text"><?=$producto["Precio"]?></p>
+                      <h5 class="card-title"><?=$producto["nombre"]?></h5>
+                      <p class="card-text">$<?=$producto["precio"]?></p>
                       <div class="float-left pb-3">
-                        <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
+                        <a class="btn btn-success btn-lg" href="producto.php?id=<?=$producto["id"]?>"> Detalle del producto</a>
                       </div>
 
                     </div>

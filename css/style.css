@@ -111,8 +111,9 @@ section #transparente {
   margin: 15px;
 }
 /* FOOTER */
-#footer{
+#footer {
   width: 100%;
+  clear: right;
 }
 .flex-container .img-top {
   background-color: #000;
@@ -154,12 +155,10 @@ i.icono {
   padding-bottom: 30px;
   padding-top: 30px;
   background-attachment: fixed;
-
 }
-#formulario  {
+#formulario {
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.9);
-
 }
 
 /* SHOP */
@@ -168,7 +167,6 @@ i.icono {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 #categoriasTienda {
   padding-top: 0px;
@@ -204,11 +202,29 @@ i.icono {
 }
 
 /*Carrito*/
-.input-res {
-  width: 100%;
-  min-width: 10px;
-  max-width: 50px;
-  box-sizing: border-box;
+.img-fluid{
+  max-width: 100%;
+  height: auto;
+}
+.tabla-principal{
+  padding: 20px;
+  text-align: center;
+  vertical-align: middle;
+
+}
+#contenido-primero{
+  padding: 50px;
+  border: 1px solid red;
+}
+.site-wrap{
+  margin: 20px;
+  border: 1px solid blue;
+}
+.site-blocks-table{
+  padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: #212529;
 }
 /* MI CUENTA */
 
@@ -216,8 +232,8 @@ i.icono {
   background-attachment: fixed;
   background-image: url(../img/canillabirra.jpg);
 }
-#micuenta{
-    background-color: rgba(255, 255, 255, 0.8);
+#micuenta {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 #contenido1 {
   margin-bottom: 40px;
@@ -225,4 +241,9 @@ i.icono {
 #avatar {
   border-radius: 4px;
   font-size: 12px;
+}
+/* SHOP */
+.card-img{
+  width: 300px;
+  height: 300px;
 }
