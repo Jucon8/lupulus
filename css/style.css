@@ -41,7 +41,7 @@
 
 /* NOSOTROS */
 .jumbotron-fluid {
-  background-color: #f0b500;
+  background-color: #ffc107;
 }
 #nosotros {
   padding: 1%;
@@ -70,7 +70,7 @@
 }
 
 .card-body-faq {
-  background-color: #f0b500;
+  background-color: #ffc107;
   padding: 10px;
 }
 
@@ -87,7 +87,7 @@
 
 /*CONTACTO*/
 #contacto {
-  background-color: #f0b500;
+  background-color: #ffc107;
 }
 section #transparente {
   background-color: #ffe38f;
@@ -146,7 +146,7 @@ section #transparente {
   color: #000;
 }
 i.icono {
-  background-color: #f0b500;
+  background-color: #ffc107;
   border-radius: 100%;
   padding: 4px 10px;
 }
@@ -192,7 +192,7 @@ i.icono {
 /* DETALLE PRODUCTO */
 .body {
   padding-top: 56px;
-  background: #f0b500;
+  background: #ffc107;
   background-color: gray;
 }
 
@@ -201,7 +201,7 @@ i.icono {
 }
 
 .botondecompras {
-  background: #f0b500;
+  background: #ffc107;
   color: #ff7315;
   margin-left: 5px;
 }
@@ -227,7 +227,7 @@ i.icono {
 }
 #avatar {
   height: 150px!important;
-  width: : 150px!important;
+  width: 150px!important;
 }
 
 
@@ -271,16 +271,16 @@ i.icono {
 
 .sidebar .nav-link {
   font-weight: 500;
-  color: #f0b500;
+  color: #ffc107;
 }
 
 .sidebar .nav-link .feather {
   margin-right: 4px;
-  color: #f0b500;
+  color: #ffc107;
 }
 
 .sidebar .nav-link.active {
-  color: #f0b500;
+  color: #ffc107;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -318,4 +318,14 @@ th{
 }
 tbody{
   text-align: center;
+}
+
+.checkout{
+  background-image: url(../img/canillabirra.jpg);
+  background-attachment: fixed;
+}
+#checkout-transparente{
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-left: 5%;
+  padding-right: 5%;
 }
