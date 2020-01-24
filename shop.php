@@ -1,7 +1,7 @@
 
   <?php
   session_start();
-  $titulo = "Shop";  
+  $titulo = "Shop";
 
 
   $productos = [
@@ -160,7 +160,7 @@
                       <h5 class="card-title"><?=$producto["Nombre"]?></h5>
                       <p class="card-text"><?=$producto["Precio"]?></p>
                       <div class="float-left pb-3">
-                        <a href="detalleProducto.php" class="btn btn-success btn-lg">Detalle del producto</a>
+                        <a href="producto.php" class="btn btn-success btn-lg">Detalle del producto</a>
                       </div>
 
                     </div>

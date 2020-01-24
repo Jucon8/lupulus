@@ -58,20 +58,11 @@ $titulo = "Mi Cuenta";
               <h3><?=$_SESSION["username"]?></h3>
             </div>
             <div class="text-center">
-            <?php   //MOSTRAR AVATAR
-              //function mostrarAvatar() {
-             // if ($_FILES) {
-             // $nombre = $_FILES['avatar']['name'];
-            //  echo 'src=img/avatars/' . $nombre;
-            //  }else{
-            //  echo 'src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"';
-            //  }
-             ?>
               <?php if (!empty($_SESSION["avatar"])):?>
               <!--mostrarAvatar()-->
-              <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail border border-dark" alt="avatar">
+              <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail border border-dark" alt="avatar" style="width: 150px; height: 150px">
               <?php else: ?>
-              <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar">
+              <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar" style="width: 150px; height: 150px">
               <?php endif; ?>
               <p>Selecciona una imagen de perfil</p>
               <div class="container col-12">
@@ -107,7 +98,7 @@ $titulo = "Mi Cuenta";
 
                       <label for="inputAddress">Nombre</label>
 
-                      <h5  id="username"> <?=$_SESSION["username"]?></h5>
+                      <h5  id="username"> <?=$_SESSION["nombre"]?></h5>
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Apellido</label>
@@ -148,7 +139,7 @@ $titulo = "Mi Cuenta";
 
                       <label for="inputAddress">Nombre</label>
 
-                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan" value="<?=$_SESSION["username"]?>">
+                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan" value="<?=$_SESSION["nombre"]?>">
                     </div>
                     <div class="form-group col-lg-6">
                       <label for="inputAddress">Apellido</label>

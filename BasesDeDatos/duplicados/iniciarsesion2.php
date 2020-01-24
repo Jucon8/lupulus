@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("./BasesDeDatos/pdo.php");
-require_once("./BasesDeDatos/class-cliente.php");
+require_once("./BasesDeDatos/Clases/usuario.php");
 
 $titulo = "Iniciar Sesión";
 
@@ -15,12 +15,32 @@ if ($_POST) {
 
     // Logue de Usuario //
   $email = $_POST["email"];
-  $pass = $_POST["password"];
+  $password = $_POST["password"];
 
 
-  $usuarioRegistrado = cliente:: loguearse($email, $pass);
+  $usuariosRegistrados = $bd_usuarios -> prepare("SELECT * FROM usuarios WHERE email=:email");
+  $usuariosRegistrados -> bindValue(":email", $email);
+  $usuariosRegistrados -> execute();
+  $usuarios = $usuariosRegistrados -> fetch(PDO::FETCH_ASSOC);
 
-
+  print_r($usuarios);
+    if (count($usuarios)>0) {
+      echo "entro";
+      if (password_verify($password, $usuarios["password"])) {
+        $_SESSION["email"]=$usuarios["email"];
+        $_SESSION["username"]=$usuarios["username"];
+        $_SESSION["avatar"]=$usuarios["avatar"];
+        $_SESSION["nombre"] = $usuarios["nombre"];
+        $_SESSION["apellido"] = $usuarios["apellido"];
+        $_SESSION["direccion"] = $usuarios["direccion"];
+        $_SESSION["telefono"] = $usuarios["telefono"];
+        $_SESSION["ciudad"] = $usuarios["id_ciudad"];
+        header("Location: shop.php");
+      } else {
+        header("Location: iniciarsesion.php?error=1");
+        print_r('email o contraseña incorrectas');
+      }
+    }
   }
 
 }

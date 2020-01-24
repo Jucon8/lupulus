@@ -29,9 +29,9 @@
       <li class="nav-item dropdown">
         <?php if(isset($_SESSION["email"])):?>
        <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?=$_SESSION["username"]?> <?php if (!empty($_SESSION["avatar"])):?> <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail" id="avatarHeader" alt="avatar">
+        <?=$_SESSION["username"]?> <?php if (!empty($_SESSION["avatar"])):?> <img src="img/avatars/<?=$_SESSION["avatar"]?>" class="avatar rounded-circle img-thumbnail" id="avatarHeader" style="width:30px; height:30px" alt="avatar">
       <?php else: ?>
-      <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle" alt="avatar" id="avatarHeader">
+      <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle" alt="avatar" id="avatarHeader" style="width:30px; height:30px">
       <?php endif; ?>
        </a>
        <div class="dropdown-menu dropdown-open" aria-labelledby="navbarDropdown">
