@@ -13,7 +13,8 @@
 }
 #avatarHeader {
   padding: 0;
-  width: 30px;
+  width: 30px!important;
+  height: 30px!important;
 }
 
 /*MI CUENTA HEADER*/
@@ -239,8 +240,8 @@ i.icono {
   margin-bottom: 40px;
 }
 #avatar {
-  border-radius: 4px;
-  font-size: 12px;
+  height: 150px!important;
+  width: : 150px!important;
 }
 /* SHOP */
 .card-img{

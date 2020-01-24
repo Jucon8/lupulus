@@ -81,14 +81,13 @@ function ValidarTodo(){
 			$errores["confirm-password"][] = "* Las contraseñas no coinciden";
 		}
   }
-
   return $errores;
 }
 
 function validarAvatar(){
+  $errores =[];
 if (!empty($_FILES["avatar"])) {
-    $estosBytes = 1000000;
-    if (!($_FILES["avatar"]["size"] < $estosBytes)) {
+    if (isset($_FILES["avatar"]["size"]) && $_FILES["avatar"]["size"] > 1000000) {
       $errores["avatar"][]= "* Se permiten archivos de 1 MB máximo.";
   }
   $nombreAvatar = $_FILES["avatar"]["name"];

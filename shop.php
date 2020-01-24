@@ -1,7 +1,7 @@
 
   <?php
   session_start();
-  $titulo = "Shop";  
+  $titulo = "Shop";
 
 include 'conexion/conexion.php';
 $consulta=$conexion ->prepare("SELECT * FROM productos");
@@ -143,6 +143,7 @@ $listaProductos=$consulta->fetchAll(PDO::FETCH_ASSOC);
                       <h5 class="card-title"><?=$producto["nombre"]?></h5>
                       <p class="card-text">$<?=$producto["precio"]?></p>
                       <div class="float-left pb-3">
+
                         <a class="btn btn-success btn-lg" href="producto.php?id=<?=$producto["id"]?>"> Detalle del producto</a>
                       </div>
 

@@ -2,8 +2,9 @@
 session_start();
 
 require_once("controladores/validaciones.php");
-require_once("./BasesDeDatos/class-cliente.php");
 require_once("./BasesDeDatos/pdo.php");
+require_once("./BasesDeDatos/Clases/usuario.php");
+/*conectarBD('usuarios');*/
 
 
 $erroresEnRegistro = [];
@@ -30,19 +31,25 @@ if ($_POST) {
 			$nombreAvatar2 = "";
 		}
 
-		$IDUsuario = "default";
-		$username = $_POST["username"];
+    // Falta solucionar error cuando no subis avatar //
+
+    $username = $_POST["username"];
     $email = $_POST["email"];
-    $pass = $_POST["password"];
+    $password = $_POST["password"];
     $avatar = $nombreAvatar2;
 
-		$clienteNuevo = new cliente($IDUsuario, $username, $email, $pass, $rol, $avatar);
-    $clienteNuevo -> guardar2();
+		$usuarioNuevo = $db_alguna -> prepare("INSERT INTO usuarios(id, username, email, avatar, password, rol_id)
+    VALUES(default, :username, :email, :avatar, :password, :rol_id)");
+    $usuarioNuevo -> bindValue(':username', trim($username));
+    $usuarioNuevo -> bindValue(':email', trim($email));
+    $usuarioNuevo -> bindValue(':avatar', trim($avatar));
+    $usuarioNuevo -> bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+		$usuarioNuevo -> bindValue(':rol_id', $rol_id=2);
+    $usuarioNuevo -> execute();
 
     $_SESSION["username"] = $username;
     $_SESSION["email"] = $email;
     $_SESSION["avatar"] = $avatar;
-		$_SESSION["nombre"] = "";
     $_SESSION["apellido"] = "";
     $_SESSION["direccion"] = "";
     $_SESSION["telefono"] = "";
@@ -50,6 +57,7 @@ if ($_POST) {
 
     header("Location: shop.php");
   }
+
 }
 
 
@@ -112,7 +120,7 @@ $titulo = "Registrarse";
 
 					<div class="form-group">
 						<label for="avatar">Subí tu avatar (Opcional)</label>
-						<input type="file" class="form-control-file" name="avatar" enctype="multipart/form-data" accept= "image/*">
+						<input type="file" class="form-control-file" name="avatar" id="avatar" enctype="multipart/form-data" accept= "image/*">
 						<?php
 						if (isset($erroresEnAvatar["avatar"])) {
 							foreach ($erroresEnAvatar["avatar"] as $error) {

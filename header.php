@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark " tyle="background-color: #000;">
-    <a class="navbar-brand" href="index.php" style="text-transform: uppercase; font-size:2rem; width:255px;">
-        <img src="img/logo1.png" alt="LUPULUS" id=logoHeader></a>
+
+    <a class="navbar-brand p-0 pt-2" href="index.php" style="background-color: transparent; width:15%; box-shadow: none;">
+    <img src="img/logo1.png" alt="LUPULUS" id=logoHeader></a>
     <button class="navbar-toggler" id="menuHeader" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         MENU<span class="navbar-toggler-icon"></span>
     </button>
@@ -47,6 +48,7 @@
                         <a class="dropdown-item" style="text-transform: capitalize" href="registrarse.php">Registrarse</a>
                     </div>
                 <?php endif; ?>
+
             </li>
             <li class="nav-item active">   
               
