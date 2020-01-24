@@ -10,9 +10,9 @@ $titulo="Panel de Control";
   <?php require_once 'head.php' ?>
 </head>
 
-  <body class="bg-light">
+  <body class="checkout">
   <?php require_once 'header.php' ?>
-    <div class="container">
+    <div class="container-fluid" id= "checkout-transparente">
       <br>
       <br>
       <br>
@@ -151,24 +151,41 @@ $titulo="Panel de Control";
               <!-- si el usuario selecciona esta opcion, debe guardar estos datos, en la base de datos. -->
               <!-- Tambien podria guardar una simple cookie -->
             </div>
-            <hr class="mb-4">
-
+<br>
+            <div class="row">
+            <div class="col-md-5">
             <h4 class="mb-3">Pago</h4>
-
             <div class="d-block my-3">
               <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="credit">Tarjeta de Crédito</label>
+                <input id="credito" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="credito">Tarjeta de Crédito</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="debit">Tarjeta de Débito</label>
+                <input id="debito" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="debito">Tarjeta de Débito</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="paypal">Mercado Pago</label>
+                <input id="mercadopago" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="mercadopago">Mercado Pago</label>
               </div>
             </div>
+            </div>
+           <div class="col-md-6">
+            <h4 class="mb-3">Envío</h4>
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="correo" name="envio" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="correo">Correo Argentino <a href="#envio">(Calcular costo)</a></label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="retira" name="envio" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="retira">Retiro por sucursal <a href="https://g.page/espacioproject?share" target="_blank">(ver mapa)</a></label>
+              </div>
+              </div>
+            </div>
+
+            </div>
+            
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="cc-name">Nombre en la tarjeta</label>
@@ -204,11 +221,13 @@ $titulo="Panel de Control";
                 </div>
               </div>
             </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Finalizar compra</button>
-          </form>
+            <hr class="mb-12">
+            
+          
         </div>
       </div>
+      <button class="btn btn-warning btn-lg btn-block" type="submit">Finalizar compra</button>
+      </form>
       <br>
     </div>
         <footer>
@@ -237,7 +256,5 @@ $titulo="Panel de Control";
       })();
     </script>
       <?php require_once 'scripts.php' ?>
-
-
   </body>
 </html>
