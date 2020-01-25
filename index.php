@@ -191,40 +191,39 @@ $titulo = "LUPULUS - Insumos Cerveceros";
                         <div class="card-body-faq" id="transparente">
                             <form method="" action="">
                                 <div class="md-form-group">
-                                    <i class="fas fa-user prefix grey-text"></i>
+                                    <span data-feather="user"></span> <label for="form-name"> Nombre</label>
                                     <input type="text" id="form-name" class="form-control">
-                                    <label for="form-name">Nombre</label>
                                 </div>
 
                                 <div class="md-form-group">
-                                    <i class="fas fa-tag prefix grey-text"></i>
+                                    <span data-feather="tag"> </span> <label for="form-motivo"> Motivo</label>
                                     <select class="form-control" name="motivo" id="form-motivo">
                                         <option>consulta general</option>
                                         <option>realizar pedido</option>
                                         <option>informar un problema</option>
                                     </select>
-                                    <label for="form-motivo">Motivo</label>
+                                    
                                 </div>
 
                                 <div class="md-form-group">
-                                    <i class="fas fa-tag prefix grey-text"></i>
+                                 <span data-feather="briefcase"> </span> <label for="form-Empresa"> Empresa</label>
                                     <input type="text" id="form-Empresa" class="form-control">
-                                    <label for="form-Empresa">Empresa</label>
+                                    
                                 </div>
                                 <div class="md-form-group">
-                                    <i class="fas fa-envelope prefix grey-text"></i>
+                                    <span data-feather="mail"> </span> <label for="form-email"> Email</label>
                                     <input type="text" id="form-email" class="form-control">
-                                    <label for="form-email">Email</label>
+                                    
                                 </div>
 
                                 <div class="md-form-group">
-                                    <i class="fas fa-pencil-alt prefix grey-text"></i>
-                                    <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
-                                    <label for="form-text">Mensaje</label>
+                                    <span data-feather="edit"> </span> <label for="form-text"> Mensaje</label>
+                                    <textarea id="form-text" class="form-control md-textarea" rows="5"></textarea>
+                                    
                                 </div>
 
                                 <div class="text-center mt-4">
-                                    <button class="btn btn-primary" type="submit"><i class="icon ion-md-checkbox"></i> Enviar </button>
+                                    <button class="btn btn-warning" type="submit"><i class="icon ion-md-checkbox"></i> Enviar </button>
                                     <button class="btn btn-danger" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
                                 </div>
                             </form>
@@ -234,7 +233,7 @@ $titulo = "LUPULUS - Insumos Cerveceros";
 
 
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" id="contactoiconos">
 
                     <!--Google map-->
                     <div id="map-container-google-11" class="z-depth-1-half map-container-6" style="height: 400px">
@@ -245,22 +244,28 @@ $titulo = "LUPULUS - Insumos Cerveceros";
 
                     <div class="row text-center">
                         <div class="col-md-4   ">
-                            <a class="btn-floating   accent-1"><i class=" icono fas fa-map-marker-alt"></i></a>
+                            <span data-feather="map-pin"></span>
+                            <br>
                             <p>La Rioja 532</p>
                             <p>Córdoba Capital</p>
                             <p>Argentina</p>
                         </div>
 
                         <div class="col-md-4 ">
-                            <a class="btn-floating  accent-1"><i class="icono fas fa-phone"></i></a>
-                            <p>3517832514</p>
+                            <span data-feather="smartphone"></span>
+                            <br>
+                            <p>351-7832514</p>
+                            <p>351-5434229</p>
+                            <p>351-2128654</p>
 
                         </div>
 
                         <div class="col-md-4 ">
-                            <a class="btn-floating accent-1"><i class="icono fas fa-envelope"></i></a>
-                            <p>info@gmail.com</p>
-                            <p>sale@gmail.com</p>
+                           <span data-feather="mail"></span>
+                            <br>
+                            <p>info@lupulus.com</p>
+                            <p>ventas@lupulus.com</p>
+                            <p>contacto@lupulus.com</p>
                         </div>
 
                     </div>
@@ -268,9 +273,9 @@ $titulo = "LUPULUS - Insumos Cerveceros";
 
 
             </div>
-
+            <br>
         </section>
-    </section>
+
 
     <!-- FOOTER -->
     <footer>
