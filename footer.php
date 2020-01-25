@@ -2,8 +2,8 @@
     <div class="flex-container">
         <div> <a class="btn-floating  accent2" href="https://facebook.com"><i class="icono icon ion-logo-facebook"></i></a></div>
         <div> <a class="btn-floating  accent2" href="https://instagram.com"><i class="icono icon ion-logo-instagram"></i></a></div>
-        <div> <img src="img/logo.png" class="img-top" alt="logo"></div>
-        <div> <a class="btn-floating  accent2" href="https://youtube.com"><i class="icono icon ion-logo-youtube"></i></a>
+        <div>  <a href="index.php"> <img src="img/lupulo.svg" class="img-top" alt="logo"></a> </div>
+        <div> <a class="btn-floating  accent2" href="https://youtube.com"><i id="youtube" class="icono icon ion-logo-youtube"></i></a>
         </div>
         <div> <a class="btn-floating  accent2" href="https://twitter.com"><i class="icono icon ion-logo-twitter"></i></a>
         </div>
