@@ -1,7 +1,19 @@
 <?php
-
+include("class/db.php");
 session_start();
+
 $titulo="Panel de Control";
+
+if ($_POST) {
+  //INSERTA A LA BASE DE DATOS LOS DATOS QUE LLEGAN POR POST
+  $baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus_db;port=3306','root','');
+ 
+  $baseDeDatos->insertarProducto($_POST['nombre'], $_POST['stock'], $_POST['precio'], $_POST['descripcion'], $_POST['id_subcategoria']);
+  
+  
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -201,10 +213,79 @@ $titulo="Panel de Control";
               </tbody>
             </table>
           </div>
+
           <hr id="productos">
           <br>
           <br>
           <h2>Productos</h2>
+          <div class="alta-producto">
+            <h4>AGREGAR PRODUCTO + </h4>
+            <form method="post">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Nombre</label>
+        <input name="nombre" type="text" class="form-control" id="validationDefault01" value="" required>
+      </div>
+      <div class="col-md-5 mb-3">
+        <label for="validationDefault02">Precio</label>
+        <input name="precio" type="text" class="form-control" id="validationDefault03" value="" placeholder="Ingrese un número decimal sin el signo $" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault03">Descripción</label>
+        <input name="descripcion" type="text" class="form-control" id="validationDefault04" required>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault04">Categoria</label>
+        <select name="id_categoria"  class="custom-select" id="validationDefault05" required>
+          <option value='1'>Equipamiento</option>
+          <option value='2'>Insumos</option>
+          <option value='3'>Kit</option>
+        </select>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault04">Subcategoria</label>
+        <select name="id_subcategoria" class="custom-select" id="validationDefault06" required>
+
+       <!--Equipamiento-->
+       <option selected disabled value="">Seleccione una subcategoria</option>
+       <option disabled value="">Equipamiento ↓</option>
+        <option value="1">Canillas y conectores</option>
+        <option value="2">Embarrilado</option>
+        <option value="3">Embotellado</option>
+        <option value="4">Enfriado</option>
+        <option value="5">Fermentación</option>
+        <option value="6">Macerado y hervido</option>
+        <option value="7">Mangueras</option>
+        <option value="8">Medición y control</option>
+        <option value="9">Molienda</option>
+        <option value="10">Tratamiento agua</option>
+        <!--Insumos-->
+       <option disabled value="">Insumos ↓</option>
+         <option value="11">Azucares</option>
+         <option value="12">Botellas</option>
+         <option value="13">Clarificantes</option>
+         <option value="14">Correción agua</option>
+         <option value="15">Levaduras</option>
+         <option value="16">Limpieza</option>
+         <option value="17">Lúpulus</option>
+         <option value="18">Maltas</option>
+         <option value="19">Tapas</option>
+         <!--Kits-->
+        <option disabled value="">Kits ↓</option>
+          <option value="20">Kit equipos</option>
+          <option value="21">Kit insumos</option>
+        </select>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault05">Stock</label>
+        <input name="stock" type="text" class="form-control" id="validationDefault07" placeholder="Cantidad" required>
+      </div>
+    </div>
+    <button class="btn btn-warning" type="submit">AGREGAR</button>
+  </form>
+          </div>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
