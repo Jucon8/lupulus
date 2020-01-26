@@ -58,7 +58,6 @@ if(isset($_SESSION['carrito'])){
           'Precio' => $precio,
           'Imagen' => $imagen,
           'Cantidad' => 1
-
       );
     $_SESSION['carrito']=$arreglo;
   }
@@ -66,45 +65,44 @@ if(isset($_SESSION['carrito'])){
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-  
+
 <head>
   <?php require_once 'head.php' ?>
 </head>
-
 <body>
-
   <!--Inicio header-->
   <?php require_once 'header.php' ?>
 
   <!-- inicio carrito-->
   
- <div class="bg-light py-5"id="contenido-primero">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black"></strong></div>
-        </div>
-      </div>
-  </div>
- <div class="site-wrap">
-   
-
-    <div class="site-section">
-      <div class="container">
+    <div class="carrito-section">
+      <br>
+      <br>
+      <div class="container-fluid rounded" id="carrito">
         <div class="row mb-5">
-          <form class="col-md-12" method="post">
-            <div class="site-blocks-table">
-              <table class="table table-bordered">
+          <form class="col-lg-12" method="post">
+            <div class="table-responsive">
+              <br>
+                <table class="table table-bordered" id="tabla-carrito">
                 <thead>
                   <tr>
-                    <th class="product-imagen">Imagen</th>
-                    <th class="product-nombre">Producto</th>
-                    <th class="product-precio">Precio</th>
-                    <th class="product-cantidad">Cantidad</th>
-                    <th class="product-total">Total</th>
-                    <th class="product-remover">Remover</th>
+                    <th scope="col" class="product-imagen d-none d-sm-none d-md-block">
+                      <div class="p-2 px-3 text-uppercase">Imagen</div>
+                  </th>
+                    <th scope="col" class="product-nombre">
+                      <div class="p-2 px-3 text-uppercase">Producto</div>
+                      </th>
+                    <th scope="col" class="product-precio">
+                      <div class="py-2 text-uppercase text-center">Precio</div>
+                      </th>
+                    <th scope="col" class="product-cantidad">
+                        <div class="py-2 text-uppercase">Cantidad</div>
+                      </th>
+                    <th class="product-remover">
+                      <div class="py-2 text-uppercase">Eliminar</div>
+                      </th>
                   </tr>
-                </thead>
+                </thead>                
                 <tbody>
 
                 <?php 
@@ -131,17 +129,15 @@ if(isset($_SESSION['carrito'])){
                          value="<?= $arregloCarrito[$i]['Cantidad'] ;?>"
                           placeholder="" aria-label="Example text with button addon" 
                           aria-describedby="button-addon1">
-                        
                       </div>
-
                     </td>
                     <td class="cant<?= $arregloCarrito[$i]['Id'] ;?>">$<?= $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'] ;?></td>
                     <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?=  $arregloCarrito[$i]['Id'] ;?>">X</a></td>
                   </tr>
                     
                     <?php } } ?>  
-                  
-                 
+
+
                 </tbody>
               </table>
             </div>
@@ -154,20 +150,8 @@ if(isset($_SESSION['carrito'])){
              <!--  <div class="col-md-6 mb-3 mb-md-0">
                 <button class="btn btn-primary btn-sm btn-block">Actualizar Carrito</button>
               </div> -->
-              <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block"><a href="shop.php">Continuar Comprando</a></button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Cupon</label>
-                <p>Ingrese su código de cupón si tiene uno.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Código promocional">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary btn-sm">Aplicar cupón</button>
+              <div class="col-md-6" id="continuar">
+                <button class="btn btn-outline-warning btn-sm btn-block"><a id="continuar" href="shop.php">Continuar Comprando</a></button>
               </div>
             </div>
           </div>
@@ -195,17 +179,21 @@ if(isset($_SESSION['carrito'])){
                     <strong class="text-black"><?= $total;?> </strong>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
-                  </div>
-                </div>
+              </div>
               </div>
             </div>
           </div>
+                          <div class="row">
+                  <div class="col-md-12">
+                    <button class="btn btn-warning btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
+                  </div>
         </div>
+        <br>
       </div>
+        <br>
+       <br>
+      <br>
+     <br>
     </div>
 
    <footer>
@@ -216,4 +204,8 @@ if(isset($_SESSION['carrito'])){
              
   <?php require_once 'scripts.php' ?>
   <script src="js/carrito.js"></script>
+ 
+
 </body>
+
+</html>
