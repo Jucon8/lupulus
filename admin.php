@@ -1,5 +1,5 @@
 <?php
-include("class/db.php");
+require_once("class/db.php");
 session_start();
 
 $titulo="Panel de Control";
@@ -7,10 +7,10 @@ $titulo="Panel de Control";
 if ($_POST) {
   //INSERTA A LA BASE DE DATOS LOS DATOS QUE LLEGAN POR POST
   $baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus_db;port=3306','root','');
- 
+
   $baseDeDatos->insertarProducto($_POST['nombre'], $_POST['stock'], $_POST['precio'], $_POST['descripcion'], $_POST['id_subcategoria']);
-  
-  
+
+
 }
 
 
