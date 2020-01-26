@@ -1,39 +1,73 @@
 <?php
 session_start();
+require_once("./controladores/validaciones.php");
+require_once("./BasesDeDatos/pdo.php");
+require_once("./class/class-usuario.php");
+require_once("./class/class-cliente.php");
+require_once("./class/class-provincia.php");
+require_once("./class/class-tipoCons.php");
 
-require_once 'controladores/validaciones.php';
 
 $titulo = "Mi Cuenta";
+$provincias = provincia:: buscarProvincia();
 
-/* FUNCION GUARDAR AVATAR */
+$tipoConsumidor = tipoCons:: buscarTipoCons();
 
-//Declaro la funcion guardar avatar
-    function guardarAvatar()
-    {
-      //Si se subió un archivo-->
-      if ($_FILES) {  //datos del arhivo
-        $nombreAvatar = $_FILES['avatar']['name'];
-        $tipo = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
-        $tipo = strtolower($tipo);
-        $tamano = $_FILES['avatar']['size'];
-        $archivo = $_FILES['avatar']['tmp_name'];
-        $nombreAvatar2 = "avatar_" . uniqid() . ".". $tipo;
-        //compruebo si las características del archivo son las que deseo
-        if ((!($tipo=="jpg") || ($tipo=="jpeg") || ($tipo=="png")) && ($tamano < 1000000)) {
-          //si no se cumplen que imprima el siguiente mensaje:
-          echo "La extensión o el tamaño de los archivos no es correcta. <br><br><table><tr><td><li>Se permiten archivos .png, .jpeg o .jpg<br><li>se permiten archivos de 1 MB máximo.</td></tr></table>";
-        } else {
-          //si no, que guarde el avatar en carpeta img/avatars
-          if (move_uploaded_file($archivo, "img/avatars/".$nombreAvatar2)) {
-            echo "<br>";
-            echo "CARGA EXITOSA <br>  $tamano KB <br> ";
-          } else {
-            //si no pudo subir el avatar, por algun otro motivo:
-            echo "Ocurrió algún error al subir el fichero. No pudo guardarse.";
-          }
-        }
+$erroresEnAvatar = [];
+
+if ($_POST) {
+  // obtengo extension del archivo nuevo para Avatar//
+    if (!empty($_FILES["avatar"]["name"])) {
+      $erroresEnAvatar = validarAvatar();
+      if(count($erroresEnAvatar) == 0){
+        $extension = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $extension = strtolower($extension);
+        //obtengo ruta de archivo //
+        $archivoTemporal = $_FILES["avatar"]["tmp_name"];
+        //direccion de guardado de avatar //
+        $nombreAvatar2 = $_SESSION["username"] . "_" . uniqid() . "." . $extension;
+        move_uploaded_file($archivoTemporal, "img/avatars/" . $nombreAvatar2);
       }
+    } elseif(isset($_SESSION['avatar'])) {
+        $nombreAvatar2 = $_SESSION['avatar'];
     }
+  $id= $_SESSION['id'];
+  $nombre = $_POST["nombre"];
+  $apellido = $_POST["apellido"];
+  $telefono = $_POST["telefono"];
+  $direccion = $_POST["direccion"];
+  $provincia = $_POST["provincia"];
+  $ciudad = $_POST["ciudad"];
+  $tipoCons = $_POST["tipoCons"];
+  $avatar = $nombreAvatar2;
+
+
+  $cambiarDatos = cliente:: editDatos($id,$nombre, $apellido, $telefono, $direccion, $provincia, $ciudad, $tipoCons, $avatar);
+  $_SESSION["avatar"]=$avatar;
+  $_SESSION["nombre"] = $nombre;
+  $_SESSION["apellido"] = $apellido;
+  $_SESSION["direccion"] = $direccion;
+  $_SESSION["telefono"] = $telefono;
+  $_SESSION["ciudad"] = $ciudad;
+  if ($_SESSION["provincia"]!='') {
+    $_SESSION["provincia"];
+  } else {
+    $_SESSION["provincia"] = $provincia;
+  }
+  if ($_SESSION["tipoCons"]!='') {
+    $_SESSION["tipoCons"];
+  } else {
+    $_SESSION["tipoCons"] = $tipoCons;
+  }
+
+
+}
+
+
+var_dump($_POST);
+echo "<br>";
+var_dump($_SESSION);
+
 
 ?>
 <!DOCTYPE html>
@@ -64,18 +98,6 @@ $titulo = "Mi Cuenta";
               <?php else: ?>
               <img src="img/avatars/avatar_2x.png" class="avatar rounded-circle img-thumbnail" alt="avatar" style="width: 150px; height: 150px">
               <?php endif; ?>
-              <p>Selecciona una imagen de perfil</p>
-              <div class="container col-12">
-
-
-                <form action="micuenta.php" method="post" enctype="multipart/form-data">
-                  <input type="file" class="form-control-file" id="cargaAvatar" name="avatar">
-
-                  <div>
-                    <button class="btn btn-primary mt-5" type="submit" action="<?php guardarAvatar()?>"> Subir Archivo </button>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
           <!-- fin columna izquierda -->
@@ -105,63 +127,110 @@ $titulo = "Mi Cuenta";
                       <h5  id="apellido"> <?=$_SESSION["apellido"]?></h5>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">Teléfono</label>
+                      <label for="inputphone">Teléfono</label>
                       <h5  id="telefono"> <?=$_SESSION["telefono"]?></h5>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputEmail4">E-mail</label>
-                      <h5  id="username"> <?=$_SESSION["email"]?></h5>
+                      <label for="inputEmail4">email</label>
+                      <h5  id="email"> <?=$_SESSION["email"]?></h5>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputCity">Ciudad</label>
+                      <label for="provincia">Provincia</label>
+                      <h5  id="provincia"> <?=$_SESSION["provincia"]?></h5>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="ciudad">Ciudad</label>
                       <h5  id="ciudad"> <?=$_SESSION["ciudad"]?></h5>
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">Dirección</label>
+                      <label for="direccion">Dirección</label>
                       <h5  id="direccion"> <?=$_SESSION["direccion"]?></h5>
-                      <br>
-                      <br>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="tipoCons">Tipo de Cliente</label>
+                      <h5  id="tipoCons"> <?=$_SESSION["tipoCons"]?></h5>
                     </div>
                     <div class="col-lg-6"></div>
                     <div class="form-group col-lg-6">
                     <a href="recuperar.php" class="btn btn-danger" > Modificar contraseña </a>
 
                     </div>
-
-
                   </div>
                 </form>
               </div>
               <div class="tab-pane fade" id="pedidos" role="tabpanel" aria-labelledby="profile-tab">
-              <form>
+              <form method="post" enctype="multipart/form-data" name='formulario'>
                   <div class="form-row">
                     <div class="form-group col-lg-6">
-
-                      <label for="inputAddress">Nombre</label>
-
-                      <input type="text" class="form-control" id="nombre" placeholder="EJ: Juan" value="<?=$_SESSION["nombre"]?>">
+                      <label for="nombre">Nombre</label>
+                      <input name = "nombre" type="text" class="form-control" id="nombre" placeholder="Ej: Tony" value="<?=$_SESSION["nombre"]?>">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">Apellido</label>
-                      <input type="text" class="form-control" id="apellido" placeholder="EJ: Pérez" value="<?=$_SESSION["apellido"]?>">
+                      <label for="apellido">Apellido</label>
+                      <input name = "apellido" type="text" class="form-control" id="apellido" placeholder="Ej: Stark" value="<?=$_SESSION["apellido"]?>">
                     </div>
                     <div class="form-group col-lg-6">
-                      <label for="inputAddress">Teléfono</label>
-                      <input type="text" class="form-control" id="telefono1" placeholder="EJ: (0351) 157-832514" value="<?=$_SESSION["telefono"]?>">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <label for="inputEmail4">E-mail</label>
-                      <input type="email" class="form-control" id="email" placeholder="EJ: usuario@gmail.com" value="<?=$_SESSION["email"]?>">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <label for="inputCity">Ciudad</label>
-                      <input type="text" class="form-control" id="ciudad" placeholder="EJ: Córdoba" value="<?=$_SESSION["ciudad"]?>">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <label for="inputAddress">Dirección</label>
-                      <input type="text" class="form-control" id="domicilio" placeholder="EJ: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
+                      <label for="telefono">Teléfono</label>
+                      <input name = "telefono" type="tel" class="form-control" id="telefono1" placeholder="Ej: 351-7832514" value="<?=$_SESSION["telefono"]?>">
                     </div>
 
+                    <div class="form-group col-lg-6">
+                      <label for="provincia">Seleccione su provincia</label>
+                      <select type="text" name="provincia" class="form-control" id="provincia">
+                        <option value="">seleccione...</option>
+                        <?php
+                        foreach ($provincias as $key => $fila) {
+                            $sel = '';
+                            if($fila['id'] == $provincias['id'])
+                                $sel = 'selected';
+                            ?>
+                            <option value="<?php echo $fila['nombre'];?>" <?php echo $sel;?>><?php echo $fila['nombre'];?></option>
+                        <?php
+                      }
+                          ?>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                      <label for="ciudad">Ciudad</label>
+                        <input type="text" name="ciudad" class="form-control" placeholder="Ej: Villa Allende" value="<?=$_SESSION["ciudad"]?>">
+
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                      <label for="direccion">Dirección</label>
+                      <input name = "direccion" type="text" class="form-control" id="direccion" placeholder="Ej: La Rioja 532" value="<?=$_SESSION["direccion"]?>">
+
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="tipoCons">Seleccione su condicion</label>
+                      <select name = "tipoCons" class="form-control" id="tipoCons">
+                        <option value="">seleccione...</option>
+                        <?php
+                            foreach ($tipoConsumidor as $key => $fila) {
+                              $sel = '';
+                              if($fila['id'] == $tipoConsumidor['id'])
+                                $sel = 'selected';
+                            ?>
+                            <option value="<?php echo $fila['nombre'];?>" <?php echo $sel;?>><?php echo $fila['nombre'];?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="avatar">Cambia tu avatar</label>
+                      <input type="file" class="form-control-file" id="cargaAvatar" name="avatar" accept= "image/*">
+                      <?php
+                      if (isset($erroresEnAvatar["avatar"])) {
+                        foreach ($erroresEnAvatar["avatar"] as $error) {
+                          echo '<small class = "text-danger">' . $error . '</small><br>';
+                        }
+                      } else {
+                        echo "";
+                      }
+                      ?>
+                    </div>
                     <div class="col-xs-12 col-md-6 pb-3">
                       <button class="btn btn-md btn-success" type="submit"><i class="icon ion-md-checkbox"></i> Guardar </button>
                       <button class="btn btn-md" type="reset"><i class="icon ion-md-refresh"></i> Limpiar</button>
