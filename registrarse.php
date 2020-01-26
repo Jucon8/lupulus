@@ -2,11 +2,15 @@
 session_start();
 
 require_once("controladores/validaciones.php");
-require_once("./BasesDeDatos/class-cliente.php");
+require_once("./class/class-usuario.php");
+require_once("./class/class-cliente.php");
+require_once("./class/class-tipoCons.php");
 require_once("./BasesDeDatos/pdo.php");
 
 
+
 $erroresEnRegistro = [];
+$erroresEnAvatar = [];
 
 if ($_POST) {
 	$erroresEnRegistro = ValidarTodo();
@@ -30,26 +34,33 @@ if ($_POST) {
 			$nombreAvatar2 = "";
 		}
 
-		$IDUsuario = "default";
 		$username = $_POST["username"];
     $email = $_POST["email"];
     $pass = $_POST["password"];
     $avatar = $nombreAvatar2;
+		$rol_id = '2';
 
-		$clienteNuevo = new cliente($IDUsuario, $username, $email, $pass, $rol, $avatar);
-    $clienteNuevo -> guardar2();
-
-    $_SESSION["username"] = $username;
-    $_SESSION["email"] = $email;
-    $_SESSION["avatar"] = $avatar;
-		$_SESSION["nombre"] = "";
-    $_SESSION["apellido"] = "";
-    $_SESSION["direccion"] = "";
-    $_SESSION["telefono"] = "";
-    $_SESSION["ciudad"] = "";
-
-    header("Location: shop.php");
-  }
+		$clienteNuevo = new cliente($id, $username, $email, $pass, $rol_id, $avatar);
+    $clienteNuevo -> guardar();
+		$usuarioRegistrado = cliente:: loguearse($email, $pass);
+		if (count($usuarioRegistrado)>0) {
+	    if (password_verify($pass, $usuarioRegistrado["pass"])) {
+	      $_SESSION["id"]=$usuarioRegistrado["id"];
+	      $_SESSION["email"]=$usuarioRegistrado["email"];
+	      $_SESSION["username"]=$usuarioRegistrado["username"];
+	      $_SESSION["avatar"]=$usuarioRegistrado["avatar"];
+	      $_SESSION["nombre"] = $usuarioRegistrado["nombre"];
+	      $_SESSION["apellido"] = $usuarioRegistrado["apellido"];
+	      $_SESSION["direccion"] = $usuarioRegistrado["direccion"];
+	      $_SESSION["telefono"] = $usuarioRegistrado["telefono"];
+	      $_SESSION["ciudad"] = $usuarioRegistrado["ciudad"];
+	      $_SESSION["provincia"] = $usuarioRegistrado["provincia"];
+	      $_SESSION["tipoCons"] = $usuarioRegistrado["tipoCons"];
+				$_SESSION["rol_id"] = $usuarioRegistrado["rol_id"];
+	      header("Location: shop.php");
+			}
+		}
+	}
 }
 
 
