@@ -1,8 +1,0 @@
-
-CREATE TABLE ROL(
-  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50),
-  usuario_id INT
-);
-
-ALTER TABLE rol ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
