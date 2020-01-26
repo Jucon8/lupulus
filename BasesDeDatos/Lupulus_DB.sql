@@ -1,383 +1,234 @@
--- MariaDB dump 10.17  Distrib 10.4.8-MariaDB, for Win64 (AMD64)
---
--- Host: localhost    Database: lupulus_db
--- ------------------------------------------------------
--- Server version	10.4.8-MariaDB
+-- Creo Base de Datos
+CREATE DATABASE lupulus;
+-- Uso Base de Datos
+USE  lupulus;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+-- Creo tabla de Usuario
+CREATE TABLE usuario(
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  username VARCHAR(30) NOT NULL UNIQUE,
+  nombre VARCHAR(50),
+  apellido VARCHAR(50),
+  email VARCHAR(100) NOT NULL UNIQUE,
+  direccion VARCHAR(50),
+  ciudad VARCHAR(50),
+  provincia VARCHAR(50),
+  telefono VARCHAR(30),
+  avatar VARCHAR(255),
+  pass VARCHAR(255) NOT NULL,
+  tipoCons VARCHAR(255),
+  rol_id INT
+);
 
---
--- Table structure for table `avatar`
---
+-- Creo tabla de Roles
 
-DROP TABLE IF EXISTS `avatar`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `avatar` (
-  `IDAvatar` int(11) NOT NULL AUTO_INCREMENT,
-  `RutaDelAvatar` varchar(200) NOT NULL,
-  `IDUsuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDAvatar`),
-  KEY `IDUsuario` (`IDUsuario`),
-  CONSTRAINT `avatar_ibfk_1` FOREIGN KEY (`IDUsuario`) REFERENCES `usuario` (`IDUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE rol(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  usuario_id INT
+);
 
---
--- Dumping data for table `avatar`
---
+-- Creo tabla de Tipo Consumidor
+CREATE TABLE tipoCons(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  usuario_id INT
+);
 
-LOCK TABLES `avatar` WRITE;
-/*!40000 ALTER TABLE `avatar` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avatar` ENABLE KEYS */;
-UNLOCK TABLES;
+-- Creo tabla Provincia
+CREATE TABLE provincia(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  usuario_id INT
+);
 
---
--- Table structure for table `categoria`
---
+-- Creo tabla Ciudad
+CREATE TABLE ciudad(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  provincia_id INT
+);
 
-DROP TABLE IF EXISTS `categoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categoria` (
-  `IDCategoria` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  PRIMARY KEY (`IDCategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- Creo tabla Avatar
+CREATE TABLE avatar(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  usuario_id INT
+);
 
---
--- Dumping data for table `categoria`
---
+-- Creo tabla Categoria
+CREATE TABLE categoria(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50)
+);
 
-LOCK TABLES `categoria` WRITE;
-/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
-UNLOCK TABLES;
+-- Creo tabla Producto
+CREATE TABLE producto(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  descripcion VARCHAR(500),
+  stock INT NOT NULL,
+  precio INT NOT NULL,
+  estado INT NOT NULL,
+  subcategoria_id INT
+);
 
---
--- Table structure for table `ciudad`
---
+-- Creo tabla Subcategoria
+CREATE TABLE subcategoria(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  categoria_id INT
+);
 
-DROP TABLE IF EXISTS `ciudad`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ciudad` (
-  `IDCiudad` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `IDProvincia` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDCiudad`),
-  KEY `IDProvincia` (`IDProvincia`),
-  CONSTRAINT `ciudad_ibfk_1` FOREIGN KEY (`IDProvincia`) REFERENCES `provincia` (`IDProvincia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- Creo tabla Imagen
+CREATE TABLE imagen(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  producto_id INT
+);
 
---
--- Dumping data for table `ciudad`
---
+-- Creo tabla Envio
+CREATE TABLE envio(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50),
+  estado VARCHAR(50),
+  venta_id INT
+);
 
-LOCK TABLES `ciudad` WRITE;
-/*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
-UNLOCK TABLES;
+-- Creo tabla Venta
+CREATE TABLE venta(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  formaDePago VARCHAR(50),
+  estado VARCHAR(50),
+  envio_id INT,
+  producto_id INT,
+  usuario_id INT
+);
 
---
--- Table structure for table `envio`
---
+-- Creo tabla Pago
+CREATE TABLE pago(
+  id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
+  estado VARCHAR(50),
+  venta_id INT
+);
 
-DROP TABLE IF EXISTS `envio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `envio` (
-  `IDEnvio` int(11) NOT NULL AUTO_INCREMENT,
-  `Forma_de_envío` varchar(15) DEFAULT NULL,
-  `Estado` varchar(15) DEFAULT NULL,
-  `IDVenta` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDEnvio`),
-  KEY `IDVenta` (`IDVenta`),
-  CONSTRAINT `envio_ibfk_1` FOREIGN KEY (`IDVenta`) REFERENCES `venta` (`IDVenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- Creo tabla Venta-Producto
+CREATE TABLE venta_producto(
+  precioDelDia INT DEFAULT NULL,
+  cantidadProducto INT DEFAULT NULL,
+  producto_id INT,
+  venta_id INT
+);
 
---
--- Dumping data for table `envio`
---
 
-LOCK TABLES `envio` WRITE;
-/*!40000 ALTER TABLE `envio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `envio` ENABLE KEYS */;
-UNLOCK TABLES;
+-- Agrego las claves foraneas de cada tabla
 
---
--- Table structure for table `imagen`
---
+ALTER TABLE usuario ADD FOREIGN KEY (rol_id) REFERENCES rol(id);
+ALTER TABLE rol ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE tipoCons ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE provincia ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE ciudad ADD FOREIGN KEY (provincia_id) REFERENCES provincia(id);
+ALTER TABLE avatar ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE producto ADD FOREIGN KEY (subcategoria_id) REFERENCES subcategoria(id);
+ALTER TABLE subcategoria ADD FOREIGN KEY (categoria_id) REFERENCES categoria(id);
+ALTER TABLE imagen ADD FOREIGN KEY (producto_id) REFERENCES producto(id);
+ALTER TABLE envio ADD FOREIGN KEY (venta_id) REFERENCES venta(id);
+ALTER TABLE venta ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE venta ADD FOREIGN KEY (producto_id) REFERENCES producto(id);
+ALTER TABLE venta ADD FOREIGN KEY (envio_id) REFERENCES envio(id);
+ALTER TABLE pago ADD FOREIGN KEY (venta_id) REFERENCES venta(id);
+ALTER TABLE venta_producto ADD FOREIGN KEY (producto_id) REFERENCES producto(id);
+ALTER TABLE venta_producto ADD FOREIGN KEY (venta_id) REFERENCES venta(id);
 
-DROP TABLE IF EXISTS `imagen`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `imagen` (
-  `IDImagen` int(11) NOT NULL AUTO_INCREMENT,
-  `RutaDeImagenDelProducto` varchar(200) NOT NULL,
-  `IDProducto` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDImagen`),
-  KEY `IDProducto` (`IDProducto`),
-  CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`IDProducto`) REFERENCES `producto` (`IDProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- Agrego Roles
+INSERT INTO rol (id, nombre) VALUES (null, 'administrador'), (null, 'cliente'), (null, 'editor'),
+(null, 'proveedor'), (null, 'distribuidor'), (null, 'vendedor');
 
---
--- Dumping data for table `imagen`
---
+-- Agrego Tipo de Consumidor
+INSERT INTO tipoCons (id, nombre) VALUES (null, 'Consumidor Final'), (null, 'IVA Responsable Inscripto'),
+(null, 'IVA Responsable No Inscripto'), (null, 'IVA Sujeto Exento');
 
-LOCK TABLES `imagen` WRITE;
-/*!40000 ALTER TABLE `imagen` DISABLE KEYS */;
-/*!40000 ALTER TABLE `imagen` ENABLE KEYS */;
-UNLOCK TABLES;
+-- Agrego Categorias
+INSERT INTO categoria (id, nombre) VALUES (null,'Equipamiento'),(null,'Insumos'),(null,'Kit');
 
---
--- Table structure for table `pago`
---
+-- Agrego Sub-Categorias
+INSERT INTO subcategoria (id, nombre, categoria_id) VALUES (null,'Canillas y conectores',1),(null,'Embarrillado',1),(null,'Embotellado',1),
+(null,'Enfriado',1),(null,'Fermentacion',1),(null,'Macerado y hervido',1),(null,'Mangueras',1),(null,'Medicion y control',1),
+(null,'Molienda',1),(null,'Tratamiento agua',1),(null,'Azucares',2),(null,'Botellas',2),(null,'Clarificantes',2),(null,'Correccion agua',2),
+(null,'Levaduras',2),(null,'Limpieza',2), (null,'Lúpulus',2),(null,'Maltas',2),(null,'Tapas',2),(null,'Kit equipos',3),(null,'Kit insumos',3);
 
-DROP TABLE IF EXISTS `pago`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pago` (
-  `IDPago` int(11) NOT NULL AUTO_INCREMENT,
-  `Forma_de_pago` varchar(15) DEFAULT NULL,
-  `Estado` varchar(15) DEFAULT NULL,
-  `IDVenta` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDPago`),
-  KEY `IDVenta` (`IDVenta`),
-  CONSTRAINT `pago_ibfk_1` FOREIGN KEY (`IDVenta`) REFERENCES `venta` (`IDVenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- Agrego Productos
+INSERT INTO producto(id, nombre, descripcion, stock, subcategoria_id, estado, precio) VALUES
+ (null,' CONECTOR RECTO ROSCA MACHO','ACOPLE CONECTOR RECTO ROSCA MACHO 1/4',13,1,1,227.43),
+ (null,'CANILLA CHOP PLASTICA','CANILLA TIPO CHOPP AMERICANA MANUAL PARA CORNELIUS-BARRIL ',17,1,1,353.80),
+ (null,'CANILLA DOBLE ACCION','CANILLA DOBLE ACCION PARA CHOPERA ',9,1,1,2879.50),
+ (null,' BARRIL PET ','BARRIL CAPACIDAD 30 LTS. ESTIVADO 4X4 HASTA 3 PISOS',3,2,1,784.01),
+ (null,'ADAPTADOR ROSCA HEMBRA BRONCE','BUJE BRONCE ADAPTADOR PARA TUERCA CANILLAS ',15,2,1,396.40),
+ (null,'GASIFICADORA ESTÁTICA','SISTEMA DE GASIFICACION DE CERVEZA COMPACTO ',4,2,1,11555.57),
+ (null,' BIDON EMBOTELLADOR ','BIDON DE 25 LITROS PARA MADURAR/ FERMENTAR CON CANILLA',78,3,1,414.06),
+ (null,'LAVADOR DE BOTELLAS','DISPOSITIVO QUE SE ENROSCA EN CANILLA DE 1/2 Y SE ACCIONA PRESION DE LA BOTELLA ',22,3,1,582.01),
+ (null,'GLLENADORA ALTO FLUJO','VARILLA CON VALVULA DOSIFICADORA QUE PERMITE LLENAR BOTELLAS HASTA EL CUELLO ',11,3,1,371.35),
+ (null,' ENFRIADOR CONTRACORRIENTE ','ENFRIADOR CONTRACORRIENTE DE ALUMINIO',22,4,1,1922.91),
+ (null,'SERPENTINA CHOPERA','SERPENTINA CHOPERA 15M ',34,4,1,2642.29),
+ (null,'SERPENTINA INMERSION M','SERPENTINA INMERSION 7M ',19,4,1,1204.88),
+ (null,' ACIDO CITRICO ','GRADO ALIMENTICIO, PARA REGULAR EL PH DE MACERACIÓN',21,5,1,330.46),
+ (null,'ACOPLE RAPIDO HEMBRA','ACOPLE RAPIDO PP PARA MANGUERA 1/2 PULGADA',22,5,1,527.56),
+ (null,'ACOPLE RAPIDO MACHO','ACOPLE RAPIDO PARA OLLA. 1/2 PULGADA ',23,5,1,169.40),
+ (null,' BOLSA MACERADORA ','ASEGURAR UNA MACERACIÓN EFICIENTE Y PARA PERMITIR EL ACLARADO, ADEMÁS DE PARA DRENAR BIEN EL MOSTO DESPUÉS DEL MACERADO Y LA COCCIÓN.',24,6,1,139.66),
+ (null,'BOMBA TRASVASE GRUNDFOS','BOMBA TRASVASE RECOMENDADA PARA EQUIPOS DE 50  HASTA 500 LITROS',25,6,1,11313.50),
+ (null,'ESTRUCTURA PARA 3 OLLAS','ESTRUCTURA PARA OLLAS CON UN DESNIVEL PARA EQUIPOS DE 50 A 100L. ',26,6,1,7365.59),
+ (null,'MANGUERA TEJIDA','MANGUERA TEJIDA, SOPORTA PRESION, ES SANITARIA, IDEAL TRASVASE, CARBONATAR.',26,7,1,76.63),
+ (null,'BALANZA DIGITAL','HASTA 7 KG (MIDE GR X GR).CUERPO DE PLÁSTICO ABS. PESA EN GRAMOS Y ONZAS.FUNCIÓN DE TARA Y CALIBRACIÓN.',27,8,1,835.97),
+ (null,'DENSIMETRO','DENSÍMETRO.ESCALA DE GRAVEDAD ESPECÍFICA DE 1000 A 1100.',28,8,1,708.62),
+ (null,'PROBETA PLASTICA','PROBETA PLASTICA PARA DENSIMETRO.',29,8,1,292.22),
+ (null,'MOLINO A DISCO','EXACTA PROPORCIÓN DE HARINA FINA, HARINA GRUESA Y CASCARA.TOLVA DE FUNDICIÓN INTEGRADA AL CUERPO.',28,9,1,4671.81),
+ (null,'MOLINO A RODILLO PARA TALADRO','RODILLOS 6 CM DE LARGO.MUELE 100 KG HORA.PARA USO CON TALADRO.IDEAL PARA MOTORIZAR.',29,9,1,10182.15),
+ (null,'MOLIENDA MALTAS BASE ','LA COMPRA DE ESTE PRODUCTO DEBE SER CON UNA ANT. MINIMA DE 24HS Y COORDINAR CON PRODUCCION EL RETIRO DE LA MISMA.',30,9,1,100.00),
+ (null,'CARCAZA PARA FILTRO',' CARCAZA PARA FILTRO. ',31,10,1,1845.53),
+ (null,' FILTRO CARBON ACTIVADO ',' FILTRO PARA COLOCAR EN CARCAZA.',32,10,1,1475.05),
+ (null,'AZUCAR DE MAIZ',' AZÚCAR OBTENIDA DE LA HIDRÓLISIS ENZIMÁTICA DE ALMIDONES DE MAIZ Y OTROS CEREALES. ',32,11,2,183.15),
+ (null,' FLACTOSA ',' AZÚCAR NO FERMENTABLE QUE OTORGA CUERPO Y DULZOR A LA CERVEZA TERMINADA, TAMBIÉN ES UTILIZADA PARA LA ELABORACIÓN DEL ESTILO MILK STOUT.',33,11,2,133.71),
+ (null,' PASTILLAS CARBONATADORAS ',' CONTENIDO 250GR.',34,11,2,81.20),
+ (null,'BOTELLA VIDRIO COLOR AMBAR',' BOTELLA DE VIDRIO COLOR AMBAR, VARIAS PRESENTACIONES BOCA PARA TAPA 27MM ',35,12,2,514.61),
+ (null,'IRISH MOSS',' Clarificante utilizado en el hervor. Dosis 0,2 gr/L',36,13,2,74.78),
+ (null,'PASTILLA WHIRFLOCK','CLARIFICANTE DE HERVIDO. DOSIS 1 PASTILLA CADA 30L.',37,13,2,24.63),
+ (null,'ACIDO FOSFORICO ','DISMINUYE EL PH DEL MACERADO, A DIFERENCIA DEL ACIDO LACTICO, SIN AFECTAR EL SABOR DE LA CERVEZA.',47,14,2,770.11),
+ (null,'CLORURO DE CALCIO','REDUCE LA ALCALINIDAD DEL AGUA Y ES NUTRIENTE NECESARIO PARA LA LEVADURA.',48,14,2,296.15),
+ (null,'YPSUM (SULFATO DE CALCIO)','REDUCE LA ALCALINIDAD DE AGUA Y APORTA NUTRIENTES NECESARIOS PARA LA LEVADURA. RESALTAN EL AMARGOR SECO Y AGUDO CUANDO LOS IBUS SON MUY ELEVADOS.',49,14,2,236.69),
+ (null,'ABBAYE LALLEMAND ','LEVADURA SELECCIONADA POR SU CAPACIDAD DE PRODUCIR EXCELENTES CERVEZAS BELGAS, INCLUYENDO CERVEZAS DE ALTA GRAVEDAD COMO DUBBEL, TRIPPEL Y QUEADS.',57,15,2,229.19),
+ (null,'BELLE SAISON LALLEMAND','LEVADURA ALE ESTILO-SAISON BELGA.ESTERES Y FENOLES, SABORES Y AROMAS AFRUTADOS, PICANTES Y ESPECIADOS',58,15,2,220.40),
+ (null,'BRY LALLEMAND','LEVADURA ALE ESTILO OESTE AMERICANA.ALGUNOS ESTERES, CASI NEUTRA',59,15,2,90.00),
+ (null,'ACIDO PERACETICO OXIDIAL ','LPODEROSO BIOCIDAQUE ACTUA EFICIENTEMENTE SOBRE BACTERIAS, HONGOS, LEVADURAS Y ESPORAS.',60,16,2,301.87),
+ (null,'ALCOHOL','ALCOHOL 100% AL CUAL SE DEBE BAJAR AL 70% PARA SANITIZAR.',61,16,2,121.00),
+ (null,'EPILLO PARA BOTELLA','CEPILLO DE NYLON PARA LIMPIAR LAS BOTELLAS.',62,16,2,92.84),
+ (null,'AMARILLO (SELLADO AL VACIO). ','LUPULO PRINCIPALMENTE DE AROMA, CON UN PERFIL CITRICO A POMELO Y FRUTADO.ALFA ÁCIDOS: 7-11%. BETA ÁCIDOS: 5,5-8%.',73,17,2,494.98),
+ (null,'APOLLO(SELLADO AL VACIO)','EL APOLLO ES UN LÚPULO DE AMARGOR CON NOTAS HERBALES, ESPECIADO, RESINOSO Y PICANTE. ALFA ÁCIDOS: 15-19%.BETA ÁCIDOS: 5.5-8%.',74,17,2,484.32),
+ (null,'CASCADE (SELLADO AL VACIO)','CPUEDE SE USADO PARA BRINDAR AMARGOR, AROMA, TERMINACIÓN Y DRY HOPPING. BRINDA UN LEVE CARACTER CÍTRICO.',75,17,2,223.80),
+ (null,'ABBEY WEYERMANN. ','LA MALTA WEYERMANN ABBEY ES UNA MALTA PÁLIDA CARAMELIZADA QUE APORTA UN SABOR FUERTE A PAN COCIDO, NUECES MIEL Y FRUTAS.',86,18,2,201.13),
+ (null,'AAVENA ARROLLADA.','LAS CÁSCARAS PROVEEN MASA Y AYUDAN A PREVENIR QUE LA CAMA DE GRANOS SE COMPRIMA Y TAPONE DURANTE EL LAVADO.',87,18,2,171.77),
+ (null,'BLACK CASTLE MALTING.','MALTA NEGRA DE 1,300 EBC. LA CEBADA MALTEADA MÁS NEGRA. TORREFACTA A UNA TEMPERATURA DE HASTA 235 °C.',88,18,2,140.68),
+ (null,'TAPAS LISAS. ','TAPAS LISAS NEGRAS Y DORADAS 27MM - 100 UNIDADES',94,19,2,216.37),
+ (null,'TAPAS LISAS DORADAS','TAPAS LISAS DORADAS 29MM. DORADAS CHAMPAGNE (100 UNIDADES)',95,19,2,506.07),
+ (null,'TAPAS IMPRESAS.','TAPAS IMPRESAS 27MM (1000 UNIDADES)',98,19,2,2066.14),
+ (null,'KIT ELABORACION BASICO. ','EL KIT CONTIENE LO SIGUIENTE: – OLLA 24 LITROS CON CANILLA Y NIPLE.– FERMENTADOR 20L.– AIRLOCK CON TAPÓN PARA FERMENTADOR.– TERMÓMETRO VIDRIO 0 -110º.',15,20,3,5207.04),
+ (null,'TKIT ELABORACION INTERMEDIO','EL KIT CONTIENE LO SIGUIENTE: – OLLA 24 LITROS CON CANILLA Y NIPLE.– FERMENTADOR 20L.– AIRLOCK CON TAPÓN PARA FERMENTADOR.– TERMÓMETRO VIDRIO 0 -110º.',16,20,3,7961.56),
+ (null,'KIT ELABORACION PRO','TEL KIT CONTIENE LO SIGUIENTE: – OLLA 24 LITROS CON CANILLA Y NIPLE.– FERMENTADOR 20L.– AIRLOCK CON TAPÓN PARA FERMENTADOR.– TERMÓMETRO VIDRIO 0 -110º.',17,20,3,2066.14),
+ (null,'AMBER ALE. ','PILSEN 5 KG. CARAMELO 120L 200 GR. CASCADE 10 GR (AMARGOR). CASCADDE 10GR (AROMA). CLARIFICANTE 3 GR.SAF BE-256.',11,21,3,899.63),
+ (null,'DORADA PAMPEANA','KIT DE INSUMOS DE 20 LITROS PARA ELABORAR EL ESTILO DORADA PAMPEANA CON CLARIFICANTE.',12,21,3,609.10),
+ (null,'KIT BARLEY WINE','PILSEN. MELANOIDINA.  PALE ALE. CARAMELO 60L. LUPULO CASCADE. CLARIFICANTE. LEVADURA T58. AZUCAR Y CHIPS DE ROBLE.',15,21,3,1312.96);
 
---
--- Dumping data for table `pago`
---
+-- Agrego Provincias
+INSERT INTO provincia (id, nombre) VALUES (null, 'Buenos Aires'), (null, 'Catamarca'), (null, 'Chaco'),
+(null, 'Chubut'), (null, 'Córdoba'),  (null, 'Corrientes'), (null, 'Entre Rios'), (null, 'Formosa'),
+(null, 'Jujuy'), (null, 'La Pampa'), (null, 'La Rioja'), (null, 'Mendoza'), (null, 'Misiones'),
+(null, 'Neuquén'), (null, 'Río Negro'), (null, 'Salta'), (null, 'San Juan'), (null, 'San Luis'),
+(null, 'Santa Cruz'), (null, 'Santa Fe'), (null, 'Santiago del Estero'), (null, 'Tierra del Fuego'),
+(null, 'Tucumán');
 
-LOCK TABLES `pago` WRITE;
-/*!40000 ALTER TABLE `pago` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pago` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `producto`
---
-
-DROP TABLE IF EXISTS `producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `producto` (
-  `IDProducto` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `Stock` int(11) NOT NULL,
-  `Precio` double NOT NULL,
-  `Estado` varchar(30) DEFAULT NULL,
-  `IDSubcategoria` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDProducto`),
-  KEY `IDSubcategoria` (`IDSubcategoria`),
-  CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`IDSubcategoria`) REFERENCES `subcategoria` (`IDSubcategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `producto`
---
-
-LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `provincia`
---
-
-DROP TABLE IF EXISTS `provincia`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `provincia` (
-  `IDProvincia` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `IDUsuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDProvincia`),
-  KEY `IDUsuario` (`IDUsuario`),
-  CONSTRAINT `provincia_ibfk_1` FOREIGN KEY (`IDUsuario`) REFERENCES `usuario` (`IDUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `provincia`
---
-
-LOCK TABLES `provincia` WRITE;
-/*!40000 ALTER TABLE `provincia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `provincia` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `rol`
---
-
-DROP TABLE IF EXISTS `rol`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `rol` (
-  `IDRol` int(11) NOT NULL AUTO_INCREMENT,
-  `NombreDelRol` varchar(30) NOT NULL,
-  `IDUsuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDRol`),
-  KEY `IDUsuario` (`IDUsuario`),
-  CONSTRAINT `rol_ibfk_1` FOREIGN KEY (`IDUsuario`) REFERENCES `usuario` (`IDUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rol`
---
-
-LOCK TABLES `rol` WRITE;
-/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `subcategoria`
---
-
-DROP TABLE IF EXISTS `subcategoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `subcategoria` (
-  `IDSubcategoria` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(30) NOT NULL,
-  `IDCategoria` int(11) DEFAULT NULL,
-  `IDProducto` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDSubcategoria`),
-  KEY `IDCategoria` (`IDCategoria`),
-  KEY `IDProducto` (`IDProducto`),
-  CONSTRAINT `subcategoria_ibfk_1` FOREIGN KEY (`IDCategoria`) REFERENCES `categoria` (`IDCategoria`),
-  CONSTRAINT `subcategoria_ibfk_2` FOREIGN KEY (`IDProducto`) REFERENCES `producto` (`IDProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `subcategoria`
---
-
-LOCK TABLES `subcategoria` WRITE;
-/*!40000 ALTER TABLE `subcategoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subcategoria` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `IDUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(20) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Pass` varchar(500) NOT NULL,
-  `Nombre` varchar(15) DEFAULT NULL,
-  `Apellido` varchar(20) DEFAULT NULL,
-  `Rol` varchar(15) DEFAULT NULL,
-  `Avatar` varchar(200) DEFAULT NULL,
-  `Provincia` varchar(30) DEFAULT NULL,
-  `Ciudad` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`IDUsuario`),
-  UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `venta`
---
-
-DROP TABLE IF EXISTS `venta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `venta` (
-  `IDVenta` int(11) NOT NULL AUTO_INCREMENT,
-  `Forma_de_pago` varchar(15) DEFAULT NULL,
-  `Tipo_de_envío` varchar(15) DEFAULT NULL,
-  `Estado` varchar(15) DEFAULT NULL,
-  `IDProducto` int(11) DEFAULT NULL,
-  `IDUsuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDVenta`),
-  KEY `IDProducto` (`IDProducto`),
-  KEY `IDUsuario` (`IDUsuario`),
-  CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`IDProducto`) REFERENCES `producto` (`IDProducto`),
-  CONSTRAINT `venta_ibfk_2` FOREIGN KEY (`IDUsuario`) REFERENCES `usuario` (`IDUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `venta`
---
-
-LOCK TABLES `venta` WRITE;
-/*!40000 ALTER TABLE `venta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `venta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `venta_producto`
---
-
-DROP TABLE IF EXISTS `venta_producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `venta_producto` (
-  `Precio_del_día` int(11) DEFAULT NULL,
-  `Cantidad_producto` int(11) DEFAULT NULL,
-  `IDVenta` int(11) DEFAULT NULL,
-  `IDProducto` int(11) DEFAULT NULL,
-  KEY `IDVenta` (`IDVenta`),
-  KEY `IDProducto` (`IDProducto`),
-  CONSTRAINT `venta_producto_ibfk_1` FOREIGN KEY (`IDVenta`) REFERENCES `venta` (`IDVenta`),
-  CONSTRAINT `venta_producto_ibfk_2` FOREIGN KEY (`IDProducto`) REFERENCES `producto` (`IDProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `venta_producto`
---
-
-LOCK TABLES `venta_producto` WRITE;
-/*!40000 ALTER TABLE `venta_producto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `venta_producto` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-01-21 21:33:32
+-- Agrego Ciudades
+INSERT INTO ciudad (id, nombre, provincia_id) VALUES (null, 'La Plata', '1'), (null, 'San Fernando del Valle de Catamarca', '2'),
+(null, 'Resistencia', '3'), (null, 'Rawson','4'), (null, 'Córdoba', '5'), (null, 'Unquillo', '5'), (null, 'Villa Allende', '5'),
+(null, 'Carlos Paz', '5'), (null, 'Corrientes', '6'), (null, 'Paraná', '7'), (null, 'Formosa', '8'), (null, 'San Salvador de Jujuy', '9'),
+(null, 'Santa Rosa', '10'), (null, 'La Rioja', '11'), (null, 'Mendoza', '12'), (null, 'Posadas', '13'), (null, 'Neuquén', '14'),
+(null, 'Viedma', '15'), (null, 'Salta', '16'), (null, 'San Juan', '17'), (null, 'San Luis', '18'), (null, 'Río Gallegos', '19'),
+(null, 'Santa Fe', '20'), (null, 'Santiago del Estero', '21'),(null, 'Ushuaia', '22'), (null, 'San Miguel de Tucumán', '23');
