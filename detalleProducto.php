@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$titulo="Detalle del Producto";
+$titulo="Producto";
 ?>
 
 <!DOCTYPE html>
