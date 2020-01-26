@@ -1,6 +1,7 @@
 /* header */
 #logoHeader {
   max-width: 100%;
+  min-width: 200px;
   margin-top: -20px;
   margin-left: -15px;
   margin-bottom: -15px;
@@ -125,6 +126,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   width: 25%;
+  min-width: 50px;
 }
 
 .flex-container {
@@ -155,7 +157,7 @@ i.icono {
 }
 /* icono youtube */
 #youtube{
-    padding: 5px 9px;
+    padding: 4px 10px;
 
 }
 
@@ -217,11 +219,34 @@ i.icono {
 }
 
 /*Carrito*/
-.input-res {
+.carrito-section{
+  background-attachment: fixed;
+    background-image: url("../img/canillabirra.jpg");
+}
+#carrito{
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: black;
+  width: 90%;
+  height: auto;
+}
+#tabla-carrito{
+  background: #ffc10796;
   width: 100%;
-  min-width: 10px;
-  max-width: 50px;
+  max-width: auto;
   box-sizing: border-box;
+}
+.input-res{
+  width: 100%;
+  max-width: auto;
+  box-sizing: border-box;
+}
+
+a#continuar{
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
 }
 /* MI CUENTA */
 
@@ -319,8 +344,16 @@ i.icono {
 }
 
 /*CHECKOUT*/
-
-
+.checkout{
+  background-image: url(../img/canillabirra.jpg);
+  background-attachment: fixed;
+}
+#checkout-transparente{
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 95%;
+}
 
 /*TABLAS*/
 th{
@@ -330,12 +363,3 @@ tbody{
   text-align: center;
 }
 
-.checkout{
-  background-image: url(../img/canillabirra.jpg);
-  background-attachment: fixed;
-}
-#checkout-transparente{
-  background-color: rgba(255, 255, 255, 0.9);
-  padding-left: 5%;
-  padding-right: 5%;
-}
