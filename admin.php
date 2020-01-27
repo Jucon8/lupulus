@@ -3,7 +3,7 @@ require_once("class/db.php");
 session_start();
 
 $titulo="Panel de Control";
-$baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus_beta;port=3306','root','');
+$baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus;port=3306','root','');
 
 if (isset($_POST['add'])) {
   //INSERTA A LA BASE DE DATOS LOS DATOS QUE LLEGAN POR POST
