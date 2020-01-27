@@ -1,6 +1,7 @@
  <?php
 session_start();
-include 'BasesDeDatos/pdo.php';
+require 'BasesDeDatos/pdo.php';
+ $conexion = new Conexion();
 $titulo="Carrito";
 if(isset($_SESSION['carrito'])){
 //si existe
@@ -22,7 +23,7 @@ if(isset($_SESSION['carrito'])){
               $nombre =""; 
               $precio="";
               $imagen="";
-              $consulta=$conexion ->prepare('SELECT * FROM productos where id='.$_GET['id'])or die($conexion->error) ;
+              $consulta=$conexion ->prepare('SELECT * FROM producto where id='.$_GET['id'])or die($conexion->error) ;
               $consulta ->execute();
               $fila=$consulta->fetch(PDO::FETCH_ASSOC);
               $nombre =$fila['nombre'];
@@ -46,7 +47,7 @@ if(isset($_SESSION['carrito'])){
       $nombre =""; 
       $precio="";
       $imagen="";
-      $consulta=$conexion ->prepare('SELECT * FROM productos where id='.$_GET['id']);
+      $consulta=$conexion ->prepare('SELECT * FROM producto where id='.$_GET['id']);
       $consulta ->execute();
      $fila=$consulta->fetch(PDO::FETCH_ASSOC);
       $nombre =$fila['nombre'];
@@ -62,6 +63,7 @@ if(isset($_SESSION['carrito'])){
     $_SESSION['carrito']=$arreglo;
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
@@ -111,10 +113,15 @@ if(isset($_SESSION['carrito'])){
                         $arregloCarrito =$_SESSION['carrito'];
                         for($i=0;$i<count($arregloCarrito);$i++){ 
                           $total = $total + ($arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']);   
+                           var_dump($arregloCarrito);
                 ?>
                   <tr class="tabla-principal">
                     <td class="product-imagen">
-                      <img  alt="Imagen" class="img-fluid" src="img/<?= $arregloCarrito[$i]['Imagen']; ?>" >
+                    <!-- FALTA HACER IMAGEN -->
+                       
+                      <img src="img/<?php if(!empty($arregloCarrito["imagen"])){echo $arregloCarrito["imagen"];}
+                    else {echo 'cartel.jpg';}?>" class="card-img" alt="...">
+                     
                     </td>
                     <td class="product-nombre">
                       <h2 class=" text-center"><?= $arregloCarrito[$i]['Nombre'];?></h2>
