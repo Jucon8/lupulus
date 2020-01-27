@@ -1,6 +1,6 @@
  <?php
 session_start();
-include 'BaseDeDatos/pdo.php';
+include 'BasesDeDatos/pdo.php';
 $titulo="Carrito";
 if(isset($_SESSION['carrito'])){
 //si existe
