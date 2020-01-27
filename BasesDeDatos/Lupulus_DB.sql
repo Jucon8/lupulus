@@ -67,10 +67,12 @@ CREATE TABLE producto(
   id INT UNIQUE PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(50),
   descripcion VARCHAR(500),
+  precio FLOAT(10,2) NOT NULL,
   stock INT NOT NULL,
-  precio INT NOT NULL,
+  categoria_id INT,
+  subcategoria_id INT,
   estado INT NOT NULL,
-  subcategoria_id INT
+  borrado INT
 );
 
 -- Creo tabla Subcategoria
@@ -129,6 +131,7 @@ ALTER TABLE tipoCons ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
 ALTER TABLE provincia ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
 ALTER TABLE ciudad ADD FOREIGN KEY (provincia_id) REFERENCES provincia(id);
 ALTER TABLE avatar ADD FOREIGN KEY (usuario_id) REFERENCES usuario(id);
+ALTER TABLE producto ADD FOREIGN KEY (categoria_id) REFERENCES categoria(id);
 ALTER TABLE producto ADD FOREIGN KEY (subcategoria_id) REFERENCES subcategoria(id);
 ALTER TABLE subcategoria ADD FOREIGN KEY (categoria_id) REFERENCES categoria(id);
 ALTER TABLE imagen ADD FOREIGN KEY (producto_id) REFERENCES producto(id);

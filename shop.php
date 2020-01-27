@@ -151,7 +151,7 @@ $listaProductos=$consulta->fetchAll(PDO::FETCH_ASSOC);
                       <h5 class="card-text">$<?=$producto["precio"]?></h5>
                       </div>
                       <div class="float-left pb-3">
-                        <a class="btn btn-success btn-lg" href="producto.php?id=<?=$producto["id"]?>"> Detalle del producto</a>
+                        <a class="btn btn-success btn-lg" href="detalleProducto.php?id=<?=$producto["id"]?>"> Detalle del producto</a>
                       </div>
 
                     </div>

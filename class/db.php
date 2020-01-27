@@ -17,14 +17,45 @@ public function __construct($dsn, $db_user, $db_pass) {
 }
 
 //FUNCIÓN PARA INSERTAR PRODUCTOS A LA BASE DE DATOS
-public function insertarProducto($nombre, $stock, $precio, $descripcion, $id_subcategoria) {
-    $precio_double = floatval($precio);
+public function insertarProducto($nombre, $descripcion, $precio, $stock, $categoria_id, $subcategoria_id) {
+   /* $precio_double = floatval($precio);
     $stock_int = (INT)$stock;
-    $id_int = (INT)$id_subcategoria;
-    $consulta = $this->conexion->prepare("INSERT INTO producto (IDProducto, Nombre, Stock, Precio, Descripción, IDSubcategoria)
-    VALUES ( NULL, '$nombre', '$stock_int', '$precio_double', '$descripcion', '$id_int')");
+    $id_int = (INT)$categoria_id;*/
+    $consulta = $this->conexion->prepare("INSERT INTO producto (nombre, descripcion, precio, stock, categoria_id, subcategoria_id, estado)
+    VALUES ('$nombre', '$descripcion', '$precio', '$stock', '$categoria_id', '$subcategoria_id', 1)");
     $consulta->execute();
 }
+
+public function modificarProducto($id, $campo, $valor) {
+    $consulta = $this->conexion->prepare("UPDATE producto 
+    SET $campo = '$valor'
+    WHERE id = $id");
+    $consulta->execute();
+}
+
+
+public function leerProductos(){
+    $consulta = $this->conexion->prepare('SELECT * from producto');
+    $consulta->execute();
+
+return $arrayResult = $consulta->fetchAll(PDO::FETCH_ASSOC); 
+}
+
+public function leerCategorias(){
+    $consulta = $this->conexion->prepare('SELECT * from categoria');
+    $consulta->execute();
+
+return $arrayResult = $consulta->fetchAll(PDO::FETCH_ASSOC); 
+}
+
+public function leerSubcategorias(){
+    $consulta = $this->conexion->prepare('SELECT * from subcategoria');
+    $consulta->execute();
+
+return $arrayResult = $consulta->fetchAll(PDO::FETCH_ASSOC); 
+}
+
+
 
 /*public function leerProducto(){
     $consulta = $this->conexion->prepare('SELECT * from producto');
@@ -34,9 +65,6 @@ public function insertarProducto($nombre, $stock, $precio, $descripcion, $id_sub
 }*/
 
 }
-
-
-
 
 
 ?>

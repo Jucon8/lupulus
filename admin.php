@@ -3,15 +3,25 @@ require_once("class/db.php");
 session_start();
 
 $titulo="Panel de Control";
+$baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus;port=3306','root','');
 
-if ($_POST) {
+if (isset($_POST['add'])) {
   //INSERTA A LA BASE DE DATOS LOS DATOS QUE LLEGAN POR POST
-  $baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus_db;port=3306','root','');
-
-  $baseDeDatos->insertarProducto($_POST['nombre'], $_POST['stock'], $_POST['precio'], $_POST['descripcion'], $_POST['id_subcategoria']);
-
-
+    $baseDeDatos->insertarProducto($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['stock'], $_POST['categoria_id'], $_POST['subcategoria_id']);
+  
 }
+
+if (isset($_GET['variable2'])) {
+  //ELIMINA EL PRODUCTO (CAMBIA DE 0 A 1 EL VALOR DEL CAMPO BORRADO DEL PRODUCTO SELECCIONADO)
+    $baseDeDatos->modificarProducto($_GET['variable2'], 'borrado', 1);
+    header('Location: admin.php#productos');
+    exit;        
+}
+
+
+//ARRAY CON LOS DATOS DE LOS PRODUCTOS
+$datosProductos = $baseDeDatos->leerProductos();
+
 
 
 ?>
@@ -234,19 +244,21 @@ if ($_POST) {
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationDefault03">Descripción</label>
-        <input name="descripcion" type="text" class="form-control" id="validationDefault04" required>
+        <input name="descripcion" type="text" class="form-control" id="validationDefault04" required> 
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationDefault04">Categoria</label>
-        <select name="id_categoria"  class="custom-select" id="validationDefault05" required>
-          <option value='1'>Equipamiento</option>
-          <option value='2'>Insumos</option>
-          <option value='3'>Kit</option>
+        <!-- Falta añadir categoria_id en tabla producto MySQL -->
+        <select name="categoria_id"  class="custom-select" id="validationDefault05" required>
+        <option selected disabled value="">Seleccione una categoria</option>
+          <option value='1'>EQUIPAMIENTO</option>
+          <option value='2'>INSUMOS</option>
+          <option value='3'>KIT</option>
         </select>
       </div>
       <div class="col-md-3 mb-3">
         <label for="validationDefault04">Subcategoria</label>
-        <select name="id_subcategoria" class="custom-select" id="validationDefault06" required>
+        <select name="subcategoria_id" class="custom-select" id="validationDefault06" required>
 
        <!--Equipamiento-->
        <option selected disabled value="">Seleccione una subcategoria</option>
@@ -283,184 +295,45 @@ if ($_POST) {
         <input name="stock" type="text" class="form-control" id="validationDefault07" placeholder="Cantidad" required>
       </div>
     </div>
-    <button class="btn btn-warning" type="submit">AGREGAR</button>
+    <button class="btn btn-warning" type="submit" name="add">AGREGAR</button>
   </form>
           </div>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
                 <tr>
-                  <th>Id_Producto</th>
+                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Descripcion</th>
                   <th>Precio</th>
                   <th>Stock</th>
                   <th>Estado</th>
                   <th>Imagenes</th>
-                  <th>Id_Categoria</th>
+                  <th>Categoria_ID</th>
+                  <th>Subcategoria_ID</th>
+                  <th>Opciones</th>
                 </tr>
               </thead>
               <tbody>
+                <?php foreach ($datosProductos as $producto) {?>
+                  <?php if ($producto['borrado'] == 0) : ?>
                 <tr>
-                  <td>1</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>1</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
+                  <td><?php echo $producto['id']?></td>
+                  <td><?php echo $producto['nombre']?></td>
+                  <td><?php echo $producto['descripcion']?></td>
+                  <td><?php echo $producto['precio']?></td>
+                  <td><?php echo $producto['stock']?></td>
+                  <td><?php echo $producto['estado']?></td>
+                  <td>Imágenes</td>
+                  <td><?php echo $producto['categoria_id']?></td>
+                  <td><?php echo $producto['subcategoria_id']?></td>
+                  
+                  <td><a href="editarProducto.php?variable1=<?php echo $producto['id']?>">EDITAR</a>
+                  <BR></BR>
+                  <a href="admin.php?variable2=<?php echo $producto['id']?>">ELIMINAR</a></td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>0</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>15</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>5</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>1</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>0</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>1</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>100</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>1000</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>23</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>14</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>12</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>15</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>13</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>52</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>14</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>55</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>15</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>23</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria #</td>
-                </tr>
-                <tr>
-                  <td>16</td>
-                  <td>Producto</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                  <td>$$$$$$$</td>
-                  <td>14</td>
-                  <td>Activo</td>
-                  <td>imagen1, imagen2, imagen3</td>
-                  <td>Categoria 2</td>
-                </tr>
+                <?php endif; ?>
+                <?php } ?>
               </tbody>
             </table>
             <hr id="usuarios">
