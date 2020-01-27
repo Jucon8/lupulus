@@ -21,8 +21,8 @@ public function insertarProducto($nombre, $descripcion, $precio, $stock, $catego
    /* $precio_double = floatval($precio);
     $stock_int = (INT)$stock;
     $id_int = (INT)$categoria_id;*/
-    $consulta = $this->conexion->prepare("INSERT INTO producto (nombre, descripcion, precio, stock, categoria_id, subcategoria_id)
-    VALUES ('$nombre', '$descripcion', '$precio', '$stock', '$categoria_id', '$subcategoria_id')");
+    $consulta = $this->conexion->prepare("INSERT INTO producto (nombre, descripcion, precio, stock, categoria_id, subcategoria_id, estado)
+    VALUES ('$nombre', '$descripcion', '$precio', '$stock', '$categoria_id', '$subcategoria_id', 1)");
     $consulta->execute();
 }
 
