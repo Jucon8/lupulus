@@ -1,5 +1,5 @@
 <?php
-requiere_once("class/db.php");
+require_once("class/db.php");
 session_start();
 
 $titulo="Panel de Control";
