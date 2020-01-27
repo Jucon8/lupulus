@@ -1,19 +1,17 @@
 <?php
-session_start();
 
-$titulo="Producto";
-
-include 'BasesDeDatos/pdo.php';
-
+require 'BasesDeDatos/pdo.php';
+ $conexion = new Conexion();
+  
 
 if (isset($_GET['id'])) {
-      $conexion = new Conexion();
-      $consulta=$conexion ->prepare("SELECT * FROM productos where id=".$_GET["id"]);
+      $consulta=$conexion ->prepare("SELECT * FROM producto where id=".$_GET["id"]);
       $consulta ->execute();
       $listaProductos=$consulta->fetchAll(PDO::FETCH_ASSOC);
 
 } else {
   header("Location:./index.php");
+  exit;
 }
 
 ?>
@@ -33,7 +31,7 @@ if (isset($_GET['id'])) {
 
   <!-- barra sm- -md -->
 
-
+ 
   <div class="d-lg-none">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
 
@@ -123,23 +121,23 @@ if (isset($_GET['id'])) {
 
         <div class="card-body  mt-4 ">
 
-          <img class="card-img-top s p-3" style="width: 60%; margin: 0 auto;" src="img/<?= $producto['imagen']?> " alt="">
-          <h3><?= $producto['nombre'];?></h3>
-          <h4>$<?= $producto['precio'];?></h4>
+          <img class="card-img-top s p-3" style="width: 60%; margin: 0 auto;" src="img/<?= $producto['imagen']?> " alt="">       
+          <h3><?= $producto['nombre'];?></h3>    
+          <h4>$<?= $producto['precio'];?></h4>      
           <p class="card-text"><?= $producto['descripcion'];?> </p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 calificacion de los usuarios
-         <p><a href="carrito.php?id=<?= $producto['id']?>" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>
-
+         <p><a href="carrito.php?id=<?= $producto['id']?>" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>           
+             
           <button type="button" class="btn btn-secondary btn-sm">Agregar a favoritos</button>
           <button type="button" class="btn btn-secondary btn-sm">Preguntas frecuentes</button>
       </div>
-        </div>
+        </div>         
        <?php  endforeach;?>
    </div>
   </div>
-
-
+  
+ 
   <footer>
     <?php require_once 'footer.php' ?>
   </footer>
