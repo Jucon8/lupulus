@@ -4,7 +4,7 @@ include("class/db.php");
 session_start();
 
 $titulo="Panel de Control";
-$baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus_beta;port=3306','root','');
+$baseDeDatos = new DataBase('mysql:host=127.0.0.1;dbname=lupulus;port=3306','root','');
 
 if (isset($_POST['edit'])) {
   //MODIFICA EL PRODUCTO
@@ -85,7 +85,7 @@ foreach ($datosSubcategorias as $subcategoria) {
       <div class="col-md-3 mb-3">
         <label for="validationDefault04">Categoria</label>
         <select name="categoria_id"  class="custom-select" id="validationDefault05" required>
-        <option selected disable value=""><?php echo $categoryName ?></option>
+        <option selected disable value=""><?php if (isset($categoryName)) {echo $categoryName;} else {echo 'Sin categoría';} ?></option>
           <option value='1'>EQUIPAMIENTO</option>
           <option value='2'>INSUMOS</option>
           <option value='3'>KIT</option>
