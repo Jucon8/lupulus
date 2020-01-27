@@ -101,7 +101,8 @@ $listaProductos=$consulta->fetchAll(PDO::FETCH_ASSOC);
       </div>
 
       <div class="row">
-        <div class="col-3 d-none d-lg-block mb-3" style="background-color: #000;">
+        <div class="col-2 d-none d-lg-block mb-3" id="sidebar-categorias">
+        <br>
           <h5 class="text-warning">Materia Prima</h5>
           <nav class="fm-nav nav navbar-dark flex-column">
             <a href="" class="nav-link">Lúpulo</a>
