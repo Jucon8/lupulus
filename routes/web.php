@@ -23,6 +23,6 @@ Auth::routes();
 
 #Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/admin/user', 'UserAdminController');
+Route::resource('/admin/users', 'UsersAdminController');
 
-Route::resource('/admin', 'SiteController');
+Route::resource('/admin', 'SitesController');
