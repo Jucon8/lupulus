@@ -128,7 +128,8 @@ p {
 #footer{
   width: 100%;
   z-index: 100;
-  position: relative;
+  position: absolute;
+  bottom: 0em;
 }
 .flex-container .img-top {
   background-color: #000;
