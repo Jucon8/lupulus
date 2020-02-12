@@ -35,19 +35,19 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="home#nosotros">Nosotros</a>
+                <a class="nav-link text-white" style="text-transform: capitalize" href="/#nosotros">Nosotros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="home#preguntas">FAQs</a>
+                <a class="nav-link text-white" style="text-transform: capitalize" href="/#preguntas">FAQs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" style="text-transform: capitalize" href="shop">Shop</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="home#contacto">Contacto</a>
+                <a class="nav-link text-white" style="text-transform: capitalize" href="/#contacto">Contacto</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -57,7 +57,7 @@
              mi cuenta
            </a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="miCuentaHeader">
-           
+
              <a class="dropdown-item" style="text-transform: capitalize"  href="{{ route('login') }}">{{ __('Ingresar') }}</a>
              @if(Route::has('register'))
              <a class="dropdown-item" style="text-transform: capitalize" href="{{ route('register') }}"> {{ __('Registrarse') }}</a>
@@ -65,15 +65,15 @@
            </div>
            @else
            <li class="nav-item dropdown">
-              
+
            <a class="nav-link dropdown-toggle text-white" style="text-transform: capitalize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            {{ Auth::user()->username}} @if (Auth::user()->avatar!==null) <img src="/img/avatars/ {{Auth::user()->avatar}}" class="avatar rounded-circle img-thumbnail" id="avatarHeader" style="width:30px; height:30px" alt="avatar">
            @else
            <img src="/img/avatars/avatar_2x.png" class="avatar rounded-circle" alt="avatar" id="avatarHeader" style="width:30px; height:30px">
-           @endif 
-          
+           @endif
+
           <img src="/img/avatars/avatar_2x.png" class="avatar rounded-circle" alt="avatar" id="avatarHeader" style="width:30px; height:30px">
-          
+
            </a>
            <div class="dropdown-menu dropdown-open" aria-labelledby="navbarDropdown">
               @if(Auth::user()->rol_id==1)
@@ -85,7 +85,7 @@
                 @csrf
               </form>
            </div>
-           
+
            @endguest
 
             <li class="nav-item">
@@ -100,7 +100,7 @@
 
 
 @yield('contenido')
-       
+
 <footer id="footer">
     <div class="flex-container">
         <div> <a class="btn-floating  accent2" href="https://facebook.com"><span data-feather="facebook" id="iconos-footer"></span></a></div>
@@ -138,8 +138,8 @@
 
    </body>
    </html>
-   
-   
-   
-   
-    
+
+
+
+
+
