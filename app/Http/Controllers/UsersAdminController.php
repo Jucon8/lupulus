@@ -35,7 +35,11 @@ class UsersAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user= new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+        #dd($request->all());
+        dd($user->all());
     }
 
     /**
