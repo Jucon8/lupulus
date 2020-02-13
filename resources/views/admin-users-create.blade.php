@@ -9,6 +9,8 @@
 <div class="container-fluid bg-light">
     <div class="row">
     <div class="col-lg-12 bg-light text-center">
+        <br>
+        <br>
     <h1>Crear Usuarios</h1>
     </div>
     <div class="col-lg-12 bg-light align-content-center">
@@ -47,7 +49,14 @@
                   </div>
 
                   <div class="form-group align-content-center">
+                      <br>
                     {!! Form::submit('Crear Usuario', ['class'=>'btn btn-warning col-12']) !!}
+                    <br>
+                    <br>
+                <a name="cancelar" id="" class="btn btn-danger col-12" href="/admin/users" role="button">Cancelar</a>
+                    <br>
+                    <br>
+
                   </div>
 
 

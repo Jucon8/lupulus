@@ -14,7 +14,7 @@ class UsersAdminController extends Controller
      */
     public function index()
     {
-        $users= User::orderBy('id', 'ASC')->paginate(10);
+        $users= User::orderBy('id', 'ASC')->paginate(100);
         return view('admin-users')->with('users', $users);
     }
 
@@ -39,8 +39,7 @@ class UsersAdminController extends Controller
         $user= new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
-        #dd($request->all());
-        dd($user->all());
+        return redirect('/admin/users');
     }
 
     /**
