@@ -7,7 +7,7 @@
 <br>
 <br>
 <h1>Usuarios registrados</h1>
-<a name="Crear Usuario" id="" class="btn btn-warning" href="/admin/users/create" role="button">Crear Nuevo Usuario</a>
+<a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
 <br>
 <br>
           <div class="table-responsive">
@@ -49,14 +49,15 @@
                   <span class="badge badge-pill badge-secondary">No asignado</span>
                   @endif
                 </td>
-                <td><a href="/admin/users/edit" class="btn btn-warning">Editar</a>
-                    <a href="/admin/users/edit" class="btn btn-danger">Eliminar</a>
+                <td><a href="{{route('users.edit', $user->id)}}" onclick="return confirm('Editar Usuario?')" class="btn btn-warning">Editar</a>
+                    <a href="{{route('users.destroy', $user->id)}}" onclick="return confirm('Eliminar Usuario?')" class="btn btn-danger">Eliminar</a>
                 </td>
 
                 </tr>
                 @endforeach
               </tbody>
             </table>
+            {!!$users->render()!!}
         </div>
 <br>
 <br>
