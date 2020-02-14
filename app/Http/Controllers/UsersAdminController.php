@@ -14,7 +14,8 @@ class UsersAdminController extends Controller
      */
     public function index()
     {
-        return view('admin-users');
+        $users= User::orderBy('id', 'ASC')->paginate(10);
+        return view('admin-users')->with('users', $users);
     }
 
     /**
@@ -35,7 +36,10 @@ class UsersAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user= new User($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return redirect('/admin/users');
     }
 
     /**
@@ -55,9 +59,10 @@ class UsersAdminController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user=User::find($id);
+        return view('admin-users-edit')->with('user', $user);
     }
 
     /**
@@ -67,9 +72,14 @@ class UsersAdminController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->username = $request->username;
+        $user->email= $request->email;
+        $user->rol_id= $request->rol_id;
+        $user->save();
+        return redirect('admin/users');
     }
 
     /**
@@ -78,8 +88,9 @@ class UsersAdminController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(User $id)
     {
-        //
+        $id->delete();
+        return redirect('admin/users');
     }
 }

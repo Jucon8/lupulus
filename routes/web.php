@@ -24,5 +24,5 @@ Auth::routes();
 #Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'UsersAdminController');
-
+Route::get('admin/users/{id}/destroy', 'UsersAdminController@destroy')->name('users.destroy');
 Route::resource('/admin', 'SitesController');
