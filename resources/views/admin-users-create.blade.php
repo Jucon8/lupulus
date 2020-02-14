@@ -2,10 +2,9 @@
 
 
 @section('contenido')
-
-
 <br>
 <br>
+
 <div class="container-fluid bg-light">
     <div class="row">
     <div class="col-lg-12 bg-light text-center">
@@ -13,6 +12,16 @@
         <br>
     <h1>Crear Usuarios</h1>
     </div>
+    @if(count($errors)>0)
+<div class="container-fluid text-center alert alert-danger" role="alert">
+    <ul>
+@foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+@endforeach
+</ul>
+</div>
+@endif
+
     <div class="col-lg-12 bg-light align-content-center">
 {!! Form::open(['route'=>'users.store', 'method'=>'POST']) !!}
                 {!! Form::token() !!}
