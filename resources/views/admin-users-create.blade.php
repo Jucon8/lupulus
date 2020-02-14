@@ -54,8 +54,9 @@
                   </div>
                   <div class="form-group">
                     {!! Form::label('rol_id', 'Rol') !!}
-                    {!! Form::select('rol_id', ['null'=>'Seleccione una opción', '1' => 'Administrador', '2' => 'Cliente', '3' => 'Editor', '4'=> 'Proveedor', '5'=>'Distribuidor', '6'=>'Vendedor'], 'null', ['class' => 'form-control']) !!}
-                  </div>
+                    {!! Form::select('rol_id', [' '=>'Seleccione una opción', '1' => 'Administrador', '2' => 'Cliente', '3' => 'Editor', '4'=> 'Proveedor', '5'=>'Distribuidor', '6'=>'Vendedor'], ' ', ['class' => 'form-control']) !!}
+                  
+                </div>
 
                   <div class="form-group align-content-center">
                       <br>

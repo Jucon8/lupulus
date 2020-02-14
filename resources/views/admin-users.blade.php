@@ -3,9 +3,53 @@
 @section('contenido')
 <br>
 <br>
-<br>
-<br>
-<br>
+
+    <div class="container-fluid" id="bodyAdmin">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block  sidebar" id="sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column" id="menuAdmin">
+              <li class="nav-item text-white">
+                <a class="nav-link active" href="admin">
+                  <span data-feather="home"></span>
+                  Panel de control <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#ventas">
+                  <span data-feather="file"></span>
+                  Ventas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#productos">
+                  <span data-feather="shopping-cart"></span>
+                  Productos
+                </a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{{route('users.index')}}">
+                  <span data-feather="users"></span>
+                  Usuarios
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Estadisticas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="mail"></span>
+                  Mensajes
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
 <h1>Usuarios registrados</h1>
 <a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
 <br>
@@ -16,8 +60,8 @@
                 <tr>
                   <th>Id</th>
                   <th>Usuario</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
+                  {{-- <th>Nombre</th>
+                  <th>Apellido</th> --}}
                   <th>Email</th>
                   <th>Rol</th>
                   <th>Acciones</th>
@@ -29,8 +73,8 @@
                 <tr>
                   <td>{{$user->id}}</td>
                 <td>{{$user->username}}</td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->apellido}}</td>
+                  {{-- <td>{{$user->name}}</td>
+                  <td>{{$user->apellido}}</td> --}}
                   <td>{{$user->email}}</td>
                 <td>
                   @if ($user->rol_id=="1")
@@ -62,6 +106,8 @@
 <br>
 <br>
 <br>
-
+      </main>
+      </div>
+    </div>
 @endsection
 

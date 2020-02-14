@@ -25,8 +25,9 @@ class UserAdminRequest extends FormRequest
     {
         return [
             'username'    => 'min:4|max:120|required',
-            'email'       => 'min:5|max:250|required|unique:users',
-            'password'    => 'min:6|max:120|required'
+            'email'       => 'min:5|max:250|required|email:rfc,dns|unique:users',
+            'password'    => 'min:6|max:120|required',
+            'rol_id'      => 'required'
         ];
     }
 }
