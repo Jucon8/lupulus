@@ -2,10 +2,9 @@
 
 
 @section('contenido')
-
-
 <br>
 <br>
+
 <div class="container-fluid bg-light">
     <div class="row">
     <div class="col-lg-12 bg-light text-center">
@@ -13,6 +12,16 @@
         <br>
     <h1>Crear Usuarios</h1>
     </div>
+    @if(count($errors)>0)
+<div class="container-fluid text-center alert alert-danger" role="alert">
+    <ul>
+@foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+@endforeach
+</ul>
+</div>
+@endif
+
     <div class="col-lg-12 bg-light align-content-center">
 {!! Form::open(['route'=>'users.store', 'method'=>'POST']) !!}
                 {!! Form::token() !!}
@@ -45,8 +54,9 @@
                   </div>
                   <div class="form-group">
                     {!! Form::label('rol_id', 'Rol') !!}
-                    {!! Form::select('rol_id', ['null'=>'Seleccione una opción', '1' => 'Administrador', '2' => 'Cliente', '3' => 'Editor', '4'=> 'Proveedor', '5'=>'Distribuidor', '6'=>'Vendedor'], 'null', ['class' => 'form-control']) !!}
-                  </div>
+                    {!! Form::select('rol_id', [' '=>'Seleccione una opción', '1' => 'Administrador', '2' => 'Cliente', '3' => 'Editor', '4'=> 'Proveedor', '5'=>'Distribuidor', '6'=>'Vendedor'], ' ', ['class' => 'form-control']) !!}
+                  
+                </div>
 
                   <div class="form-group align-content-center">
                       <br>
