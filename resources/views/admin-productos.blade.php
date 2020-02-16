@@ -1,16 +1,18 @@
-    @extends('layouts.header')
-    @section('titulo') 
-    Panel de Control
-    @endsection
-    @section('contenido')
-     
+@extends('layouts.header')
+@section('titulo')
+Lista de Productos
+@endsection
+@section('contenido')
+<br>
+<br>
+
     <div class="container-fluid" id="bodyAdmin">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block  sidebar" id="sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column" id="menuAdmin">
               <li class="nav-item text-white">
-                <a class="nav-link active" href="{{URL::previous()}}">
+                <a class="nav-link active" href="admin.php">
                   <span data-feather="home"></span>
                   Panel de control <span class="sr-only">(current)</span>
                 </a>
@@ -22,13 +24,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.prod')}}" >
+                <a class="nav-link" href="#productos">
                   <span data-feather="shopping-cart"></span>
                   Productos
                 </a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="{{route('users.index')}}">
+                <a class="nav-link" href="#usuarios">
                   <span data-feather="users"></span>
                   Usuarios
                 </a>
@@ -49,70 +51,17 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="graph">
-            <br>
-            <br>
-            <br>
-            <br>
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Panel de Control</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Compartir</button>
-                <button class="btn btn-sm btn-outline-secondary">Exportar</button>
-              </div>
-              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                Esta semana
-              </button>
-            </div>
-          </div>
-          <div class="panel-body">
-                    <div id="chart">
-            <canvas class="my-4" id="myChart" width="2" height="1"></canvas>
-            </div>
-                </div>
-    <hr id="ventas">
-    <br>
-    <br>
+       
 
-          <h2>Ventas</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Id_venta</th>
-                  <th>Id_usuario</th>
-                  <th>Id_producto</th>
-                  <th>Pago</th>
-                  <th>Estado</th>
-                  <th>Envio</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>User_id</td>
-                  <td>Product_id</td>
-                  <td>Tarjeta/efectivo</td>
-                  <td>en curso(1)/finalizada(0)</td>
-                  <td>retiro por sucursal/envio a domicilio</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-
-
-          <h1>AQUI VA EL LINK O BOTON PARA EL ABM PRODUCTOS</h1>
-          <a href="{{route('admin.prod')}}">lista de productos</a>
-          {{-- <hr id="productos">
-          <br>
-          <br>
-          <h2>Productos</h2>
+        
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
+<h1>Productos</h1>
+<a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
+<br>
           <div class="alta-producto">
             <h4>AGREGAR PRODUCTO + </h4>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
+              @csrf
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationDefault01">Nombre</label>
@@ -128,7 +77,7 @@
         <label for="validationDefault03">Descripción</label>
         <input name="descripcion" type="text" class="form-control" id="validationDefault04" required>
       </div>
-      <div class="col-md-3 mb-3">
+      {{-- <div class="col-md-3 mb-3">
         <label for="validationDefault04">Categoria</label>
         <!-- Falta añadir categoria_id en tabla producto MySQL -->
         <select name="categoria_id"  class="custom-select" id="validationDefault05" required>
@@ -136,6 +85,14 @@
           <option value='1'>EQUIPAMIENTO</option>
           <option value='2'>INSUMOS</option>
           <option value='3'>KIT</option>
+        </select>
+      </div> --}}
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault04">Estado</label>
+        <select name="estado"  class="custom-select" id="validationDefault05" >
+        <option selected disabled value="">Seleccione un estado</option>
+          <option value='1'>Publica</option>
+          <option value='0'>No publica</option>
         </select>
       </div>
       <div class="col-md-3 mb-3">
@@ -176,6 +133,12 @@
         <label for="validationDefault05">Stock</label>
         <input name="stock" type="text" class="form-control" id="validationDefault07" placeholder="Cantidad" required>
       </div>
+
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault05">Agregar Imagen</label>
+        <input name="imagen_producto" type="file" class="" id="validationDefault08" >
+      </div>
+
     </div>
     <button class="btn btn-warning" type="submit" name="add">AGREGAR</button>
   </form>
@@ -191,37 +154,45 @@
                   <th>Stock</th>
                   <th>Estado</th>
                   <th>Imagenes</th>
-                  <th>Categoria_ID</th>
+                  {{-- <th>Categoria_ID</th> --}}
                   <th>Subcategoria_ID</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
               <tbody>
-                  {{-- @foreach --}}
-                {{-- <tr>
-                  <td>producto['id']</td>
-                  <td>producto['nombre']</td>
-                  <td>producto['descripcion']</td>
-                  <td>producto['precio']</td>
-                  <td>producto['stock']</td>
-                  <td>producto['estado']</td>
+                @foreach ($productos as $producto)
+                  @if ($producto['borrado'] == 0)
+                <tr>
+                  <td>{{$producto['id']}}</td>
+                  <td>{{$producto['nombre']}}</td>
+                  <td>{{$producto['descripcion']}}</td>
+                  <td>{{$producto['precio']}}</td>
+                  <td>{{$producto['stock']}}</td>
+                  <td>{{$producto['estado']}}</td>
                   <td>Imágenes</td>
-                  <td>producto['categoria_id']</td>
-                  <td>producto['subcategoria_id']</td>  --}}
+                  {{-- <td>{{$producto['categoria_id']}}</td> --}}
+                  <td>{{$producto['subcategoria_id']}}</td>
 
-                  {{-- <td><a href="editarProducto.php?variable1=(producto['id'])?>">EDITAR</a>
+                  <td><a href="editarProducto/{{$producto['id']}}">EDITAR</a>
                   <BR></BR>
-                  <a href="admin.php?variable2= producto['id']">ELIMINAR</a></td>
-                </tr> --}}
-                {{-- @endif --}}
+                  <a href="admin/{{$producto['id']}}">ELIMINAR</a> </td>
+                </tr>
+                @endif
+              @endforeach
               </tbody>
             </table>
-<hr>
+            
+
+            <br>
+            <br>
+                     
+
 
           </div>
         </main>
       </div>
     </div>
+
 
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
@@ -254,5 +225,4 @@
         }
       });
     </script>
-    
-    @endsection
+@endsection

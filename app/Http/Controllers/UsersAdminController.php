@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Producto;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserAdminRequest;
 
@@ -93,5 +94,10 @@ class UsersAdminController extends Controller
     {
         $id->delete();
         return redirect('admin/users');
+    }
+
+    public function listado_admin (){
+      $productos = Producto::All();
+      return view('admin', compact('productos'));
     }
 }

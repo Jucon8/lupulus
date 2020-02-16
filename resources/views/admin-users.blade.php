@@ -1,16 +1,18 @@
 @extends('layouts.header')
-
+@section('titulo')
+Lista de Usuarios
+@endsection
 @section('contenido')
 <br>
 <br>
 
     <div class="container-fluid" id="bodyAdmin">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block  sidebar" id="sidebar">
+        <nav class="col-md-2 d-none d-md-block sidebar" id="sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column" id="menuAdmin">
               <li class="nav-item text-white">
-                <a class="nav-link active" href="admin">
+                <a class="nav-link active" href="{{route('admin')}}">
                   <span data-feather="home"></span>
                   Panel de control <span class="sr-only">(current)</span>
                 </a>

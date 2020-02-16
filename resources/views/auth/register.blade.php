@@ -1,6 +1,6 @@
 @extends('layouts.header')
 @section('titulo')
-$titulo = "Registrarse";
+Registrarse
 @endsection
 @section('contenido')
 
@@ -10,11 +10,11 @@ $titulo = "Registrarse";
 
 		<div class="container-fluid loginimg pt-5" id="formularioGeneral">
 
-			<div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3" id="formulario">
+			<div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3 mt-3" id="formulario">
 				<div class="text-center">
 					<h2 class="p-3">{{ __('Registrarse') }}</h2>
 				</div>
-				<form class="container col-md-9 col-lg-12" id="register-form" action="" method="POST" action="{{ route('register') }}" role="form" enctype="multipart/form-data">
+				<form class="container col-md-9 col-lg-12" id="register-form" method="POST" action="{{ route('register') }}" role="form" enctype="multipart/form-data">
                 @csrf
 
                     <div class="form-group">
@@ -39,17 +39,7 @@ $titulo = "Registrarse";
 					</div>
 
 					<div class="form-group">
-						<label for="avatar">Subí tu avatar (Opcional)</label>
-						<input type="file" class="form-control-file" name="avatar" enctype="multipart/form-data" accept= "image/*">
-                        @error('avatar')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-					</div>
-
-					<div class="form-group">
-                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                    <label hidden for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Contraseña">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -71,3 +61,5 @@ $titulo = "Registrarse";
 		</div>
 
 @endsection
+
+                    
