@@ -39,38 +39,36 @@ class ProductoController extends Controller
 
       return redirect("admin");
 
-}
-    // public function  borrar(Request $req) {
-    //   $productoNuevo = new Producto();
-    //
-    //   $productoNuevo->id = $req["id"];
-    //
-    //   $producto->save();
-    //
-    //   return redirect("admin");
-    // }
+    }
 
-  /*  public function borrar($id){
+    public function borrar(Request $req) {
+      $producto = Producto::find($req->id);
+      $producto->borrado = 1;
+
+
+      $producto->save();
+      return redirect("admin");
+    }
+
+    public function detalleEditar($id){
       $producto = Producto::find($id);
-      $id = 1;
-      return view('detalleProducto', compact('producto'));
-    }*/
+      return view('editarProducto', compact('producto'));
+    }
 
-//     function borrar($id) {
-//       $producto = Producto::find($req->id);
-//       $producto->borrado = 1;
-//
-//       $producto->save();
-// }
+    public function editar(Request $req) {
 
-function borrar(Request $req) {
-  $producto = Producto::find($req->id);
-  $producto->borrado = 1;
+      $producto = Producto::find($req->id);
 
+      $producto->nombre = $req["nombre"];
+      $producto->precio= $req["precio"];
+      $producto->descripcion= $req["descripcion"];
+      $producto->estado= $req["estado"];
+      $producto->subcategoria_id= $req["subcategoria_id"];
+      $producto->stock= $req["stock"];
 
-  $producto->save();
-  return redirect("admin");
-}
+      $producto->save();
+      return redirect("admin");
+    }
 
 
 
