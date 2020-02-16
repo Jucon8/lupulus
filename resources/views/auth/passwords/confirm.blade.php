@@ -1,6 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.header')
 
-@section('content')
+@section('contenido')
+<div class="container-fluid loginimg" id="formularioGeneral">
+    <div class="col-sm-9 col-md-6 col-lg-5 rounded pt-1 pb-3" id="formulario">
+      <div class="text-center">
+        <h2 class="p-3">{{ __('Confirmar Contraseña') }}</h2>
+      </div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

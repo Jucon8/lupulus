@@ -1,13 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Http\Request;
 
 class SitesController extends Controller
 {
-    public function index()
+
+    public function show()
     {
-    return view('admin');
-    }
+        if (Auth::user()->rol_id==1) {
+            return view('admin');
+        } else {
+            return redirect('home');
+        }
+        
+    } 
 }

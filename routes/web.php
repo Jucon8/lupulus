@@ -21,8 +21,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-#Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
+//juanjo
 Route::resource('/admin/users', 'UsersAdminController');
-Route::get('admin/users/{id}/destroy', 'UsersAdminController@destroy')->name('users.destroy');
-Route::resource('/admin', 'SitesController');
+Route::get('/admin/users/{id}/destroy', 'UsersAdminController@destroy')->name('users.destroy');
+Route::get('/admin', 'SitesController@show')->name('admin');
+
+// santi
+Route::get('/micuenta', 'UserController@show') ->name('micuenta');
+Route::post('/micuenta', 'UserController@update');
+Route::patch('/micuenta', 'UserController@update_avatar');
+
+//ema-salva
+Route::get("/shop", 'ProductoController@listado')->name('shop');
+Route::get('/detalleProducto/{id}', 'ProductoController@detalle');
+Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
+//Route::post("/admin", 'ProductoController@agregar');
+Route::get("/admin/{id}", 'ProductoController@borrar');
+
+Route::get("/carrito", function(){
+    return view('carrito');
+}) ->name('carrito');
