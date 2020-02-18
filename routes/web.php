@@ -12,15 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 //juanjo
@@ -36,13 +33,15 @@ Route::patch('/micuenta', 'UserController@update_avatar');
 //ema-salva
 Route::get("/shop", 'ProductoController@listado')->name('shop');
 Route::get('/detalleProducto/{id}', 'ProductoController@detalle')->name('detalle.prod');
-Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
-Route::post("/admin/productos", 'ProductoController@agregar')->name('admin.add.prod');
-Route::get("/admin/productos/{id}", 'ProductoController@borrar')->name('admin.delete.prod');
+//Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
+//Route::post("/admin/productos", 'ProductoController@agregar')->name('admin.add.prod');
+//Route::get("/admin/productos/{id}", 'ProductoController@borrar')->name('admin.delete.prod');
 
+//Pato Carrito
 Route::get("/carrito", function(){
     return view('carrito');
 }) ->name('carrito');
 
 //ProductosAdminController Juanjo
 Route::resource('/admin/products', 'ProductosAdminController');
+Route::get('/admin/products/{id}/destroy', 'ProductosAdminController@destroy')->name('products.destroy');

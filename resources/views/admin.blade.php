@@ -22,7 +22,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.prod')}}" >
+                <a class="nav-link" href="{{route('products.index')}}" >
                   <span data-feather="shopping-cart"></span>
                   Productos
                 </a>
@@ -105,7 +105,7 @@
 
 
           <h1>AQUI VA EL LINK O BOTON PARA EL ABM PRODUCTOS</h1>
-          <a href="{{route('admin.prod')}}">lista de productos</a>
+          <a href="{{route('products.index')}}">lista de productos</a>
           {{-- <hr id="productos">
           <br>
           <br>

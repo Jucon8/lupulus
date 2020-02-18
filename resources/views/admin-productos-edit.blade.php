@@ -7,8 +7,8 @@ Detalle del Producto
 
           <div class="alta-producto">
             <h4>MODIFICAR PRODUCTO +/- </h4>
-            <form method="post" action="/editarProducto">
-              {{csrf_field()}}
+            <form method="PUT" action="{{url('products.update', $producto)}} enctype="multipart/form-data">
+              @csrf
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationDefault01">Nombre</label>
@@ -73,6 +73,9 @@ Detalle del Producto
       </div>
     </div>
     <button class="btn btn-success" type="submit" name="edit">GUARDAR CAMBIOS</button>
-    <a href="/admin" class="btn btn-danger" role="button">CANCELAR</a>
+  <a href="{{route('products.index')}}" class="btn btn-danger" role="button">CANCELAR</a>
+  <br>
+  <br>
+  <br>
   </form>
 @endsection

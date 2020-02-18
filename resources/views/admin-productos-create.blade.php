@@ -53,7 +53,7 @@ Lista de Productos
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminproductos">
     <div class="container-fluid">
             <h4 class="text-center">AGREGAR PRODUCTO +</h4>
-            <form method="post" enctype="multipart/form-data">
+    <form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
               @csrf
     <div class="form-row">
       <div class="col-md-4 mb-3">

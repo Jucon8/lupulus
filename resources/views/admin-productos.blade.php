@@ -88,9 +88,9 @@ Lista de Productos
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 
-                  <td><a href="editarProducto/{{$producto['id']}}">EDITAR</a>
+                  <td><a href="{{route('products.edit', $producto->id)}}">EDITAR</a>
                   <BR></BR>
-                  <a href="admin/{{$producto['id']}}">ELIMINAR</a> </td>
+                  <a href="{{route('products.destroy', $producto->id)}}">ELIMINAR</a> </td>
                 </tr>
                 @endif
               @endforeach

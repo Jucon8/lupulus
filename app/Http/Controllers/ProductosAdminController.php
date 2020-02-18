@@ -50,8 +50,6 @@ class ProductosAdminController extends Controller
       $productoNuevo->subcategoria_id= $req["subcategoria_id"];
       $productoNuevo->stock= $req["stock"];
       $productoNuevo->imagen_producto= $req["imagen_producto"];
-
-
       $productoNuevo->save();
 
       return redirect("admin-productos");
@@ -74,9 +72,9 @@ class ProductosAdminController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Producto $producto)
-    {
-        //
+    public function edit($id) {
+        $producto=Producto::find($id);
+        return view('admin-productos-edit')->with('producto', $producto);
     }
 
     /**
@@ -86,9 +84,18 @@ class ProductosAdminController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
-    {
-        //
+    public function update(Request $req) {
+
+      $producto = Producto::find($req->id);
+
+      $producto->nombre = $req["nombre"];
+      $producto->precio= $req["precio"];
+      $producto->descripcion= $req["descripcion"];
+      $producto->estado= $req["estado"];
+      $producto->subcategoria_id= $req["subcategoria_id"];
+      $producto->stock= $req["stock"];
+      $producto->save();
+      return redirect("admin/products");
     }
 
     /**
@@ -97,8 +104,10 @@ class ProductosAdminController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
-    {
-        //
+    public function destroy(Request $req) {
+      $producto = Producto::find($req->id);
+      $producto->borrado = 1;
+      $producto->save();
+      return redirect("admin/products");
     }
 }
