@@ -14,7 +14,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column" id="menuAdmin">
               <li class="nav-item text-white">
-                <a class="nav-link active" href="admin.php">
+                <a class="nav-link active" href="">
                   <span data-feather="home"></span>
                   Panel de control <span class="sr-only">(current)</span>
                 </a>

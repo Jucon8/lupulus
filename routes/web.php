@@ -24,3 +24,7 @@ Route::get("/admin", 'ProductoController@listado_admin');
 Route::post("/admin", 'ProductoController@agregar');
 
 Route::get("/admin/{id}", 'ProductoController@borrar');
+
+Route::get("/editarProducto/{id}", 'ProductoController@detalleEditar');
+
+Route::post("/editarProducto", 'ProductoController@editar');

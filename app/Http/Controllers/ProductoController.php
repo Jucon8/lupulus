@@ -43,17 +43,38 @@ class ProductoController extends Controller
 
       return redirect("admin");
 
-}
+
+    }
+
+    public function borrar(Request $req) {
+      $producto = Producto::find($req->id);
+      $producto->borrado = 1;
 
 
-function borrar(Request $req) {
-  $producto = Producto::find($req->id);
-  $producto->borrado = 1;
+      $producto->save();
+      return redirect("admin");
+    }
+
+    public function detalleEditar($id){
+      $producto = Producto::find($id);
+      return view('editarProducto', compact('producto'));
+    }
+
+    public function editar(Request $req) {
 
 
-  $producto->save();
-  return redirect("admin");
-}
+      $producto = Producto::find($req->id);
+
+      $producto->nombre = $req["nombre"];
+      $producto->precio= $req["precio"];
+      $producto->descripcion= $req["descripcion"];
+      $producto->estado= $req["estado"];
+      $producto->subcategoria_id= $req["subcategoria_id"];
+      $producto->stock= $req["stock"];
+
+      $producto->save();
+      return redirect("admin");
+    }
 
 // public function update_avatar(Request $request) {
 //         $this->validate($request, [
