@@ -7,7 +7,7 @@ Detalle del Producto
 
           <div class="alta-producto">
             <h4>MODIFICAR PRODUCTO +/- </h4>
-            <form method="PUT" action="{{url('products.update', $producto)}} enctype="multipart/form-data">
+            <form method="PUT" action="{{route('products.update', $producto->id)}} enctype="multipart/form-data">
               @csrf
     <div class="form-row">
       <div class="col-md-4 mb-3">

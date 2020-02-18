@@ -39,9 +39,11 @@ class ProductosAdminController extends Controller
     public function store(Request $req) {
       $productoNuevo = new Producto();
       
-      $ruta = $req->file("imagen_producto")->store("public");
-      $nombre_archivo_imagen = basename($ruta);
-      $productoNuevo->imagen_producto = $nombre_archivo_imagen;
+
+      //NO FUNCIONA
+      //$ruta = $req->file("imagen_producto")->store("public");
+      //$nombre_archivo_imagen = basename($ruta);
+      //$productoNuevo->imagen_producto = $nombre_archivo_imagen;
 
       $productoNuevo->nombre = $req["nombre"];
       $productoNuevo->precio= $req["precio"];
@@ -52,7 +54,7 @@ class ProductosAdminController extends Controller
       $productoNuevo->imagen_producto= $req["imagen_producto"];
       $productoNuevo->save();
 
-      return redirect("admin-productos");
+      return redirect("admin/products");
     }
 
     /**
@@ -80,14 +82,12 @@ class ProductosAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $req
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
     public function update(Request $req) {
-
-      $producto = Producto::find($req->id);
-
+        $producto = Producto::find($req->id);
       $producto->nombre = $req["nombre"];
       $producto->precio= $req["precio"];
       $producto->descripcion= $req["descripcion"];

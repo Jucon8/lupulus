@@ -133,7 +133,7 @@ Lista de Productos
       </div>
 
     </div>
-    <button class="btn btn-warning" type="submit" name="add">AGREGAR</button>
+    <button class="btn btn-warning" type="submit" name="add" action>AGREGAR</button>
     <br>
     <br>
   </form>

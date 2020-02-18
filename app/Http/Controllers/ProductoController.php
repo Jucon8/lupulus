@@ -41,8 +41,6 @@ class ProductoController extends Controller
       $productoNuevo->subcategoria_id= $req["subcategoria_id"];
       $productoNuevo->stock= $req["stock"];
       $productoNuevo->imagen_producto= $req["imagen_producto"];
-
-
       $productoNuevo->save();
 
       return redirect("admin-productos");
