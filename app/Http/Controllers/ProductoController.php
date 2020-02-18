@@ -12,6 +12,7 @@ class ProductoController extends Controller
     public function listado (){
       $productos = Producto::All();
       return view('shop', compact('productos'));
+      //FALTA HACER PAGINACION.
     }
 
     public function detalle($id){
@@ -23,10 +24,15 @@ class ProductoController extends Controller
     public function listado_admin (){
       $productos = Producto::All();
       return view('admin-productos', compact('productos'));
+      //FALTA HACER PAGINACION
     }
 
     public function agregar(Request $req) {
       $productoNuevo = new Producto();
+      
+      $ruta = $req->file("imagen_producto")->store("public");
+      $nombre_archivo_imagen = basename($ruta);
+      $productoNuevo->imagen_producto = $nombre_archivo_imagen;
 
       $productoNuevo->nombre = $req["nombre"];
       $productoNuevo->precio= $req["precio"];
@@ -39,7 +45,7 @@ class ProductoController extends Controller
 
       $productoNuevo->save();
 
-      return redirect("admin");
+      return redirect("admin-productos");
     }
 
     public function borrar(Request $req) {
@@ -50,31 +56,23 @@ class ProductoController extends Controller
       $producto->save();
       return redirect("admin");
     }
+
     
+        public function editar(Request $req) {
 
+      $producto = Producto::find($req->id);
+
+      $producto->nombre = $req["nombre"];
+      $producto->precio= $req["precio"];
+      $producto->descripcion= $req["descripcion"];
+      $producto->estado= $req["estado"];
+      $producto->subcategoria_id= $req["subcategoria_id"];
+      $producto->stock= $req["stock"];
+
+      $producto->save();
+      return redirect("admin-productos");
+    }
 }
-    // public function  borrar(Request $req) {
-    //   $productoNuevo = new Producto();
-    //
-    //   $productoNuevo->id = $req["id"];
-    //
-    //   $producto->save();
-    //
-    //   return redirect("admin");
-    // }
-
-  /*  public function borrar($id){
-      $producto = Producto::find($id);
-      $id = 1;
-      return view('detalleProducto', compact('producto'));
-    }*/
-
-//     function borrar($id) {
-//       $producto = Producto::find($req->id);
-//       $producto->borrado = 1;
-//
-//       $producto->save();
-// }
 
 
 
