@@ -106,8 +106,7 @@ Detalle del Producto
 
         <div class="card-body  mt-4 ">
            @if(!empty($producto->imagen))
-            <img src="/img/{{$producto->imagen}}"
-              class="card-img-top s p-3" style="width: 60%; margin: 0 auto;" alt="imagen producto">
+            <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
             @else
             <img src="/img/cartel.jpg" class="card-img" alt="...">
             @endif
