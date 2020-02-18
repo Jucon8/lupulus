@@ -56,8 +56,6 @@ Lista de Productos
         
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
 <h1>Productos</h1>
-<a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
-<br>
           <div class="alta-producto">
             <h4>AGREGAR PRODUCTO + </h4>
             <form method="post" enctype="multipart/form-data">
@@ -169,7 +167,7 @@ Lista de Productos
                   <td>{{$producto['precio']}}</td>
                   <td>{{$producto['stock']}}</td>
                   <td>{{$producto['estado']}}</td>
-                  <td>Imágenes</td>
+                  <td>{{$producto['imagen_producto']}}</td>
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 
