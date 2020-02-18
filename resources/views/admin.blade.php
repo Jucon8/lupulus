@@ -204,7 +204,7 @@
           <h2>Productos</h2>
           <div class="alta-producto">
             <h4>AGREGAR PRODUCTO + </h4>
-            <form method="post" enctype="multipart/form-data">
+            <form action="/admin" method="post" enctype="multipart/form-data">
               {{csrf_field()}}
     <div class="form-row">
       <div class="col-md-4 mb-3">
@@ -213,13 +213,13 @@
       </div>
       <div class="col-md-5 mb-3">
         <label for="validationDefault02">Precio</label>
-        <input name="precio" type="text" class="form-control" id="validationDefault03" value="" placeholder="Ingrese un número decimal sin el signo $" required>
+        <input name="precio" type="text" class="form-control" id="validationDefault02" value="" placeholder="Ingrese un número decimal sin el signo $" required>
       </div>
     </div>
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationDefault03">Descripción</label>
-        <input name="descripcion" type="text" class="form-control" id="validationDefault04" required>
+        <input name="descripcion" type="text" class="form-control" id="validationDefault03" required>
       </div>
       {{-- <div class="col-md-3 mb-3">
         <label for="validationDefault04">Categoria</label>
@@ -233,15 +233,15 @@
       </div> --}}
       <div class="col-md-3 mb-3">
         <label for="validationDefault04">Estado</label>
-        <select name="estado"  class="custom-select" id="validationDefault05" >
+        <select name="estado"  class="custom-select" id="validationDefault04" >
         <option selected disabled value="">Seleccione un estado</option>
           <option value='1'>Publica</option>
           <option value='0'>No publica</option>
         </select>
       </div>
       <div class="col-md-3 mb-3">
-        <label for="validationDefault04">Subcategoria</label>
-        <select name="subcategoria_id" class="custom-select" id="validationDefault06" required>
+        <label for="validationDefault05">Subcategoria</label>
+        <select name="subcategoria_id" class="custom-select" id="validationDefault05" required>
 
        <!--Equipamiento-->
        <option selected disabled value="">Seleccione una subcategoria</option>
@@ -274,13 +274,13 @@
         </select>
       </div>
       <div class="col-md-3 mb-3">
-        <label for="validationDefault05">Stock</label>
-        <input name="stock" type="text" class="form-control" id="validationDefault07" placeholder="Cantidad" required>
+        <label for="validationDefault06">Stock</label>
+        <input name="stock" type="text" class="form-control" id="validationDefault06" placeholder="Cantidad" required>
       </div>
 
       <div class="col-md-3 mb-3">
-        <label for="validationDefault05">Agregar Imagen</label>
-        <input name="imagen_producto" type="file" class="" id="validationDefault08" >
+        <label for="">Agregar Imagen</label>
+        <input name="imagen_producto" type="file" value="" >
       </div>
 
     </div>
@@ -313,7 +313,7 @@
                   <td>{{$producto['precio']}}</td>
                   <td>{{$producto['stock']}}</td>
                   <td>{{$producto['estado']}}</td>
-                  <td>Imágenes</td>
+                  <td>{{$producto['imagen_producto']}}</td>
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 

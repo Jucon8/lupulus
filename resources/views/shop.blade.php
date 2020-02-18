@@ -125,8 +125,7 @@
 
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    {{-- <img src="img/ if(!empty($producto["imagen"])){echo $producto["imagen"];}
-                    else {echo 'cartel.jpg';}?>" class="card-img" alt="..."> --}}
+                    <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">

@@ -26,42 +26,25 @@ class ProductoController extends Controller
     public function agregar(Request $req) {
       $productoNuevo = new Producto();
 
+      $ruta = $req->file("imagen_producto")->store("public");
+      $nombre_archivo_imagen = basename($ruta);
+
+      $productoNuevo->imagen_producto = $nombre_archivo_imagen;
+
       $productoNuevo->nombre = $req["nombre"];
       $productoNuevo->precio= $req["precio"];
       $productoNuevo->descripcion= $req["descripcion"];
       $productoNuevo->estado= $req["estado"];
       $productoNuevo->subcategoria_id= $req["subcategoria_id"];
       $productoNuevo->stock= $req["stock"];
-      $productoNuevo->imagen_producto= $req["imagen_producto"];
-
+      
 
       $productoNuevo->save();
 
       return redirect("admin");
 
 }
-    // public function  borrar(Request $req) {
-    //   $productoNuevo = new Producto();
-    //
-    //   $productoNuevo->id = $req["id"];
-    //
-    //   $producto->save();
-    //
-    //   return redirect("admin");
-    // }
 
-  /*  public function borrar($id){
-      $producto = Producto::find($id);
-      $id = 1;
-      return view('detalleProducto', compact('producto'));
-    }*/
-
-//     function borrar($id) {
-//       $producto = Producto::find($req->id);
-//       $producto->borrado = 1;
-//
-//       $producto->save();
-// }
 
 function borrar(Request $req) {
   $producto = Producto::find($req->id);
@@ -72,8 +55,20 @@ function borrar(Request $req) {
   return redirect("admin");
 }
 
-
-
+// public function update_avatar(Request $request) {
+//         $this->validate($request, [
+//           'imagen_producto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+//         ]);
+//
+//         $filename = Auth::id().'_'.time().'.'.$request->imagen_producto->getClientOriginalExtension();
+//         $request->imagen_producto->move(public_path('store/avatars'), $filename);
+//
+//         $user = Auth::user();
+//         $user->avatar = $filename;
+//         $user->save();
+//
+//         return redirect('micuenta');
+//       }
 
 
 

@@ -109,9 +109,14 @@
 
       <div class="col-lg-9 pt-3 pb-3" style="background-color:rgba(255,255,255,0.5)">
 
+
         <div class="card-body  mt-4 ">
 
-          <img class="card-img-top s p-3" style="width: 60%; margin: 0 auto;" src="img/{{--= $producto['imagen']?>--}} " alt="">
+          {{-- <img class="card-img-top s p-3" style="width: 60%; margin: 0 auto;" src="img/{{--= $producto['imagen']?> " alt=""> --}}
+          <div class="col-md-4">
+            <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
+          </div>
+
           <h3>{{$producto->nombre}}</h3>
           <h4>${{$producto->precio}}</h4>
           <p class="card-text">{{$producto->descripcion}} </p>
