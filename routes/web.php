@@ -35,11 +35,14 @@ Route::patch('/micuenta', 'UserController@update_avatar');
 
 //ema-salva
 Route::get("/shop", 'ProductoController@listado')->name('shop');
-Route::get('/detalleProducto/{id}', 'ProductoController@detalle');
+Route::get('/detalleProducto/{id}', 'ProductoController@detalle')->name('detalle.prod');
 Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
-//Route::post("/admin", 'ProductoController@agregar');
-Route::get("/admin/{id}", 'ProductoController@borrar');
+Route::post("/admin/productos", 'ProductoController@agregar')->name('admin.add.prod');
+Route::get("/admin/productos/{id}", 'ProductoController@borrar')->name('admin.delete.prod');
 
 Route::get("/carrito", function(){
     return view('carrito');
 }) ->name('carrito');
+
+//ProductosAdminController Juanjo
+Route::resource('/admin/products', 'ProductosAdminController');
