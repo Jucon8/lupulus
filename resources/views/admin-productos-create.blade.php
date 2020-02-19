@@ -4,14 +4,10 @@ Lista de Productos
 @endsection
 @section('contenido')
 
-        
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
-<h1>Productos</h1>
-
-<br>
-          <div class="alta-producto">
-            <h4>AGREGAR PRODUCTO + </h4>
-            <form method="post" enctype="multipart/form-data">
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminproductos">
+    <div class="container-fluid">
+            <h4 class="text-center">AGREGAR PRODUCTO +</h4>
+    <form method="POST" action="{{route('admin.prod')}}" enctype="multipart/form-data">
               @csrf
     <div class="form-row">
       <div class="col-md-4 mb-3">
@@ -91,89 +87,15 @@ Lista de Productos
       </div>
 
     </div>
-    <button class="btn btn-warning mb-3" type="submit" name="add">AGREGAR</button>
+    <button class="btn btn-warning" type="submit" name="add" action>AGREGAR</button>
+    <br>
+    <br>
   </form>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Descripcion</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
-                  <th>Estado</th>
-                  <th>Imagenes</th>
-                  {{-- <th>Categoria_ID</th> --}}
-                  <th>Subcategoria_ID</th>
-                  <th>Opciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($productos as $producto)
-                  @if ($producto['borrado'] == 0)
-                <tr>
-                  <td>{{$producto['id']}}</td>
-                  <td>{{$producto['nombre']}}</td>
-                  <td>{{$producto['descripcion']}}</td>
-                  <td>{{$producto['precio']}}</td>
-                  <td>{{$producto['stock']}}</td>
-                  <td>{{$producto['estado']}}</td>
-                  <td>Imágenes</td>
-                  {{-- <td>{{$producto['categoria_id']}}</td> --}}
-                  <td>{{$producto['subcategoria_id']}}</td>
-
-                  <td><a href="{{route('prod.edit', $producto['id'])}}">EDITAR</a>
-                  <BR></BR>
-                  <a href="{{route('prod.delete', $producto['id'])}}">ELIMINAR</a> </td>
-                </tr>
-                @endif
-              @endforeach
-              </tbody>              
-            </table>
-            
-            {{$productos->links()}}
-            <br>
-            <br>
-                     
-
-
-          </div>
-        </main>
-      </div>
-    </div>
-
-
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0.2,
-            backgroundColor: 'transparent',
-            borderColor: '#f0b500',
-            borderWidth: 4,
-            pointBackgroundColor: '#f0b500'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+</main>
 @endsection

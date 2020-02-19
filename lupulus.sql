@@ -346,7 +346,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `direccion` varchar(50) DEFAULT NULL,
-  `ciudad` varchar(50) DEFAULT NULL,
+  `ciudad_id` varchar(50) DEFAULT NULL,
   `provincia_id` int(11) DEFAULT NULL,
   `telefono` varchar(30) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,

@@ -37,8 +37,10 @@ Route::patch('/micuenta', 'UserController@update_avatar');
 Route::get("/shop", 'ProductoController@listado')->name('shop');
 Route::get('/detalleProducto/{id}', 'ProductoController@detalle');
 Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
-//Route::post("/admin", 'ProductoController@agregar');
-Route::get("/admin/{id}", 'ProductoController@borrar');
+Route::post("/admin/productos", 'ProductoController@agregar');
+Route::get("/admin/productos/{id}/destroy", 'ProductoController@borrar')->name('prod.delete');
+Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit');
+Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
 Route::get("/carrito", function(){
     return view('carrito');

@@ -21,7 +21,8 @@ class ProductoController extends Controller
     }
 
     public function listado_admin (){
-      $productos = Producto::All();
+      
+      $productos = Producto::simplePaginate(15);
       return view('admin-productos', compact('productos'));
     }
 
@@ -39,7 +40,7 @@ class ProductoController extends Controller
 
       $productoNuevo->save();
 
-      return redirect("admin");
+      return redirect('admin/productos');
     }
 
     public function borrar(Request $req) {
@@ -48,9 +49,28 @@ class ProductoController extends Controller
 
 
       $producto->save();
-      return redirect("admin");
+      return redirect('admin/productos');
     }
-    
+
+    public function show($id)
+    {
+        $producto = Producto::find($id);        
+        return view('admin-productos-edit')->with('producto', $producto);
+    }   
+
+    public function edit(Request $req, $id)
+    {
+        $producto = Producto::find($id);
+        $producto->nombre = $req["nombre"];
+        $producto->precio= $req["precio"];
+        $producto->descripcion= $req["descripcion"];
+        $producto->estado= $req["estado"];
+        $producto->subcategoria_id= $req["subcategoria_id"];
+        $producto->stock= $req["stock"];
+        $producto->imagen_producto= $req["imagen_producto"];
+        $producto->save();
+        return redirect('admin/productos')->with('producto', $producto);
+    }   
 
 }
     // public function  borrar(Request $req) {

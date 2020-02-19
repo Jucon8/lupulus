@@ -99,6 +99,51 @@
 </nav>
 </header>
 
+<!-- Inicio barra lateral -->
+    <div class="container-fluid" id="bodyAdmin">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar" id="sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column" id="menuAdmin">
+              <li class="nav-item text-white">
+                <a class="nav-link active" href="{{route('admin')}}">
+                  <span data-feather="home"></span>
+                  Panel de control <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('admin')}}#ventas">
+                  <span data-feather="file"></span>
+                  Ventas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.prod')}}" >
+                  <span data-feather="shopping-cart"></span>
+                  Productos
+                </a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="{{route('users.index')}}">
+                  <span data-feather="users"></span>
+                  Usuarios
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Estadisticas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="mail"></span>
+                  Mensajes
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav> 
 
 @yield('contenido')
        
@@ -142,5 +187,4 @@
    
    
    
-   
-    
+
