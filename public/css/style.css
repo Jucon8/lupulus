@@ -303,6 +303,7 @@ a:hover {
 #bodyAdmin {
   background-attachment: fixed;
   background-image: url(../img/canillabirra.jpg);
+  
 }
 
 .feather {
@@ -314,24 +315,26 @@ a:hover {
  * Sidebar
  */
 
-.sidebar {
-  position: fixed;
-  top: 50;
-  bottom: 0;
+.sidebar {      
   left: 0;
   padding: 0;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
+/* cambie position para que se vea bien el panel de control */
 #menuAdmin{
-  position: absolute;
-  top: 30%;
-  z-index: 0;
+  /*position: absolute;
+  padding-top: 50px;  
+  padding-bottom: 50px;
+  z-index: 0;*/
+  
 }
+/* cambie sidebar-sticky para que se vea bien usuarios sticky por fixed*/
 .sidebar-sticky {
   position: -webkit-sticky;
-  position: sticky; /* Height of navbar */
-  height: 100vh;
-  padding-top: 4rem;
+  position: fixed; /* Height of navbar */
+  /*height: 100vh;*/
+  padding-top: 2rem;
+  padding-bottom: 2rem;  
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
@@ -342,7 +345,7 @@ a:hover {
 }
 
 .sidebar .nav-link .feather {
-  margin-right: 4px;
+  margin-right: 0px;
   color: #ffc107;
 }
 
@@ -362,7 +365,7 @@ a:hover {
   text-transform: uppercase;
 }
 #sidebar{
-   background-color: #343a40e8;
+   background-color: #343a40e8;   
 }
 
 #adminusuarios{

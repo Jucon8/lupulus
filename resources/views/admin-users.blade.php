@@ -1,59 +1,13 @@
-@extends('layouts.header')
+@extends('layouts.header-admin')
 @section('titulo')
 Lista de Usuarios
 @endsection
 @section('contenido')
-<br>
-<br>
 
-    <div class="container-fluid" id="bodyAdmin">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block sidebar" id="sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column" id="menuAdmin">
-              <li class="nav-item text-white">
-                <a class="nav-link active" href="{{route('admin')}}">
-                  <span data-feather="home"></span>
-                  Panel de control <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#ventas">
-                  <span data-feather="file"></span>
-                  Ventas
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#productos">
-                  <span data-feather="shopping-cart"></span>
-                  Productos
-                </a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="{{route('users.index')}}">
-                  <span data-feather="users"></span>
-                  Usuarios
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Estadisticas
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="mail"></span>
-                  Mensajes
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
-<h1>Usuarios registrados</h1>
-<a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
+   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
+      <h1>Usuarios registrados</h1>
+        <a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
 <br>
 <br>
           <div class="table-responsive">
@@ -109,7 +63,5 @@ Lista de Usuarios
 <br>
 <br>
       </main>
-      </div>
-    </div>
 @endsection
 

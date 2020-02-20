@@ -1,4 +1,4 @@
-@extends('layouts.header');
+@extends('layouts.header-admin');
 
 
 @section('contenido')

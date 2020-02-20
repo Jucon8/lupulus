@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.header-admin')
 
 @section('titulo', 'Editar Usuario' . ' ' . $user->username)
 @section('contenido')

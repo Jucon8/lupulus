@@ -96,8 +96,5 @@ class UsersAdminController extends Controller
         return redirect('admin/users');
     }
 
-    public function listado_admin (){
-      $productos = Producto::All();
-      return view('admin', compact('productos'));
-    }
+    
 }

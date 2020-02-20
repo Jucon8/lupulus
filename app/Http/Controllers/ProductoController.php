@@ -21,6 +21,12 @@ class ProductoController extends Controller
       return view('detalleProducto', ['producto' => $producto, 'subcategorias' => $subcategorias]);
     }
 
+    public function listado_admin (){
+      
+      $productos = Producto::simplePaginate(15);
+      return view('admin-productos', compact('productos'));
+    }
+
 
     //MIGRAMOS A PRODUCTOSADMINCONTROLLER @INDEX
     // public function listado_admin (){
@@ -56,12 +62,41 @@ class ProductoController extends Controller
     //   $producto->borrado = 1;
 
 
+      return redirect('admin/productos');
+    }
+
+
     //   $producto->save();
     //   return redirect("admin");
     // }
 
 //MIGRAMOS A PRODUCTOSADMINCONTROLLER @EDIT & @UPDATE    
     //     public function editar(Request $req) {
+
+
+      $producto->save();
+      return redirect('admin/productos');
+    }
+
+    public function show($id)
+    {
+        $producto = Producto::find($id);        
+        return view('admin-productos-edit')->with('producto', $producto);
+    }   
+
+    public function edit(Request $req, $id)
+    {
+        $producto = Producto::find($id);
+        $producto->nombre = $req["nombre"];
+        $producto->precio= $req["precio"];
+        $producto->descripcion= $req["descripcion"];
+        $producto->estado= $req["estado"];
+        $producto->subcategoria_id= $req["subcategoria_id"];
+        $producto->stock= $req["stock"];
+        $producto->imagen_producto= $req["imagen_producto"];
+        $producto->save();
+        return redirect('admin/productos')->with('producto', $producto);
+    }   
 
     //   $producto = Producto::find($req->id);
 
