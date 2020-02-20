@@ -1,8 +1,11 @@
+
 @extends('layouts.header-admin')
+
 @section('titulo')
 Detalle del Producto
 @endsection
 @section('contenido')
+
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
 <h1>Productos</h1>
 
@@ -11,6 +14,7 @@ Detalle del Producto
             <form method="POST" action="{{route('prod.update', $producto['id'])}}" enctype="multipart/form-data">
               @csrf
               @method('PUT')
+
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationDefault01">Nombre</label>
@@ -38,7 +42,9 @@ Detalle del Producto
       <div class="col-md-3 mb-3">
         <label for="validationDefault05">Subcategoria</label>
         <select name="subcategoria_id" class="custom-select" id="validationDefault06" required>
+
        <!--Equipamiento-->
+
        <option disabled value="">Equipamiento ↓</option>
         <option value="1">Canillas y conectores</option>
         <option value="2">Embarrilado</option>
@@ -71,6 +77,7 @@ Detalle del Producto
         <label for="validationDefault06">Stock</label>
         <input value="{{$producto['stock']}}" name="stock" type="text" class="form-control" id="validationDefault07" placeholder="Cantidad" required>
       </div>
+
       <div class="col-md-3 mb-3">
         <label for="validationDefault08">Agregar Imagen</label>
         <input name="imagen_producto" type="file" class="" id="validationDefault08" >
@@ -78,9 +85,12 @@ Detalle del Producto
     </div>
     <button class="btn btn-success" type="submit" name="edit">GUARDAR CAMBIOS</button>
   <a href="{{route('admin.prod')}}" class="btn btn-danger" role="button">CANCELAR</a>
+
   <br>
   <br>
   <br>
   </form>
+
   </main>
+
 @endsection

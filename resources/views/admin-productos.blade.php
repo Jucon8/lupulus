@@ -5,6 +5,7 @@ Lista de Productos
 @section('contenido')
 
         
+
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
 <h1>Productos</h1>
 
@@ -94,6 +95,7 @@ Lista de Productos
     <button class="btn btn-warning mb-3" type="submit" name="add">AGREGAR</button>
   </form>
           </div>
+
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -120,13 +122,14 @@ Lista de Productos
                   <td>{{$producto['precio']}}</td>
                   <td>{{$producto['stock']}}</td>
                   <td>{{$producto['estado']}}</td>
-                  <td>Imágenes</td>
+                  <td>{{$producto['imagen_producto']}}</td>
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 
                   <td><a href="{{route('prod.edit', $producto['id'])}}">EDITAR</a>
                   <BR></BR>
                   <a href="{{route('prod.delete', $producto['id'])}}">ELIMINAR</a> </td>
+
                 </tr>
                 @endif
               @endforeach

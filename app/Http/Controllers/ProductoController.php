@@ -12,6 +12,7 @@ class ProductoController extends Controller
     public function listado (){
       $productos = Producto::All();
       return view('shop', compact('productos'));
+      //FALTA HACER PAGINACION.
     }
 
     public function detalle($id){
@@ -26,26 +27,51 @@ class ProductoController extends Controller
       return view('admin-productos', compact('productos'));
     }
 
-    public function agregar(Request $req) {
-      $productoNuevo = new Producto();
 
-      $productoNuevo->nombre = $req["nombre"];
-      $productoNuevo->precio= $req["precio"];
-      $productoNuevo->descripcion= $req["descripcion"];
-      $productoNuevo->estado= $req["estado"];
-      $productoNuevo->subcategoria_id= $req["subcategoria_id"];
-      $productoNuevo->stock= $req["stock"];
-      $productoNuevo->imagen_producto= $req["imagen_producto"];
+    //MIGRAMOS A PRODUCTOSADMINCONTROLLER @INDEX
+    // public function listado_admin (){
+    //   $productos = Producto::All();
+    //   return view('admin-productos', compact('productos'));
+    //   //FALTA HACER PAGINACION
+    // }
 
 
-      $productoNuevo->save();
+    //MIGRAMOS A PRODUCTOSADMINCONTROLLER @STORE
+    // public function agregar(Request $req) {
+    //   $productoNuevo = new Producto();
+      
+    //   $ruta = $req->file("imagen_producto")->store("public");
+    //   $nombre_archivo_imagen = basename($ruta);
+    //   $productoNuevo->imagen_producto = $nombre_archivo_imagen;
+
+    //   $productoNuevo->nombre = $req["nombre"];
+    //   $productoNuevo->precio= $req["precio"];
+    //   $productoNuevo->descripcion= $req["descripcion"];
+    //   $productoNuevo->estado= $req["estado"];
+    //   $productoNuevo->subcategoria_id= $req["subcategoria_id"];
+    //   $productoNuevo->stock= $req["stock"];
+    //   $productoNuevo->imagen_producto= $req["imagen_producto"];
+    //   $productoNuevo->save();
+
+    //   return redirect("admin-productos");
+    // }
+
+    //MIGRAMOS A PRODUCTOSADMINCONTROLLER @DESTROY
+    // public function borrar(Request $req) {
+    //   $producto = Producto::find($req->id);
+    //   $producto->borrado = 1;
+
 
       return redirect('admin/productos');
     }
 
-    public function borrar(Request $req) {
-      $producto = Producto::find($req->id);
-      $producto->borrado = 1;
+
+    //   $producto->save();
+    //   return redirect("admin");
+    // }
+
+//MIGRAMOS A PRODUCTOSADMINCONTROLLER @EDIT & @UPDATE    
+    //     public function editar(Request $req) {
 
 
       $producto->save();
@@ -72,29 +98,19 @@ class ProductoController extends Controller
         return redirect('admin/productos')->with('producto', $producto);
     }   
 
-}
-    // public function  borrar(Request $req) {
-    //   $productoNuevo = new Producto();
-    //
-    //   $productoNuevo->id = $req["id"];
-    //
+    //   $producto = Producto::find($req->id);
+
+    //   $producto->nombre = $req["nombre"];
+    //   $producto->precio= $req["precio"];
+    //   $producto->descripcion= $req["descripcion"];
+    //   $producto->estado= $req["estado"];
+    //   $producto->subcategoria_id= $req["subcategoria_id"];
+    //   $producto->stock= $req["stock"];
+
     //   $producto->save();
-    //
-    //   return redirect("admin");
+    //   return redirect("admin-productos");
     // }
-
-  /*  public function borrar($id){
-      $producto = Producto::find($id);
-      $id = 1;
-      return view('detalleProducto', compact('producto'));
-    }*/
-
-//     function borrar($id) {
-//       $producto = Producto::find($req->id);
-//       $producto->borrado = 1;
-//
-//       $producto->save();
-// }
+}
 
 
 

@@ -119,8 +119,7 @@ Shop
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     @if(!empty($producto->imagen))
-                    <img src="/img/{{$producto->imagen}}"
-                     class="card-img" alt="...">
+                    <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
                     @else
                     <img src="/img/cartel.jpg" class="card-img" alt="...">
                     @endif
@@ -140,7 +139,6 @@ Shop
                       <h5 class="card-text">$ {{$producto["precio"]}}</h5>
                       </div>
                       <div class="float-left pb-3">
-                        {{-- <a class="btn btn-success btn-lg" href="detalleProducto.php?id==$producto["id"]?>"> Detalle del producto</a> --}}
                              <a class="btn btn-success btn-lg" href="detalleProducto/{{$producto["id"]}}"> Detalle del producto</a>
                       </div>
 
