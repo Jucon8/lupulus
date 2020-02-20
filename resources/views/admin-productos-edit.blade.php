@@ -14,7 +14,7 @@ Detalle del Producto
             <h4>MODIFICAR PRODUCTO +/- </h4>
             <form method="POST" action="{{route('prod.update', $producto['id'])}}" enctype="multipart/form-data">
               @csrf
-              @method('PUT')
+           
 
     <div class="form-row">
       <div class="col-md-4 mb-3">
