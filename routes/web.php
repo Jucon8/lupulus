@@ -41,7 +41,7 @@ Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit'
 Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
 //Pato Carrito
-
+//Route::get('/carrito', 'CarritoController@index');
 Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito');
 Route::get("/carrito/{id}/destroy", 'CarritoController@destroy')->name('carrito.delete');
 

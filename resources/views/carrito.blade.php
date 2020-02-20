@@ -65,7 +65,7 @@ carrito
                     </td>
                     <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
                     <td>
-                    <a href="{{route('carrito.delete', $producto)}}" class="btn btn-danger" data-id="{{$producto->id}}">
+                    <a href="{{route('carrito.delete', $producto->id)}}" class="btn btn-danger" data-id="{{$producto->id}}">
 
 
                      <i class="fa fa-remove"></i>

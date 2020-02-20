@@ -41,13 +41,14 @@ class CarritoController extends Controller
         }
         return $resultado;
     }
-        public function destroy($producto)
+        public function destroy(Request $request, $id)
     {
-        dd($producto);
-       $eliminar=Producto::find($id);
-               dd($_SESSION['carrito']);
+        $cart = $request->session()->forget($id);
+    //     session_destroy();
+    //    $productos = Producto::whereIn('id', $_SESSION['carrito'])->get();
+    //            dd($_SESSION['carrito']);
 
-        return redirect('/carrito');
+     return view('carrito');
     }
  
 
