@@ -108,6 +108,6 @@ class ProductosAdminController extends Controller
       $producto = Producto::find($req->id);
       $producto->borrado = 1;
       $producto->save();
-      return redirect("admin/products");
+      return redirect("admin/productos");
     }
 }

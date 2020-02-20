@@ -7,6 +7,7 @@ Lista de Usuarios
 
    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
       <h1>Usuarios registrados</h1>
+      @include('flash::message')
         <a name="Crear Usuario" id="" class="btn btn-warning" href="{{route('users.create')}}" role="button">Crear Nuevo Usuario</a>
 <br>
 <br>
@@ -57,8 +58,12 @@ Lista de Usuarios
                 @endforeach
               </tbody>
             </table>
+            <div class="mx-auto" style="width: 200px;">
             {!!$users->render()!!}
+            </div>
         </div>
+<br>
+<br>
 <br>
 <br>
 <br>

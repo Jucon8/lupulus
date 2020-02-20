@@ -3,7 +3,7 @@
 Shop
 @endsection
 @section('contenido')
-  <!--Inicio header-->
+
 
   <div class="d-lg-none" id="categoriasTienda">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
@@ -118,8 +118,10 @@ Shop
 
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    @if(!empty($producto->imagen))
-                    <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
+
+                    @if(!empty($producto->imagen_producto))
+                    <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/productos/{{ $producto->imagen_producto}}" alt="imagen">                    
+
                     @else
                     <img src="/img/cartel.jpg" class="card-img" alt="...">
                     @endif
@@ -139,36 +141,27 @@ Shop
                       <h5 class="card-text">$ {{$producto["precio"]}}</h5>
                       </div>
                       <div class="float-left pb-3">
-                             <a class="btn btn-success btn-lg" href="detalleProducto/{{$producto["id"]}}"> Detalle del producto</a>
+
+                        {{-- <a class="btn btn-success btn-lg" href="detalleProducto.php?id==$producto['id']?>"> Detalle del producto</a> --}}
+                             <a class="btn btn-success btn-lg" href="detalleProducto/{{$producto['id']}}"> Detalle del producto</a>
+
                       </div>
 
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </div>                  
+                </div>                
+              </div>              
+            </div>            
           @endforeach
-
+          <div class="mx-auto" style="width: 200px;">
+          {{$productos->links()}}          
+          </div>
+          
           </div>
         </div>
+        
       </div>
-      <div class="row">
-        <div class="col">
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link text-warning" href="#">1</a></li>
-              <li class="page-item"><a class="page-link text-warning" href="#">2</a></li>
-              <li class="page-item"><a class="page-link text-warning" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link text-success" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      
     </div>
     </div>
   </section>

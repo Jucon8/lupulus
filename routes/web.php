@@ -36,16 +36,28 @@ Route::get("/shop", 'ProductoController@listado')->name('shop');
 Route::get('/detalleProducto/{id}', 'ProductoController@detalle');
 Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
 Route::post("/admin/productos", 'ProductoController@agregar');
-Route::get("/admin/productos/{id}/destroy", 'ProductoController@borrar')->name('prod.delete');
+Route::get("/admin/productos/{id}/destroy", 'ProductoController@destroy')->name('prod.delete');
 Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit');
-Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
+Route::post("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
 
+// Carrito
+Route::get("/carrito", "CarritoController@show")->name('carrito');
+
+//Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito.id');
 //Pato Carrito
-Route::get("/carrito", function(){
-    return view('carrito');
-}) ->name('carrito');
+//Route::get('/carrito', 'CarritoController@index');
+Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito');
+Route::get("/carrito/{id}/destroy", 'CarritoController@destroy')->name('carrito.delete');
+
+
+
 
 //ProductosAdminController Juanjo
 Route::resource('/admin/products', 'ProductosAdminController');
 Route::get('/admin/products/{id}/destroy', 'ProductosAdminController@destroy')->name('products.destroy');
+
+
+//checkout juanjo
+Route::resource('/checkout', 'CheckoutsController');
+
