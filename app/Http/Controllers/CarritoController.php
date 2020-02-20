@@ -18,34 +18,34 @@ use App\TipoCons;
 class CarritoController extends Controller
 {
 
-    public function __construct(Request $request)
-    {
-        if (session()->put('carrito', array()));
-    }
+    // public function __construct(Request $request)
+    // {
+    //     if (session()->put('carrito', array()));
+    // }
 
-    public function total(){
-        $carrito = \Session::get('carrito');
-        $total = 0;
-        foreach ($carrito as $item) {
-            $total += $item->precio + $item->cantidad;
-        }
-        return $total;
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($id)
-    {
-        if ($productos = Producto::find($id)) {
-            session()->put('carrito', array());
-        }
+    // public function total(){
+    //     $carrito = \Session::get('carrito');
+    //     $total = 0;
+    //     foreach ($carrito as $item) {
+    //         $total += $item->precio + $item->cantidad;
+    //     }
+    //     return $total;
+    // }
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function index($id)
+    // {
+    //     if ($productos = Producto::find($id)) {
+    //         session()->put('carrito', array());
+    //     }
       
-      $user = Auth::user();
+    //   $user = Auth::user();
       
-      return view('carrito', ['user' => $user, 'productos' => $productos]);
-    }
+    //   return view('carrito', ['user' => $user, 'productos' => $productos]);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +67,33 @@ class CarritoController extends Controller
     {
         //
     }
+    public function add($id)
+    {
+        session_start();
+        $_SESSION['carrito'][] = $id;
+        $productos = Producto::whereIn('id', $_SESSION['carrito'])->get();
+        return view('carrito', compact('productos'));
+    }
+   public function total(Request $request){
 
+        $cart = $request->session()->get('carrito');
+        $total =0;
+        foreach($cart as $item) {
+            $total = $total +$item->precio;
+            $resultado=$total * $item->cantidad;
+        }
+        return $resultado;
+    }
+        public function destroy(Request $request, $id)
+    {
+        $cart = $request->session()->forget($id);
+    //     session_destroy();
+    //    $productos = Producto::whereIn('id', $_SESSION['carrito'])->get();
+    //            dd($_SESSION['carrito']);
+
+     return view('carrito');
+    }
+ 
     /**
      * Display the specified resource.
      *
@@ -76,12 +102,7 @@ class CarritoController extends Controller
      */
     public function show(Request $request)
     {
-        $productos = Producto::All();
-        $value = $request->session()->get('key');
-
-        //$carrito = \Session::get('carrito');
-        //$total = $this->total();
-        return view('carrito', ['productos' => $productos]);
+       return view('carrito-show');
     }
 
     /**
@@ -115,9 +136,6 @@ class CarritoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+ 
 
 }
