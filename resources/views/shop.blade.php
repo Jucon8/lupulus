@@ -3,7 +3,7 @@
 Shop
 @endsection
 @section('contenido')
-  <!--Inicio header-->
+
 
   <div class="d-lg-none" id="categoriasTienda">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">

@@ -1,5 +1,5 @@
    <!DOCTYPE html>
-   <html lang="en">
+   <html lang="es">
    <head>
        <meta charset="UTF-8">
     <!-- CSRF Token -->
@@ -25,7 +25,8 @@
    <body>
 
 <header>
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark " tyle="background-color: #000;">
+  <div class="headertrasero">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" id="headerSticky" tyle="background-color: #000;">
     <a class="navbar-brand p-0 pt-2" href="{{route('home')}}" style="background-color: transparent; width:15%; box-shadow: none;">
     <img src="/img/logo1.png" alt="LUPULUS" id=logoHeader></a>
     <button class="navbar-toggler" id="menuHeader" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,6 +98,7 @@
         </ul>
     </div>
 </nav>
+</div>
 </header>
 
 <!-- Inicio barra lateral -->

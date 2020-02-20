@@ -7,6 +7,7 @@ Detalle del Producto
 @section('contenido')
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="adminusuarios">
+  <br>
 <h1>Productos</h1>
 
           <div class="alta-producto">
@@ -90,7 +91,9 @@ Detalle del Producto
   <br>
   <br>
   </form>
-
+<br>
+<br>
+<br>
   </main>
 
 @endsection
