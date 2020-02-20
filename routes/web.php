@@ -49,3 +49,7 @@ Route::get("/carrito", function(){
 //ProductosAdminController Juanjo
 Route::resource('/admin/products', 'ProductosAdminController');
 Route::get('/admin/products/{id}/destroy', 'ProductosAdminController@destroy')->name('products.destroy');
+
+
+//checkout juanjo
+Route::resource('/checkout', 'CheckoutsController');
