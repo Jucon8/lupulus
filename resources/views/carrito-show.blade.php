@@ -34,56 +34,15 @@ carrito
                 </thead>
                 <tbody>
 
-                  @foreach ($productos as $producto)
-                  <tr>
-
-                     <td class="product-imagen">
-                      <img  alt="Imagen" class="img-fluid" src="img/{{$producto->imagen}}" >
-                    </td>
-                    <td class="product-nombre">
-                      <h2 class=" text-center">{{$producto->nombre}}</h2>
-                    </td>
-                    <td class="product-precio">${{number_format($producto->precio,2)}}</td>
-
-                    <td>
-
-
-                        <input
-                        type="number"
-                         class="input-update-item"
-                         min ="1"
-                         max="1000000"
-                         {{-- data-precio= "{{number_format($producto->precio,2)}}"
-                         data-id="{{$producto->id}}" --}}
-                         value="{{$producto->cantidad}}"
-                         id ="producto_{{$producto->id}}"
-                          {{-- placeholder="" aria-label="Example text with button addon"
-                          aria-describedby="button-addon1"> --}}
-                         >
-
-
-                    </td>
-                    <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
-                    <td>
-                    <a href="{{route('carrito.delete', $producto->id)}}" class="btn btn-danger" data-id="{{$producto->id}}">
-
-
-                     <i class="fa fa-remove"></i>
-                    </a>
-                </td>
-
-                   {{-- --}}
-
-
-
-
-                  </tr>
-                    @endforeach
 
                 </tbody>
               </table>
             </div>
           </form>
+          <h3><span class="badge badge-warnig py-5">No hay Productos en el Carrito</span></h3>
+<br>
+<br>
+<br>
         </div>
 
         <div class="row">
@@ -133,7 +92,7 @@ carrito
                     <strong class="text-black">{{$total}}</strong>
                   </div>
                 </div>
-
+ --}}
                 <div class="row">
                   <div class="col-md-12">
                     <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='{{route('checkout.index')}}'">Finalizar la Compra</button>
@@ -146,8 +105,7 @@ carrito
       </div>
     </div>
 
-{{-- @else
-    <h3><span class="badge badge-warnig">No hay Productos en el Carrito</span></h3>
-@endif
- --}}
+
+    
+
  @endsection
