@@ -36,7 +36,7 @@ Route::get("/shop", 'ProductoController@listado')->name('shop');
 Route::get('/detalleProducto/{id}', 'ProductoController@detalle');
 Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.prod');
 Route::post("/admin/productos", 'ProductoController@agregar');
-Route::get("/admin/productos/{id}/destroy", 'ProductoController@borrar')->name('prod.delete');
+Route::get("/admin/productos/{id}/destroy", 'ProductoController@destroy')->name('prod.delete');
 Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit');
 Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 

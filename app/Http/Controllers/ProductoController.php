@@ -62,21 +62,35 @@ class ProductoController extends Controller
     //   $producto->borrado = 1;
 
 
-      return redirect('admin/productos');
-    }
+     // return redirect('admin/productos');
+    //}
 
 
     //   $producto->save();
     //   return redirect("admin");
     // }
 
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Producto  $producto
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $req) {
+      $producto = Producto::find($req->id);
+      $producto->borrado = 1;
+      $producto->save();
+      return redirect("admin/productos");
+    }
+
+    
 //MIGRAMOS A PRODUCTOSADMINCONTROLLER @EDIT & @UPDATE    
     //     public function editar(Request $req) {
 
 
-      $producto->save();
-      return redirect('admin/productos');
-    }
+    //   $producto->save();
+    //   return redirect('admin/productos');
+    // }
 
     public function show($id)
     {
