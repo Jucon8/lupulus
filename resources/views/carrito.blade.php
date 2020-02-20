@@ -5,22 +5,21 @@ carrito
 @section('contenido')
 
     <!-- inicio carrito-->
-  
- <div class="bg-light py-5"id="contenido-primero">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span>
-           <strong class="text-black"></strong></div>
-        </div>
-      </div>
-  </div>
- <div class="site-wrap">
-   
 
-    <div class="site-section">
+<br>
+<br>
+
+ <div class="site-wrap">
+    <div class="detalle-titulo text-center">
+        <h1><i class="fa fa-shopping-cart"></i>Carrito de Compras</h1>
+    </div>
+<br>
+<br>
+
+<div class="site-section">
       <div class="container">
         <div class="row mb-5">
-          <form class="col-md-12" method="post">
+          <form class="col-md-12" method="get">
             <div class="site-blocks-table">
               <table class="table table-bordered">
                 <thead>
@@ -35,41 +34,52 @@ carrito
                 </thead>
                 <tbody>
 
-                <?php 
-                $total =0;
-                if(isset($_SESSION['carrito'])){
-                        $arregloCarrito =$_SESSION['carrito'];
-                        for($i=0;$i<count($arregloCarrito);$i++){ 
-                          $total = $total + ($arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']);   
-                ?>
-                  <tr class="tabla-principal">
-                    <td class="product-imagen">
-                      <img  alt="Imagen" class="img-fluid" src="img/<?= $arregloCarrito[$i]['Imagen']; ?>" >
+                  @foreach ($productos as $producto)
+                  <tr>
+
+                     <td class="product-imagen">
+                      <img  alt="Imagen" class="img-fluid" src="img/{{$producto->imagen}}" >
                     </td>
                     <td class="product-nombre">
-                      <h2 class=" text-center"><?= $arregloCarrito[$i]['Nombre'];?></h2>
+                      <h2 class=" text-center">{{$producto->nombre}}</h2>
                     </td>
-                    <td>$<?= $arregloCarrito[$i]['Precio'] ;?></td>
+                    <td class="product-precio">${{number_format($producto->precio,2)}}</td>
+
                     <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                     
-                        <input type="text" class="form-control text-center txtCantidad "
-                         data-precio=<?= $arregloCarrito[$i]['Precio'] ;?>
-                         data-id=<?= $arregloCarrito[$i]['Id'] ;?>
-                         value="<?= $arregloCarrito[$i]['Cantidad'] ;?>"
-                          placeholder="" aria-label="Example text with button addon" 
-                          aria-describedby="button-addon1">
-                        
-                      </div>
+
+
+                        <input
+                        type="number"
+                         class="input-update-item"
+                         min ="1"
+                         max="1000000"
+                         {{-- data-precio= "{{number_format($producto->precio,2)}}"
+                         data-id="{{$producto->id}}" --}}
+                         value="{{$producto->cantidad}}"
+                         id ="producto_{{$producto->id}}"
+                          {{-- placeholder="" aria-label="Example text with button addon"
+                          aria-describedby="button-addon1"> --}}
+                         >
+
 
                     </td>
-                    <td class="cant<?= $arregloCarrito[$i]['Id'] ;?>">$<?= $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'] ;?></td>
-                    <td><a href="#" class="btn btn-primary btn-sm btnEliminar" data-id="<?=  $arregloCarrito[$i]['Id'] ;?>">X</a></td>
+                    <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
+                    <td>
+                     <a href="#" class="btn btn-danger" data-id="{{$producto->id}}">
+
+
+                     <i class="fa fa-remove"></i>
+                    </a>
+                </td>
+
+                   {{-- --}}
+
+
+
+
                   </tr>
-                    
-                    <?php } } ?>  
-                  
-                 
+                    @endforeach
+
                 </tbody>
               </table>
             </div>
@@ -79,11 +89,11 @@ carrito
         <div class="row">
           <div class="col-md-6">
             <div class="row mb-5">
-             <!--  <div class="col-md-6 mb-3 mb-md-0">
+             <div class="col-md-6 mb-3 mb-md-0">
                 <button class="btn btn-primary btn-sm btn-block">Actualizar Carrito</button>
-              </div> -->
+              </div>
               <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block"><a href="shop.php">Continuar Comprando</a></button>
+                <a href="" class="btn btn-primary btn-sm btn-block">Vaciar Carrito</a>
               </div>
             </div>
             <div class="row">
@@ -111,19 +121,19 @@ carrito
                   <div class="col-md-6">
                     <span class="text-black">Subtotal</span>
                   </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black"><?= $total;?></strong>
+                  {{-- <div class="col-md-6 text-right">
+                    <strong class="text-black">{{$total}}</strong>
                   </div>
                 </div>
                 <div class="row mb-5">
-                  <div class="col-md-6">
+                  <div class ="col-md-6">
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black"><?= $total;?> </strong>
+                    <strong class="text-black">{{$total}}</strong>
                   </div>
                 </div>
-
+ --}}
                 <div class="row">
                   <div class="col-md-12">
                     <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
@@ -136,4 +146,8 @@ carrito
       </div>
     </div>
 
+{{-- @else
+    <h3><span class="badge badge-warnig">No hay Productos en el Carrito</span></h3>
+@endif
+ --}}
  @endsection

@@ -110,14 +110,13 @@ Detalle del Producto
             @else
             <img src="/img/cartel.jpg" class="card-img" alt="...">
             @endif
-          
+
           <h3>{{$producto->nombre}}</h3>
           <h4>${{$producto->precio}}</h4>
           <p class="card-text">{{$producto->descripcion}} </p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 calificacion de los usuarios
-         <p><a href="{{route('carrito')}}?id={{$producto->id}}" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>
-
+         <p><a href="{{route('carrito', $producto->id)}}" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>
           <button type="button" class="btn btn-secondary btn-sm">Agregar a favoritos</button>
           <button type="button" class="btn btn-secondary btn-sm">Preguntas frecuentes</button>
       </div>
@@ -126,7 +125,7 @@ Detalle del Producto
   </div>
 </div>
 
-  
+
   <!-- Optional JavaScript -->
 
   {{-- <script>

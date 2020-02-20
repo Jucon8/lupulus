@@ -40,11 +40,10 @@ Route::get("/admin/productos/{id}/destroy", 'ProductoController@borrar')->name('
 Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit');
 Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
-
 //Pato Carrito
-Route::get("/carrito", function(){
-    return view('carrito');
-}) ->name('carrito');
+
+Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito');
+/* Route::get("/carrito", 'CarritoController@total'); */
 
 //ProductosAdminController Juanjo
 Route::resource('/admin/products', 'ProductosAdminController');
