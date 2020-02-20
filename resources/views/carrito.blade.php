@@ -1,6 +1,6 @@
 @extends('layouts.header')
 @section('titulo')
-carrito
+Carrito
 @endsection
 @section('contenido')
 
@@ -33,12 +33,21 @@ carrito
                   </tr>
                 </thead>
                 <tbody>
-
-                  @foreach ($productos as $producto)
+                
+                  @if(isset($producto->id))
+                  {{--@foreach ($productos as $producto)--}}
                   <tr>
 
+//cambios santi-20-02
                      <td class="product-imagen">
-                      <img  alt="Imagen" class="img-fluid" src="img/{{$producto->imagen}}" >
+                      <img  alt="Imagen" class="img-fluid" src="/storage/productos/{{$producto->imagen_producto}}" >
+
+            Cambios pato   //   @foreach ($productos as $producto)
+                 // <tr>
+
+                   //  <td class="product-imagen">
+                   //   <img  alt="Imagen" class="img-fluid" src="img/{{$producto->imagen}}" >
+
                     </td>
                     <td class="product-nombre">
                       <h2 class=" text-center">{{$producto->nombre}}</h2>
@@ -48,24 +57,31 @@ carrito
                     <td>
 
 
-                        <input
-                        type="number"
-                         class="input-update-item"
-                         min ="1"
-                         max="1000000"
-                         {{-- data-precio= "{{number_format($producto->precio,2)}}"
-                         data-id="{{$producto->id}}" --}}
-                         value="{{$producto->cantidad}}"
-                         id ="producto_{{$producto->id}}"
-                          {{-- placeholder="" aria-label="Example text with button addon"
-                          aria-describedby="button-addon1"> --}}
-                         >
+                        <input type="number" class="input-update-item" min ="1" max="1000000" data-precio= "{{number_format($producto->precio,2)}}" data-id="{{$producto->id}}" value="{{$producto->cantidad}}" id ="producto_{{$producto->id}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+                      //  <input
+                      //  type="number"
+                      //   class="input-update-item"
+                        // min ="1"
+         //cambios pato    //max="1000000"
+                         //{{-- data-precio= "{{number_format($producto->precio,2)}}"
+                         //data-id="{{$producto->id}}" --}}
+                         //value="{{$producto->cantidad}}"
+                         //id ="producto_{{$producto->id}}"
+                          //{{-- placeholder="" aria-label="Example text with button addon"
+                          //aria-describedby="button-addon1"> --}}
+                         //>
+
 
 
                     </td>
                     <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
                     <td>
+
+                    // Cambios Santi <a href="#" class="btn btn-danger" data-id="{{$producto->id}}">
+
                     <a href="{{route('carrito.delete', $producto->id)}}" class="btn btn-danger" data-id="{{$producto->id}}">
+
 
 
                      <i class="fa fa-remove"></i>
@@ -78,7 +94,12 @@ carrito
 
 
                   </tr>
-                    @endforeach
+//santi-20-02
+                   {{-- @endforeach --}}
+                   @endif
+
+              //   PATO   @endforeach
+
 
                 </tbody>
               </table>
@@ -151,3 +172,106 @@ carrito
 @endif
  --}}
  @endsection
+
+Cambios Santi --->
+<?/*php
+session_start();
+
+require 'BasesDeDatos/pdo.php';
+ $conexion = new Conexion();
+$titulo="Carrito";
+
+
+if(isset($_SESSION['carrito'])){
+//si existe
+    if(isset($_GET['id'])){
+      $arreglo =$_SESSION['carrito'];
+      $encontro = false;
+      $numero =0;
+      for($i=0;$i<count($arreglo);$i++){
+        if($arreglo[$i]['Id']== $_GET['id']){
+          $encontro =true;
+          $numero=$i;
+        }
+      }
+        if ($encontro==true) {
+          $arreglo[$numero]['Cantidad']=$arreglo[$numero]['Cantidad']+1;
+          $_SESSION['carrito']=$arreglo;
+        }else {
+          ///no esta el regisro
+              $nombre ="";
+              $precio="";
+              $imagen="";
+              $consulta=$conexion ->prepare('SELECT * FROM producto where id='.$_GET['id'])or die($conexion->error) ;
+              $consulta ->execute();
+              $fila=$consulta->fetch(PDO::FETCH_ASSOC);
+              $nombre =$fila['nombre'];
+              $precio=$fila['precio'];
+              if (!empty($fila['imagen'])) {
+                $imagen=$fila['imagen'];
+              } else {
+                $imagen = 'cartel.jpg';
+              }
+              $arregloNuevo=[
+                  'Id' => $_GET['id'],
+                  'Nombre' => $nombre,
+                  'Precio' => $precio,
+                  'Imagen' => $imagen,
+                  'Cantidad' => $cantidad
+
+              ];
+              array_push($arreglo,$arregloNuevo);
+              $_SESSION['carrito']=$arreglo;
+            }
+          }
+}else {
+  //creamos la variable de sesion
+  if(isset($_GET['id'])){
+      $consulta=$conexion ->prepare('SELECT * FROM producto where id='.$_GET['id']);
+      $consulta ->execute();
+      $fila=$consulta->fetch(PDO::FETCH_ASSOC);
+      $nombre =$fila['nombre'];
+      $precio=$fila['precio'];
+      if (!empty($fila['imagen'])) {
+        $imagen=$fila['imagen'];
+      } else {
+        $imagen = 'cartel.jpg';
+      }
+      $arreglo[]=array(
+          'Id' => $_GET['id'],
+          'Nombre' => $nombre,
+          'Precio' => $precio,
+          'Imagen' => $imagen,
+          'Cantidad' => $cantidad
+      );
+    $_SESSION['carrito']=$arreglo;
+  }
+}
+
+//vaciar carito
+if ( isset($_GET['reset']) )
+{
+if ($_GET["reset"] == 'true')
+  {
+  unset($_SESSION["carrito"]); //Which item has been chosen
+  }
+}
+
+//Delete
+
+if (isset($_GET["delete"])){
+    $i = $_GET["delete"];
+    $_SESSION['carrito'][$i];
+    unset($_SESSION['carrito'][$i]);
+}
+
+
+/*$self = $_SERVER['PHP_SELF'];
+if($self != 'carrito.php') {
+  header("refresh:1; url='carrito.php'"); //Refrescamos cada 300 segundos
+}*/
+
+
+/*
+?>
+

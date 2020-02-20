@@ -88,7 +88,7 @@ Lista de Productos
 
       <div class="col-md-3 mb-3">
         <label for="validationDefault08">Agregar Imagen</label>
-        <input name="imagen_producto" type="file" class="" id="validationDefault08" >
+        <input name="imagen_producto" type="file" class="" id="validationDefault08" accept = 'image/*' >
       </div>
 
     </div>
@@ -134,11 +134,13 @@ Lista de Productos
                 </td>
                 </tr>
                 @endif
-              @endforeach
-              </tbody>              
+              @endforeach              
+              </tbody>                            
             </table>
-            
+            <div class="mx-auto" style="width: 200px;">
             {{$productos->links()}}
+            </div>
+            
             <br>
             <br>
                      

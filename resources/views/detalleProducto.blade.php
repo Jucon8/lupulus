@@ -105,8 +105,10 @@ Detalle del Producto
       <div class="col-lg-9 pt-3 pb-3" style="background-color:rgba(255,255,255,0.5)">
 
         <div class="card-body  mt-4 ">
-           @if(!empty($producto->imagen))
-            <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/{{$producto->imagen_producto}}" alt="">
+
+            @if(!empty($producto->imagen_producto))
+            <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/productos/{{ $producto->imagen_producto}}" alt="imagen">
+
             @else
             <img src="/img/cartel.jpg" class="card-img" alt="...">
             @endif

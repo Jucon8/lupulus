@@ -34,7 +34,7 @@ Iniciar Sesión
         </div>
 
         <div class="form-group form-check text-center">
-        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked': '' }}>
+        <input class="form-check-input" type="checkbox" name="remember" id="remember" value="{{ old('remember') ? 'checked': '' }}">
         <label class="form-check-label" for="remember"> {{ __('Recordarme') }} </label>
         </div>
 

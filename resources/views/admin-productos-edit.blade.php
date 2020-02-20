@@ -80,8 +80,10 @@ Detalle del Producto
       </div>
 
       <div class="col-md-3 mb-3">
-        <label for="validationDefault08">Agregar Imagen</label>
-        <input name="imagen_producto" type="file" class="" id="validationDefault08" >
+      
+        <label for="imagen_producto">Agregar Imagen</label>
+        <input name="imagen_producto" type="file" class="" id="imagen_producto" >
+      
       </div>
     </div>
     <button class="btn btn-success" type="submit" name="edit">GUARDAR CAMBIOS</button>
