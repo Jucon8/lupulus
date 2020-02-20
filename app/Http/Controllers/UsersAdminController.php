@@ -41,6 +41,7 @@ class UsersAdminController extends Controller
         $user= new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
+        flash('Se ha registrado a <strong>' . $user->username . '</strong> con éxito!')->success();
         return redirect('/admin/users');
     }
 
@@ -64,6 +65,7 @@ class UsersAdminController extends Controller
     public function edit($id)
     {
         $user=User::find($id);
+
         return view('admin-users-edit')->with('user', $user);
     }
 
@@ -81,6 +83,7 @@ class UsersAdminController extends Controller
         $user->email= $request->email;
         $user->rol_id= $request->rol_id;
         $user->save();
+        flash('Se ha editado a <strong>' . $user->username . '</strong> con éxito!')->warning();
         return redirect('admin/users');
     }
 
@@ -91,8 +94,8 @@ class UsersAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $id)
-    {
-        $id->delete();
+    {   $id->delete();
+        flash('Se ha eliminado a <strong>' . $id->username . '</strong> con éxito!')->error();
         return redirect('admin/users');
     }
 

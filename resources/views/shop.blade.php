@@ -3,7 +3,7 @@
 Shop
 @endsection
 @section('contenido')
-  <!--Inicio header-->
+
 
   <div class="d-lg-none" id="categoriasTienda">
     <nav class="navbar navbar-expand-md navbar-light" style="text-transform:capitalize; background-color:#000">
@@ -118,8 +118,10 @@ Shop
 
                 <div class="row no-gutters">
                   <div class="col-md-4">
+
                     @if(!empty($producto->imagen_producto))
                     <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/productos/{{ $producto->imagen_producto}}" alt="imagen">                    
+
                     @else
                     <img src="/img/cartel.jpg" class="card-img" alt="...">
                     @endif
@@ -139,8 +141,10 @@ Shop
                       <h5 class="card-text">$ {{$producto["precio"]}}</h5>
                       </div>
                       <div class="float-left pb-3">
+
                         {{-- <a class="btn btn-success btn-lg" href="detalleProducto.php?id==$producto['id']?>"> Detalle del producto</a> --}}
                              <a class="btn btn-success btn-lg" href="detalleProducto/{{$producto['id']}}"> Detalle del producto</a>
+
                       </div>
 
                     </div>

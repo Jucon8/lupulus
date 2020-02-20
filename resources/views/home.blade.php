@@ -256,9 +256,14 @@ LUPULUS - Insumos Cerveceros
                             <p> <a href="mailto: info@lupulus.com" class='text-dark'>info@lupulus.com</a> </p>
                             <p> <a href="mailto:ventas@lupulus.com" class='text-dark'> ventas@lupulus.com </a> </p>
                             <p> <a href="mailto:contacto@lupulus.com" class='text-dark'> contacto@lupulus.com </a> </p>
+                            <br>
+                            <br>
                         </div>
 
                     </div>
                 </div>
             </div>
+        </section>
+                </section>
+
 @endsection

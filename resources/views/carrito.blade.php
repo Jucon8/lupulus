@@ -38,8 +38,16 @@ Carrito
                   {{--@foreach ($productos as $producto)--}}
                   <tr>
 
+//cambios santi-20-02
                      <td class="product-imagen">
                       <img  alt="Imagen" class="img-fluid" src="/storage/productos/{{$producto->imagen_producto}}" >
+
+            Cambios pato   //   @foreach ($productos as $producto)
+                 // <tr>
+
+                   //  <td class="product-imagen">
+                   //   <img  alt="Imagen" class="img-fluid" src="img/{{$producto->imagen}}" >
+
                     </td>
                     <td class="product-nombre">
                       <h2 class=" text-center">{{$producto->nombre}}</h2>
@@ -51,11 +59,29 @@ Carrito
 
                         <input type="number" class="input-update-item" min ="1" max="1000000" data-precio= "{{number_format($producto->precio,2)}}" data-id="{{$producto->id}}" value="{{$producto->cantidad}}" id ="producto_{{$producto->id}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 
+                      //  <input
+                      //  type="number"
+                      //   class="input-update-item"
+                        // min ="1"
+         //cambios pato    //max="1000000"
+                         //{{-- data-precio= "{{number_format($producto->precio,2)}}"
+                         //data-id="{{$producto->id}}" --}}
+                         //value="{{$producto->cantidad}}"
+                         //id ="producto_{{$producto->id}}"
+                          //{{-- placeholder="" aria-label="Example text with button addon"
+                          //aria-describedby="button-addon1"> --}}
+                         //>
+
+
 
                     </td>
                     <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
                     <td>
-                     <a href="#" class="btn btn-danger" data-id="{{$producto->id}}">
+
+                    // Cambios Santi <a href="#" class="btn btn-danger" data-id="{{$producto->id}}">
+
+                    <a href="{{route('carrito.delete', $producto->id)}}" class="btn btn-danger" data-id="{{$producto->id}}">
+
 
 
                      <i class="fa fa-remove"></i>
@@ -68,8 +94,12 @@ Carrito
 
 
                   </tr>
+//santi-20-02
                    {{-- @endforeach --}}
                    @endif
+
+              //   PATO   @endforeach
+
 
                 </tbody>
               </table>
@@ -127,7 +157,7 @@ Carrito
  --}}
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='{{route('checkout.index')}}'">Finalizar la Compra</button>
                   </div>
                 </div>
               </div>
@@ -143,6 +173,7 @@ Carrito
  --}}
  @endsection
 
+Cambios Santi --->
 <?/*php
 session_start();
 
@@ -243,3 +274,4 @@ if($self != 'carrito.php') {
 
 /*
 ?>
+

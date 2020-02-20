@@ -105,19 +105,20 @@ Detalle del Producto
       <div class="col-lg-9 pt-3 pb-3" style="background-color:rgba(255,255,255,0.5)">
 
         <div class="card-body  mt-4 ">
+
             @if(!empty($producto->imagen_producto))
             <img class="card-img-top s p-3" style="width: 100%; margin: 0 auto;" src="/storage/productos/{{ $producto->imagen_producto}}" alt="imagen">
+
             @else
             <img src="/img/cartel.jpg" class="card-img" alt="...">
             @endif
-          
+
           <h3>{{$producto->nombre}}</h3>
           <h4>${{$producto->precio}}</h4>
           <p class="card-text">{{$producto->descripcion}} </p>
           <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 calificacion de los usuarios
-         <p><a href="{{route('carrito')}}?id={{$producto->id}}" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>
-
+         <p><a href="{{route('carrito', $producto->id)}}" class="buy-now btn btn-sm btn-primary">Agregar a Carrito</a></p>
           <button type="button" class="btn btn-secondary btn-sm">Agregar a favoritos</button>
           <button type="button" class="btn btn-secondary btn-sm">Preguntas frecuentes</button>
       </div>
@@ -126,7 +127,7 @@ Detalle del Producto
   </div>
 </div>
 
-  
+
   <!-- Optional JavaScript -->
 
   {{-- <script>
