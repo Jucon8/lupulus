@@ -44,12 +44,17 @@ Iniciar Sesión
 
         <div class="text-center">
         @if (Route::has('password.request'))
-            <a class="btn btn-link" href="{{ route('password.request') }}"> {{ __('Olvideme mi contraseña') }} </a>
+            <a class="btn btn-link" href="{{ route('password.request') }}"> {{ __('Olvidé mi contraseña') }} </a>
         @endif
         </div>
       </form>
-
+<br>
+<br>
+<br><br>
     </div>
+    <br>
+    <br>
+    <br>
   </div>
 
 @endsection

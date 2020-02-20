@@ -5,6 +5,10 @@ Resetear contraseña
 @section('contenido')
 
 <div class="container-fluid loginimg" id="formularioGeneral">
+<br>
+<br>
+<br>
+<br>
     <div class="col-sm-9 col-md-6 rounded pt-1 pb-3" id="formulario">
       <div class="text-center">
         <h2 class="p-3">{{ __('Resetear Contraseña') }}</h2>
@@ -40,6 +44,13 @@ Resetear contraseña
             </form>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 
 

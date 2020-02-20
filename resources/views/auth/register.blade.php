@@ -58,6 +58,11 @@ Registrarse
 					</div>
 				</form>
 			</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            
 		</div>
 
 @endsection
