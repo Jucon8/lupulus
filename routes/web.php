@@ -41,8 +41,10 @@ Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit'
 Route::post("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
 
+
+
 // Carrito
-Route::get("/carrito", "CarritoController@show")->name('carrito');
+Route::get("/carrito", "CarritoController@show")->name('carrito.show');
 
 //Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito.id');
 //Pato Carrito

@@ -91,7 +91,7 @@
            @endguest
 
             <li class="nav-item">
-                <a class="nav-link text-white" style="text-transform: capitalize" href="carrito" id="carritoHeader">
+                <a class="nav-link text-white" style="text-transform: capitalize" href="{{route('carrito.show')}}" id="carritoHeader">
                     <i class="icon ion-md-cart"></i> carrito</a>
             </li>
 
