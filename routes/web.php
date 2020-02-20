@@ -40,8 +40,9 @@ Route::get("/admin/productos", 'ProductoController@listado_admin')->name('admin.
 Route::post("/admin/productos", 'ProductoController@agregar');
 Route::get("/admin/productos/{id}/destroy", 'ProductoController@borrar')->name('prod.delete');
 Route::get("/admin/productos/{id}", 'ProductoController@show')->name('prod.edit');
-Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
+Route::post("/admin/productos/{id}", 'ProductoController@edit')->name('prod.update');
 
-Route::get("/carrito", function(){
-    return view('carrito');
-}) ->name('carrito');
+// Carrito
+Route::get("/carrito", "CarritoController@show")->name('carrito');
+
+//Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito.id');

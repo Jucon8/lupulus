@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facaudes\Storage;
 
 use App\Producto;
 use App\Subcategoria;
@@ -10,7 +11,7 @@ use App\Subcategoria;
 class ProductoController extends Controller
 {
     public function listado (){
-      $productos = Producto::All();
+      $productos = Producto::simplePaginate(5);
       return view('shop', compact('productos'));
     }
 
@@ -28,16 +29,18 @@ class ProductoController extends Controller
 
     public function agregar(Request $req) {
       $productoNuevo = new Producto();
-
       $productoNuevo->nombre = $req["nombre"];
       $productoNuevo->precio= $req["precio"];
       $productoNuevo->descripcion= $req["descripcion"];
       $productoNuevo->estado= $req["estado"];
       $productoNuevo->subcategoria_id= $req["subcategoria_id"];
       $productoNuevo->stock= $req["stock"];
-      $productoNuevo->imagen_producto= $req["imagen_producto"];
 
-
+       // en $ruta se va a guardar la ruta completa a donde va a ir la imagen
+      $ruta = $req->file('imagen_producto')->store('public/productos');
+      // Para obtener solamente el nombre, usamos la funcion de PHP basename()
+      $nombreArchivo = basename($ruta);
+      $productoNuevo->imagen_producto = $nombreArchivo;
       $productoNuevo->save();
 
       return redirect('admin/productos');
@@ -67,7 +70,14 @@ class ProductoController extends Controller
         $producto->estado= $req["estado"];
         $producto->subcategoria_id= $req["subcategoria_id"];
         $producto->stock= $req["stock"];
-        $producto->imagen_producto= $req["imagen_producto"];
+
+        
+        // en $ruta se va a guardar la ruta completa a donde va a ir la imagen
+        $ruta = $req->file('imagen_producto')->store('public/productos');
+        // Para obtener solamente el nombre, usamos la funcion de PHP basename()
+        $nombreArchivo = basename($ruta);
+        $producto->imagen_producto = $nombreArchivo;
+
         $producto->save();
         return redirect('admin/productos')->with('producto', $producto);
     }   

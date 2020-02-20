@@ -142,7 +142,7 @@ Mi Cuenta
                     </div>
 
                     <div class="form-group col-lg-6">
-                      <label for="ciudad_id">Seleccione su provincia</label>
+                      <label for="ciudad_id">Seleccione su ciudad</label>
                       <select type="text" name="ciudad_id" class="form-control" id="ciudad_id">
                       @if( Auth::user()->ciudad_id == null)
                         <option value=""> seleccione...</option>                        

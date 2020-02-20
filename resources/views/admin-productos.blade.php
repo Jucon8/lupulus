@@ -87,7 +87,7 @@ Lista de Productos
 
       <div class="col-md-3 mb-3">
         <label for="validationDefault08">Agregar Imagen</label>
-        <input name="imagen_producto" type="file" class="" id="validationDefault08" >
+        <input name="imagen_producto" type="file" class="" id="validationDefault08" accept = 'image/*' >
       </div>
 
     </div>
@@ -120,7 +120,7 @@ Lista de Productos
                   <td>{{$producto['precio']}}</td>
                   <td>{{$producto['stock']}}</td>
                   <td>{{$producto['estado']}}</td>
-                  <td>Imágenes</td>
+                  <td>{{$producto['imagen_producto']}}</td>
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 
@@ -129,11 +129,13 @@ Lista de Productos
                   <a href="{{route('prod.delete', $producto['id'])}}">ELIMINAR</a> </td>
                 </tr>
                 @endif
-              @endforeach
-              </tbody>              
+              @endforeach              
+              </tbody>                            
             </table>
-            
+            <div class="mx-auto" style="width: 200px;">
             {{$productos->links()}}
+            </div>
+            
             <br>
             <br>
                      

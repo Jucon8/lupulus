@@ -57,7 +57,9 @@ Lista de Usuarios
                 @endforeach
               </tbody>
             </table>
+            <div class="mx-auto" style="width: 200px;">
             {!!$users->render()!!}
+            </div>
         </div>
 <br>
 <br>
