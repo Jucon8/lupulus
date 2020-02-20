@@ -37,24 +37,24 @@ class ProductoController extends Controller
 
 
     //MIGRAMOS A PRODUCTOSADMINCONTROLLER @STORE
-    // public function agregar(Request $req) {
-    //   $productoNuevo = new Producto();
+    public function agregar(Request $req) {
+      $productoNuevo = new Producto();
       
-    //   $ruta = $req->file("imagen_producto")->store("public");
-    //   $nombre_archivo_imagen = basename($ruta);
-    //   $productoNuevo->imagen_producto = $nombre_archivo_imagen;
+      $ruta = $req->file("imagen_producto")->store("public");
+      $nombre_archivo_imagen = basename($ruta);
+      $productoNuevo->imagen_producto = $nombre_archivo_imagen;
 
-    //   $productoNuevo->nombre = $req["nombre"];
-    //   $productoNuevo->precio= $req["precio"];
-    //   $productoNuevo->descripcion= $req["descripcion"];
-    //   $productoNuevo->estado= $req["estado"];
-    //   $productoNuevo->subcategoria_id= $req["subcategoria_id"];
-    //   $productoNuevo->stock= $req["stock"];
-    //   $productoNuevo->imagen_producto= $req["imagen_producto"];
-    //   $productoNuevo->save();
+      $productoNuevo->nombre = $req["nombre"];
+      $productoNuevo->precio= $req["precio"];
+      $productoNuevo->descripcion= $req["descripcion"];
+      $productoNuevo->estado= $req["estado"];
+      $productoNuevo->subcategoria_id= $req["subcategoria_id"];
+      $productoNuevo->stock= $req["stock"];
+      $productoNuevo->imagen_producto= $req["imagen_producto"];
+      $productoNuevo->save();
 
-    //   return redirect("admin-productos");
-    // }
+      return redirect("admin/productos");
+    }
 
     //MIGRAMOS A PRODUCTOSADMINCONTROLLER @DESTROY
     // public function borrar(Request $req) {
