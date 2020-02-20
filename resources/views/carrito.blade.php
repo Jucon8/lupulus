@@ -65,7 +65,7 @@ carrito
                     </td>
                     <td >${{number_format($producto->precio * $producto->cantidad,2)}}</td>
                     <td>
-                     <a href="#" class="btn btn-danger" data-id="{{$producto->id}}">
+                    <a href="{{route('carrito.delete', $producto)}}" class="btn btn-danger" data-id="{{$producto->id}}">
 
 
                      <i class="fa fa-remove"></i>
@@ -136,7 +136,7 @@ carrito
  --}}
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Finalizar la Compra</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='{{route('checkout.index')}}'">Finalizar la Compra</button>
                   </div>
                 </div>
               </div>

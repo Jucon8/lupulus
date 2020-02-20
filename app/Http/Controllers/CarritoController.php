@@ -8,22 +8,22 @@ use App\Producto;
 class CarritoController extends Controller
 
 {
-     /* public function __construct(Request $request)
-    {
-       if(!$request->session()->has('carrito')){
-            $request->session()->put('carrito', array());
+//      /* public function __construct(Request $request)
+//     {
+//        if(!$request->session()->has('carrito')){
+//             $request->session()->put('carrito', array());
 
-       }
+//        }
 
-    }
-     public function index(Request $request)
-    {
-       $cart =$request->session()->get('carrito');
-       $total =$this->total($request);
-       return view('carrito', compact('cart','total'));
-    }
+//     }
+//      public function index(Request $request)
+//     {
+//        $cart =$request->session()->get('carrito');
+//        $total =$this->total($request);
+//        return view('carrito', compact('cart','total'));
+//     }
 
- */
+//  */
        public function add($id)
     {
         session_start();
@@ -40,6 +40,14 @@ class CarritoController extends Controller
             $resultado=$total * $item->cantidad;
         }
         return $resultado;
+    }
+        public function destroy($producto)
+    {
+        dd($producto);
+       $eliminar=Producto::find($id);
+               dd($_SESSION['carrito']);
+
+        return redirect('/carrito');
     }
  
 

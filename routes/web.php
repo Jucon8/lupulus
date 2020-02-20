@@ -43,6 +43,8 @@ Route::put("/admin/productos/{id}", 'ProductoController@edit')->name('prod.updat
 //Pato Carrito
 
 Route::get("/carrito/{id?}", 'CarritoController@add')->name('carrito');
+Route::get("/carrito/{id}/destroy", 'CarritoController@destroy')->name('carrito.delete');
+
 
 
 

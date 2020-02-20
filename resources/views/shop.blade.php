@@ -140,6 +140,7 @@ Shop
                       </div>
                       <div class="float-left pb-3">
                              <a class="btn btn-success btn-lg" href="detalleProducto/{{$producto["id"]}}"> Detalle del producto</a>
+                             <a class="btn btn-success btn-lg" onclick="return alert('Agregado al carrito')" href="{{route('carrito', $producto->id)}}">Agregar a Carrito</a>
                       </div>
 
                     </div>
