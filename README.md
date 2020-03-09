@@ -1,12 +1,15 @@
 
 <h1> URL: http://lupulus.nomadecomunicacion.com.ar/ </h1>
 
+<div style="background-color: rgba(0, 0, 0, 0.22);">
                     <h3> Para ingresar como cliente:</h3>
                     <p>Usuario: "cliente@cliente.com"</p>
                     <p>Contraseña: "lupulus"</p>
                     <h3> Para ingresar como Administrador:</h3>
                     <p>Usuario: "lupulus@admin.com"</p>
                     <p>Contraseña: "lupulus"</p>
+
+</div>
 
 
 
