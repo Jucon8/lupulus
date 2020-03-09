@@ -12,13 +12,21 @@
 </div>
 
 
-##Proyecto desarrollado por 5Bits:##
+## Proyecto desarrollado por 5Bits:
 
-@Santi-Bobadilla,
-@Sdmb,
-@TheEma2019,
-@magogaflo,
-@Jucon8
+[Santi-Bobadilla]
+(https://github.com/Santi-Bobadilla)
+
+[Sdmb]
+(https://github.com/Sdmb)
+
+[TheEma2019]
+(https://github.com/TheEma2019)
+[magogaflo]
+(https://github.com/magogaflo)
+
+[Jucon8]
+(https://github.com/Jucon8)
 
 
 <h4>Pasos a seguir para que funcione LUPULUS WEB</h4>
