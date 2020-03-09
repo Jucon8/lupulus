@@ -12,11 +12,12 @@
 </div>
 
 
-##Proyecto desarrollado por 5Bits:
-@Santi-Bobadilla
-@Sdmb
-@TheEma2019
-@magogaflo
+##Proyecto desarrollado por 5Bits:##
+
+@Santi-Bobadilla,
+@Sdmb,
+@TheEma2019,
+@magogaflo,
 @Jucon8
 
 
