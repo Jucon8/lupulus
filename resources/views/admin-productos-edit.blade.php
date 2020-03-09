@@ -86,7 +86,7 @@ Detalle del Producto
       
       </div>
     </div>
-    <button class="btn btn-success" type="submit" name="edit">GUARDAR CAMBIOS</button>
+    <button class="btn btn-success" type="submit" name="edit" onclick="return confirm('Modificar Producto?')">GUARDAR CAMBIOS</button>
   <a href="{{route('admin.prod')}}" class="btn btn-danger" role="button">CANCELAR</a>
 
   <br>

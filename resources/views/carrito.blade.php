@@ -32,7 +32,7 @@ carrito
                     <th class="product-remover">Remover</th>
                   </tr>
                 </thead>
-                <tbody>
+               <tbody>
 
                   @foreach ($productos as $producto)
                   <tr>
@@ -121,8 +121,8 @@ carrito
                   <div class="col-md-6">
                     <span class="text-black">Subtotal</span>
                   </div>
-                  {{-- <div class="col-md-6 text-right">
-                    <strong class="text-black">{{$total}}</strong>
+                 <div class="col-md-6 text-right">
+                    <strong class="text-black">{{$total ?? ''}}</strong>
                   </div>
                 </div>
                 <div class="row mb-5">
@@ -130,13 +130,12 @@ carrito
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">{{$total}}</strong>
+                    <strong class="text-black">{{$total ?? ''}}</strong>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-12">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='{{route('checkout.index')}}'">Finalizar la Compra</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='{{route('checkout.index')}}'"> Finalizar la Compra </button>
                   </div>
                 </div>
               </div>
@@ -145,9 +144,4 @@ carrito
         </div>
       </div>
     </div>
-
-{{-- @else
-    <h3><span class="badge badge-warnig">No hay Productos en el Carrito</span></h3>
-@endif
- --}}
- @endsection
+     @endsection

@@ -126,7 +126,7 @@ Lista de Productos
                   {{-- <td>{{$producto['categoria_id']}}</td> --}}
                   <td>{{$producto['subcategoria_id']}}</td>
 
-                  <td><a href="{{route('prod.edit', $producto['id'])}}" onclick="return confirm('Editar Producto?')" class="btn btn-warning">Editar</a>
+                  <td><a href="{{route('prod.edit', $producto['id'])}}" class="btn btn-warning">Editar</a>
                   <br>
                 
                   <a href="{{route('prod.delete', $producto['id'])}}" onclick="return confirm('Eliminar Producto?')" class="btn btn-danger">Eliminar</a> 
