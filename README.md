@@ -12,8 +12,12 @@
 </div>
 
 
-
-
+##Proyecto desarrollado por 5Bits:
+@Santi-Bobadilla
+@Sdmb
+@TheEma2019
+@magogaflo
+@Jucon8
 
 
 <h4>Pasos a seguir para que funcione LUPULUS WEB</h4>
